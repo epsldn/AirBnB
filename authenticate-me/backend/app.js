@@ -1,4 +1,4 @@
-// Import the required packages
+// Import the required packages and files
 const express = require("express");
 require("express-async-errors");
 const morgan = require("morgan");
@@ -6,6 +6,7 @@ const cors = require('cors');
 const csurf = require("csurf");
 const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
+const routes = require("./routes");
 
 // Check for working environment
 const { environment } = require("./config");
@@ -33,3 +34,6 @@ app.use(
         }
     })
 );
+app.use(routes);
+
+module.exports = app;
