@@ -17,8 +17,8 @@ const isProduction = environment === "production";
 const app = express();
 
 //Connect middleware
-app.use(morgan("dev"));
 app.use(cookieParser());
+app.use(morgan("dev"));
 app.use(express.json());
 if (!isProduction) app.use(cors());
 app.use(
