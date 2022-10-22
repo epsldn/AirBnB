@@ -43,6 +43,8 @@ module.exports = (sequelize, DataTypes) => {
       const user = await User.create({
         username, email, hashedPassword
       });
+
+      return user;
     };
 
     static associate(models) {
