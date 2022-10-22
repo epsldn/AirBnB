@@ -8,6 +8,7 @@ const apiRouter = require("./api");
 
 router.use("/api", apiRouter);
 
+router.post("/", (req, res) => res.json(req.body));
 router.get("/api/csrf/restore", (req, res) => {
   const csrfToken = req.csrfToken();
   res.cookie("XSRF-TOKEN", csrfToken);
