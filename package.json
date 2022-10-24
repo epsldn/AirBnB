@@ -22,11 +22,11 @@
   },
   "devDependencies": {},
   "scripts": {
-    "install": "npm --prefix backend install backend",
-    "dev:backend": "npm install --prefix backend start",
-    "sequelize": "npm run --prefix backend sequelize",
-    "sequelize-cli": "npm run --prefix backend sequelize-cli",
-    "start": "npm start --prefix backend"
+    "install": "npm --prefix authenticate-me/backend install backend",
+    "dev:backend": "npm install --prefix authenticate-me/backend start",
+    "sequelize": "npm run --prefix authenticate-me/backend sequelize",
+    "sequelize-cli": "npm run --prefix authenticate-me/backend sequelize-cli",
+    "start": "npm start --prefix authenticate-me/backend"
   },
   "repository": {
     "type": "git",
