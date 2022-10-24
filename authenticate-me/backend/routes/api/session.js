@@ -2,7 +2,21 @@
 const express = require("express");
 const { setTokenCookie, restoreUser } = require("../../utils/auth");
 const { User } = require("../../db/models");
+const { check } = require("express-validator");
+const { handleValidationErrors } = require("../../utils/validation");
 const router = express.Router();
+
+//Custom middleware functions
+const validateLogin = [
+    check("credential")
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage("Please provide a valid email or username"),
+    check("password")
+        .exists({ checkFalsy: true })
+        .withMessage("Please provide a password"),
+    handleValidationErrors
+];
 
 router.get("/", restoreUser, (req, res, next) => {
     const { user } = req;
@@ -13,7 +27,7 @@ router.get("/", restoreUser, (req, res, next) => {
     } else return res.json({});
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", validateLogin, async (req, res, next) => {
     const { credential, password } = req.body;
     const user = await User.login({ credential, password });
 
