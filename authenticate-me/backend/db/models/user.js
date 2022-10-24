@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: {msg: "This username is take please try another one."},
       validate: {
         len: [4, 30],
         isNotEmail(value) {
@@ -66,7 +66,7 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: { msg: "This email is taken please try another one." },
       validate: {
         len: [3, 256],
         isEmail: true
