@@ -13,22 +13,22 @@ module.exports = {
      * }], {});
     */
 
-    await queryInterface.bulkInsert("ReviewImages", [
+    await queryInterface.bulkInsert("SpotImages", [
       {
-        reviewId: 1,
-        url: "www.thisisareview.com/1"
+        spotId: 1,
+        url: "www.thisisaspot.com/1"
       },
       {
-        reviewId: 1,
-        url: "www.thisisareview.com/1"
+        spotId: 1,
+        url: "www.thisisaspot.com/1"
       },
       {
-        reviewId: 2,
-        url: "www.thisisareview.com/2"
+        spotId: 2,
+        url: "www.thisisaspot.com/2"
       },
       {
-        reviewId: 4,
-        url: "www.thisisareview.com/4"
+        spotId: 3,
+        url: "www.thisisaspot.com/4"
       },
     ]);
   },
@@ -41,7 +41,7 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-    await queryInterface.bulkDelete("ReviewImages", {
+    await queryInterface.bulkDelete("SpotImages", {
       id: [1,2,3,4]
     });
   }
