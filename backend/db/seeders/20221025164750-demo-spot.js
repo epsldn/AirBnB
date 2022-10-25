@@ -26,7 +26,7 @@ module.exports = {
         price: 70000000
       },
       {
-        ownerId: 1,
+        ownerId: 2,
         address: "Some address2",
         city: "Some city2",
         state: "some state2",
@@ -60,7 +60,7 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
     const Op = Sequelize.Op;
-    return await queryInterface.bulkDelete("Users", {
+    return await queryInterface.bulkDelete("Spots", {
       address: { [Op.in]: ["Some address", "Some address2", "Some address3"] }
     });
   }
