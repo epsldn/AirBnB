@@ -15,10 +15,14 @@ module.exports = {
     try {
       await queryInterface.addColumn("Users", "firstName", {
         type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
       });
 
       await queryInterface.addColumn("Users", "lastName", {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
       });
     } catch (error) {
       console.error(error);
