@@ -49,7 +49,6 @@ app.use((req, res, next) => {
 
 // check if error was Validation Error thrown out by sequelize
 app.use((err, req, res, next) => {
-    console.log(err);
     if (err instanceof ValidationError) {
         console.log(err)
         err.errors = { [err.errors[0].path]: err.errors[0].message };
@@ -71,7 +70,6 @@ app.use((err, req, res, next) => {
         errors: err.errors,
     };
 
-    console.log(err.stack);
     if (!isProduction) data.stack = err.stack;
 
     res.json(data);
