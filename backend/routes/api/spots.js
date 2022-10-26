@@ -19,9 +19,6 @@ router.get("/", async (req, res, next) => {
             model: Review,
             attributes: []
         }],
-        // attributes: {
-        //     include: [[Sequelize.fn("avg", sequelize.col("Reviews.stars")), "avgRating"]]
-        // },
         attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "description", "price", "createdAt", "updatedAt", [Sequelize.fn("avg", sequelize.col("Reviews.stars")), "avgRating"], [sequelize.col("SpotImages.url"), "previewImage"]],
         group: ["Spot.id", ["SpotImages.id"]]
     });
