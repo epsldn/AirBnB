@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     toSafeObject() {
-      const { id, username, email, firstName, lastName } = this;
-      return { id, username, email, firstName, lastName };
+      const { id, username, email, firstName, lastName, token } = this;
+      return { id, username, email, firstName, lastName, token };
     }
 
     validatePassword(password) {
