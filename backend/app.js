@@ -70,7 +70,7 @@ app.use((err, req, res, next) => {
     };
 
     console.log(err.stack);
-    // if (!isProduction) data.stack = err.stack;
+    if (!isProduction) data.stack = err.stack;
 
     res.json(data);
 
