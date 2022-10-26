@@ -3,35 +3,57 @@ const { setTokenCookie, requireAuth } = require("../../utils/auth.js");
 const { User } = require("../../db/models");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation.js");
+const { ValidationError } = require("sequelize");
 const router = express.Router();
 
 const validateSignup = [
     check("email")
         .exists({ checkFalsy: true })
         .isEmail()
-        .withMessage("Please provide a valid email."),
+        .withMessage("Invalid Email"),
     check("username")
         .exists({ checkFalsy: true })
-        .isLength({ min: 4 })
-        .withMessage("Please provide a username with at least 4 characters."),
+        .withMessage("Username is required"),
     check("username")
         .not()
         .isEmail()
         .withMessage("Username cannot be an email."),
-    check("password")
-        .exists({ checkFalsy: true })
-        .isLength({ min: 6 })
-        .withMessage("Password must be 6 characters or more."),
+    check("firstName")
+        .exists({ checkFalsy: true }),
+    check("lastName")
+        .exists({ checkFalsy: true }),
     handleValidationErrors
 ];
 
 router.post("/", validateSignup, async (req, res, next) => {
-    const { email, password, username } = req.body;
-    const user = await User.signup({ email, username, password });
+    const { email, password, username, firstName, lastName } = req.body;
 
-    await setTokenCookie(res, user);
+    const user = await User.signup({ email, username, password, firstName, lastName });
 
-    return res.json({ user });
+    const token = await setTokenCookie(res, user);
+
+    const resUser = user.toSafeObject();
+
+    resUser.token = token;
+    return res.json(resUser);
+});
+
+router.use((err, req, res, next) => {
+    if (err instanceof ValidationError) {
+        err = err.errors[0];
+        err.errors = { [err.path]: err.message };
+        err.title = "Validation Error";
+        err.statusCode = 403;
+        err.message = "User already exists";
+        res.status(err.statusCode);
+        res.json({
+            message: err.message,
+            statusCode: err.statusCode,
+            errors: err.errors,
+        });
+    }
+
+    next(err);
 });
 
 module.exports = router;

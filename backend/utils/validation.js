@@ -5,15 +5,18 @@ const { validationResult } = require("express-validator");
 
 const handleValidationErrors = (req, res, next) => {
     const validationErrors = validationResult(req);
+    console.log(validationErrors);
     if (!validationErrors.isEmpty()) {
         const errors = validationErrors
             .array()
-            .map(error => `${error.msg}`);
-            
-        const err = Error("Bad request.");
+            .reduce((accum, next) => {
+                accum[next.param] = next.msg;
+                return accum;
+            }, {});
+
+        const err = Error("Validation Error");
         err.errors = errors;
         err.status = 400;
-        err.title = "Bad request";
         next(err);
     };
 

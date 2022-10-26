@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     toSafeObject() {
-      const { id, username, email } = this;
-      return { id, username, email };
+      const { id, username, email, firstName, lastName } = this;
+      return { id, username, email, firstName, lastName };
     }
 
     validatePassword(password) {
@@ -38,10 +38,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     };
 
-    static async signup({ username, email, password }) {
+    static async signup({ username, email, password, firstName, lastName }) {
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
-        username, email, hashedPassword
+        username, email, hashedPassword, firstName, lastName
       });
 
       return user;
@@ -65,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: { msg: "This username is take please try another one." },
+      unique: { msg: "User with that username already exists" },
       validate: {
         len: [4, 30],
         isNotEmail(value) {
@@ -76,7 +76,7 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: { msg: "This email is taken please try another one." },
+      unique: { msg: "User with that email already exists" },
       validate: {
         len: [3, 256],
         isEmail: true
@@ -85,19 +85,17 @@ module.exports = (sequelize, DataTypes) => {
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
       allowNull: false,
-      val: {
+      validate: {
         len: [60, 60]
-      },
-      firstName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-      },
-      lastName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
       }
+    },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
     }
   }, {
     sequelize,
