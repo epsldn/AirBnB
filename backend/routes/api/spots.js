@@ -94,7 +94,7 @@ router.get("/", async (req, res, next) => {
         group: ["Spot.id", ["SpotImages.id"]]
     });
 
-    res.json({ Spots: spot });
+    return res.json({ Spots: spot });
 });
 
 router.post("/:spotId/images", requireAuth, validateSpotImages, async (req, res, next) => {
@@ -107,8 +107,9 @@ router.post("/:spotId/images", requireAuth, validateSpotImages, async (req, res,
         return next(err);
     };
 
-    if (spot.id !== ownerId) {
+    if (spot.ownerId !== ownerId) {
         const err = new Error("Forbidden");
+        err.message = "Forbidden";
         err.status = 403;
         return next(err);
     }
@@ -134,5 +135,56 @@ router.post("/", requireAuth, validateSpot, async (req, res, next) => {
     return res.json(newSpot);
 });
 
+router.put("/:spotId", requireAuth, validateSpot, async (req, res, next) => {
+    const ownerId = req.user.id;
+    const spot = await Spot.findByPk(req.params.spotId);
+    if (!spot) {
+        const err = new Error();
+        err.message = "Spot couldn't be found";
+        err.status = 404;
+        return next(err);
+    };
 
+    if (spot.ownerId !== ownerId) {
+        const err = new Error("Forbidden");
+        err.message = "Forbidden";
+        err.status = 403;
+        return next(err);
+    }
+
+    const values = { address, city, state, country, lat, lng, name, description, price } = req.body;
+
+    console.log("****".repeat(50), values, "\n", "*****".repeat(50));
+    spot.set({
+        ...values
+    });
+
+    spot.save();
+    res.json(spot);
+});
+
+router.delete("/:spotId", requireAuth, async (req, res, next) => {
+    const ownerId = req.user.id;
+    const spot = await Spot.findByPk(req.params.spotId);
+    if (!spot) {
+        const err = new Error();
+        err.message = "Spot couldn't be found";
+        err.status = 404;
+        return next(err);
+    };
+
+    if (spot.ownerId !== ownerId) {
+        const err = new Error("Forbidden");
+        err.message = "Forbidden";
+        err.status = 403;
+        return next(err);
+    }
+
+    spot.destroy();
+
+    res.json({
+        message: "Successfully deleted",
+        "statusCode": 200
+    });
+});
 module.exports = router;
