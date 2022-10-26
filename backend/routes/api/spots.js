@@ -23,7 +23,7 @@ router.get("/", async (req, res, next) => {
         group: ["Spot.id", ["SpotImages.id"]]
     });
 
-    res.json(spot);
+    res.json({ Spots: spot });
 });
 
 module.exports = router;
