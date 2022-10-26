@@ -18,6 +18,11 @@ const validateSpot = [
     handleValidationErrors
 ];
 
+const validateSpotImages = [
+    check("url").exists({ checkFalsy: true }).withMessage("You must link an image"),
+    handleValidationErrors
+];
+
 router.get("/current", requireAuth, async (req, res, next) => {
     const ownerId = req.user.id;
 
@@ -71,7 +76,7 @@ router.get("/:spotId", async (req, res, next) => {
         err.status = 404;
         return next(err);
     };
-   return res.json(spot);
+    return res.json(spot);
 });
 router.get("/", async (req, res, next) => {
     let spot = await Spot.findAll({
@@ -92,6 +97,30 @@ router.get("/", async (req, res, next) => {
     res.json({ Spots: spot });
 });
 
+router.post("/:spotId/images", requireAuth, validateSpotImages, async (req, res, next) => {
+    const ownerId = req.user.id;
+    const spot = await Spot.findByPk(req.params.spotId);
+    if (!spot) {
+        const err = new Error();
+        err.message = "Spot couldn't be found";
+        err.status = 404;
+        return next(err);
+    };
+
+    if (spot.id !== ownerId) {
+        const err = new Error("Forbidden");
+        err.status = 403;
+        return next(err);
+    }
+
+    const { preview, url } = req.body;
+
+    const newImage = await SpotImage.build({ preview, url, spotId: parseInt(req.params.spotId) });
+    await newImage.save();
+
+    return res.json(newImage);
+});
+
 router.post("/", requireAuth, validateSpot, async (req, res, next) => {
     const ownerId = req.user.id;
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
@@ -101,9 +130,9 @@ router.post("/", requireAuth, validateSpot, async (req, res, next) => {
 
     await newSpot.save();
 
-
     res.status(201);
     return res.json(newSpot);
 });
+
 
 module.exports = router;
