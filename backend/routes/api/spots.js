@@ -38,9 +38,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
         attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "description", "price", "createdAt", "updatedAt", [Sequelize.fn("avg", sequelize.col("Reviews.stars")), "avgRating"], [sequelize.col("SpotImages.url"), "previewImage"]],
         group: ["Spot.id", ["SpotImages.id"]]
     });
-
-    res.status(201);
-    res.json({ Spots: spot });
+    return res.json({ Spots: spot });
 
 });
 
@@ -73,7 +71,7 @@ router.get("/:spotId", async (req, res, next) => {
         err.status = 404;
         return next(err);
     };
-    res.json(spot);
+   return res.json(spot);
 });
 router.get("/", async (req, res, next) => {
     let spot = await Spot.findAll({
@@ -103,7 +101,9 @@ router.post("/", requireAuth, validateSpot, async (req, res, next) => {
 
     await newSpot.save();
 
-    res.json(newSpot);
+
+    res.status(201);
+    return res.json(newSpot);
 });
 
 module.exports = router;
