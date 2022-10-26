@@ -39,6 +39,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
         group: ["Spot.id", ["SpotImages.id"]]
     });
 
+    res.status(201);
     res.json({ Spots: spot });
 
 });
