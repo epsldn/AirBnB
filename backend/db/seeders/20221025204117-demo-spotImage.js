@@ -16,19 +16,23 @@ module.exports = {
     await queryInterface.bulkInsert("SpotImages", [
       {
         spotId: 1,
-        url: "www.thisisaspot.com/1"
+        url: "www.thisisaspot.com/1",
+        preview: true
       },
       {
         spotId: 1,
-        url: "www.thisisaspot.com/1"
+        url: "www.thisisaspot.com/1",
+        preview: false
       },
       {
         spotId: 2,
-        url: "www.thisisaspot.com/2"
+        url: "www.thisisaspot.com/2",
+        preview: true
       },
       {
         spotId: 3,
-        url: "www.thisisaspot.com/4"
+        url: "www.thisisaspot.com/4",
+        preview: false
       },
     ]);
   },
@@ -42,7 +46,7 @@ module.exports = {
      */
 
     await queryInterface.bulkDelete("SpotImages", {
-      id: [1,2,3,4]
+      id: [1, 2, 3, 4]
     });
   }
 };
