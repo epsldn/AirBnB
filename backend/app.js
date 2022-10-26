@@ -50,9 +50,9 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
     console.log(err);
     if (err instanceof ValidationError) {
-        err.errors = err.errors.map(err => err.message);
-        err.title = "Validation Error";
-        err.status = 400;
+        err.errors = { [err.errors[0].path]: err.errors[0].message };
+        err.status = 403;
+        err.message = "User already exists";
     }
     next(err);
 });
@@ -63,12 +63,16 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500);
     console.error(err);
 
-    res.json({
-        title: err.title || "Server Error",
+    const data = {
+        statusCode: err.status,
         message: err.message,
         errors: err.errors,
-        stack: isProduction ? null : err.stack
-    });
+    };
+
+    console.log(err.stack);
+    if (!isProduction) data.stack = err.stack;
+
+    res.json(data);
 
 });
 module.exports = app;
