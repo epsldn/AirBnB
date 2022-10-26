@@ -50,9 +50,8 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
     console.log(err);
     if (err instanceof ValidationError) {
-        err = err.errors[0];
-        err.errors = { [err.path]: err.message };
-        err.statusCode = 403;
+        err.errors = { [err.errors[0].path]: err.errors[0].message };
+        err.status = 403;
         err.message = "User already exists";
     }
     next(err);
@@ -65,14 +64,15 @@ app.use((err, req, res, next) => {
     console.error(err);
 
     const data = {
-        statusCode: err.statusCode,
+        statusCode: err.status,
         message: err.message,
         errors: err.errors,
     };
 
-    if (!isProduction) data.stack = err.stack;
+    console.log(err.stack);
+    // if (!isProduction) data.stack = err.stack;
 
-    res.json();
+    res.json(data);
 
 });
 module.exports = app;

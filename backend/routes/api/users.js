@@ -19,9 +19,11 @@ const validateSignup = [
         .isEmail()
         .withMessage("Username cannot be an email."),
     check("firstName")
-        .exists({ checkFalsy: true }),
+        .exists({ checkFalsy: true })
+        .withMessage("First name is required"),
     check("lastName")
-        .exists({ checkFalsy: true }),
+        .exists({ checkFalsy: true })
+        .withMessage("Last name is required"),
     handleValidationErrors
 ];
 
@@ -35,6 +37,7 @@ router.post("/", validateSignup, async (req, res, next) => {
     const resUser = user.toSafeObject();
 
     resUser.token = token;
+    
     return res.json(resUser);
 });
 
