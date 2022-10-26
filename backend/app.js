@@ -15,7 +15,8 @@ const isProduction = environment === "production";
 
 // Initialize Express
 const app = express();
-
+// Stop errors from favicon.ico not being found
+app.get("/favicon.ico", (req, res) => res.status(204));
 //Connect middleware
 app.use(cookieParser());
 app.use(morgan("dev"));
