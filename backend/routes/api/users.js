@@ -38,22 +38,22 @@ router.post("/", validateSignup, async (req, res, next) => {
     return res.json(resUser);
 });
 
-router.use((err, req, res, next) => {
-    if (err instanceof ValidationError) {
-        err = err.errors[0];
-        err.errors = { [err.path]: err.message };
-        err.title = "Validation Error";
-        err.statusCode = 403;
-        err.message = "User already exists";
-        res.status(err.statusCode);
-        res.json({
-            message: err.message,
-            statusCode: err.statusCode,
-            errors: err.errors,
-        });
-    }
+// router.use((err, req, res, next) => {
+//     if (err instanceof ValidationError) {
+//         err = err.errors[0];
+//         err.errors = { [err.path]: err.message };
+//         err.title = "Validation Error";
+//         err.statusCode = 403;
+//         err.message = "User already exists";
+//         res.status(err.statusCode);
+//         res.json({
+//             message: err.message,
+//             statusCode: err.statusCode,
+//             errors: err.errors,
+//         });
+//     }
 
-    next(err);
-});
+//     next(err);
+// });
 
 module.exports = router;
