@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get("/current", requireAuth, async (req, res, next) => {
     const userId = parseInt(req.user.id);
-    const bookings = await Booking.findAll({
+    let bookings = await Booking.findAll({
         where: {
             userId
         },
@@ -15,13 +15,28 @@ router.get("/current", requireAuth, async (req, res, next) => {
             model: Spot,
             include: {
                 model: SpotImage,
-                attributes: []
+                where: {
+                    preview: true
+                },
+                attributes: ["url"],
+                required: false,
+                limit: 1
             },
             attributes: {
-                include: [[sequelize.literal("(SELECT url FROM SpotImages WHERE spotId = Spot.id and preview = 1 ORDER BY updatedAt ASC LIMIT 1)"), "previewImage"]],
                 exclude: ["createdAt", "updatedAt"]
             },
         },
+    });
+
+    bookings = bookings.map(booking => {
+        booking = booking.toJSON();
+        if (booking.Spot.SpotImages.length > 0) {
+            booking.Spot.previewImage = booking.Spot.SpotImages[0].url;
+        } else {
+            booking.Spot.previewImage = null;
+        }
+        delete booking.Spot.SpotImages;
+        return booking;
     });
 
     res.json({
