@@ -29,6 +29,7 @@ const validateReview = [
     check("stars").exists({ checkFalsy: true }).isInt({ min: 1, max: 5 }).withMessage("Stars must be an integer from 1 to 5"),
     handleValidationErrors
 ];
+
 router.get("/current", requireAuth, async (req, res, next) => {
     const ownerId = req.user.id;
 
@@ -223,12 +224,11 @@ router.put("/:spotId", requireAuth, validateSpot, async (req, res, next) => {
 
     const values = { address, city, state, country, lat, lng, name, description, price } = req.body;
 
-    console.log("****".repeat(50), values, "\n", "*****".repeat(50));
     spot.set({
         ...values
     });
 
-    spot.save();
+    await spot.save();
     return res.json(spot);
 });
 
@@ -249,7 +249,7 @@ router.delete("/:spotId", requireAuth, async (req, res, next) => {
         return next(err);
     }
 
-    spot.destroy();
+    await spot.destroy();
 
     return res.json({
         message: "Successfully deleted",
