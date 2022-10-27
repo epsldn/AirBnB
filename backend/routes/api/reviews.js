@@ -9,6 +9,13 @@ const reviewImageValidator = [
     check("url").exists({ checkFalsy: true }).withMessage("url must be provided"),
     handleValidationErrors
 ];
+
+const reviewValidator = [
+    check("review").exists({ checkFalsy: true }).withMessage("Review text is required"),
+    check("stars").exists({ checkFalsy: true }).isInt({ min: 1, max: 5 }).withMessage("Stars must be an integer from 1 to 5"),
+    handleValidationErrors
+];
+
 router.get("/current", requireAuth, async (req, res, next) => {
     const userId = req.user.id;
 
@@ -57,12 +64,34 @@ router.post("/:reviewId/images", requireAuth, reviewImageValidator, async (req, 
     const newReviewImage = ReviewImage.build({ url, reviewId });
     await newReviewImage.save();
 
-    res.json({ id: newReviewImage.id, url });
+    return res.json({ id: newReviewImage.id, url });
 
 });
 
-router.put("/:reviewId", requireAuth, async (req, res, next) => {
-    res.json("ya made it");
+router.put("/:reviewId", reviewValidator, requireAuth, async (req, res, next) => {
+    const id = parseInt(req.params.reviewId);
+    const userId = parseInt(req.user.id);
+    const foundReview = await Review.findByPk(id);
+
+    const reviewData = { review, stars } = req.body;
+
+    if (!foundReview) {
+        const err = new Error();
+        err.message = "Review couldn't be found";
+        err.status = 404;
+        return next(err);
+    };
+
+    if (foundReview.userId !== userId) {
+        const err = new Error("Forbidden");
+        err.status = 403;
+        return next(err);
+    }
+
+    foundReview.set({ ...reviewData });
+    await foundReview.save();
+
+    res.json(foundReview);
 });
 
 module.exports = router;
