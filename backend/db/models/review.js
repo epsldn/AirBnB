@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Review.belongsTo(models.User, {
         targetKey: "id",
-        foreignKey: "userid"
+        foreignKey: "userId"
       });
 
       Review.belongsTo(models.Spot, {
