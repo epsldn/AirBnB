@@ -49,6 +49,18 @@ module.exports = {
         description: "Marketing stuff3",
         price: 112
       },
+      {
+        ownerId: 1,
+        "address": "123 Disney Lane",
+        "city": "San Francisco",
+        "state": "California",
+        "country": "United States of America",
+        "lat": 37.7645358,
+        "lng": -122.4730327,
+        "name": "App Academy",
+        "description": "Place where web developers are created",
+        "price": 123
+      }
     ]);
   },
 
@@ -61,7 +73,7 @@ module.exports = {
      */
     const Op = Sequelize.Op;
     return await queryInterface.bulkDelete("Spots", {
-      address: { [Op.in]: ["Some address", "Some address2", "Some address3"] }
+      address: { [Op.in]: ["Some address", "Some address2", "Some address3", "123 Disney Lane"] }
     });
   }
 };

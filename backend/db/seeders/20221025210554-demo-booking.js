@@ -28,10 +28,16 @@ module.exports = {
       },
       {
         spotId: 3,
-        userId: 3,
+        userId: 1,
         startDate: Sequelize.literal("CURRENT_TIMESTAMP"),
         endDate: "2023-10-25 11:00",
       },
+      {
+        spotId: 4,
+        userId:1,
+        startDate: Sequelize.literal("CURRENT_TIMESTAMP"),
+        endDate: "2023-10-25 11:00",
+      }
     ]);
   },
 
@@ -44,7 +50,7 @@ module.exports = {
      */
 
     await queryInterface.bulkDelete("Bookings", {
-      id: [1, 2, 3]
+      id: [1, 2, 3, 4]
     });
   }
 };

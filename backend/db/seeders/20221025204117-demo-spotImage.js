@@ -34,6 +34,11 @@ module.exports = {
         url: "www.thisisaspot.com/4",
         preview: true
       },
+      {
+        spotId: 1,
+        url: "www.thisisaspot.com/2",
+        preview: true
+      }
     ]);
   },
 
@@ -46,7 +51,7 @@ module.exports = {
      */
 
     await queryInterface.bulkDelete("SpotImages", {
-      id: [1, 2, 3, 4]
+      id: [1, 2, 3, 4, 5]
     });
   }
 };
