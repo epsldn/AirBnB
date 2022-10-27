@@ -1,6 +1,6 @@
 const express = require("express");
 const { setTokenCookie, restoreUser, requireAuth } = require("../../utils/auth");
-const { Spot, SpotImage, Review, Sequelize, sequelize, User, ReviewImage } = require("../../db/models");
+const { Spot, SpotImage, Review, Sequelize, sequelize, User, ReviewImage, Booking } = require("../../db/models");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const review = require("../../db/models/review");
@@ -52,6 +52,39 @@ router.get("/current", requireAuth, async (req, res, next) => {
     });
     return res.json({ Spots: spot });
 
+});
+
+router.get("/:spotId/bookings", requireAuth, async (req, res, next) => {
+    const userId = parseInt(req.user.id);
+    const spotId = parseInt(req.params.spotId);
+    const spot = await Spot.findByPk(spotId);
+
+    if (!spot) {
+        const err = new Error();
+        err.message = "Spot couldn't be found";
+        err.status = 404;
+        return next(err);
+    };
+
+    let bookings;
+    if (spot.ownerId === userId) {
+        bookings = await Booking.findAll({
+            where: {
+                spotId
+            },
+            include: {
+                model: User
+            }
+        });
+    } else {
+        bookings = await Booking.findAll({
+            where: {
+                userId
+            },
+            attributes: ["spotId", "startDate", "endDate"]
+        });
+    }
+    res.json(bookings);
 });
 
 router.get("/:spotId/reviews", async (req, res, next) => {
@@ -134,7 +167,7 @@ router.get("/:spotId", async (req, res, next) => {
                 attributes: []
             }],
         attributes: {
-            include: [[Sequelize.fn("COUNT", sequelize.col("Reviews.id")), "numReviews"]]
+            include: [[Sequelize.fn("COUNT", sequelize.col("Reviews.id")), "numReviews"], [Sequelize.fn("avg", sequelize.col("Reviews.stars")), "avgStarRating"]],
         },
         group: ["Spot.id", "Owner.id", "SpotImages.id"]
     });

@@ -43,4 +43,6 @@ router.get("/current", requireAuth, async (req, res, next) => {
         Bookings: bookings
     });
 });
+
+
 module.exports = router;
