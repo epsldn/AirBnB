@@ -61,4 +61,8 @@ router.post("/:reviewId/images", requireAuth, reviewImageValidator, async (req, 
 
 });
 
+router.put("/:reviewId", requireAuth, async (req, res, next) => {
+    res.json("ya made it");
+});
+
 module.exports = router;

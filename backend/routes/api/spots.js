@@ -223,7 +223,6 @@ router.put("/:spotId", requireAuth, validateSpot, async (req, res, next) => {
 
     const values = { address, city, state, country, lat, lng, name, description, price } = req.body;
 
-    console.log("****".repeat(50), values, "\n", "*****".repeat(50));
     spot.set({
         ...values
     });
