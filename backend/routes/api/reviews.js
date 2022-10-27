@@ -29,5 +29,8 @@ router.get("/current", requireAuth, async (req, res, next) => {
     return res.json({ reviews });
 });
 
+router.post("/:reviewId/images", async (req, res, next) => {
+    res.json("Successfully created")
+});
 
 module.exports = router;
