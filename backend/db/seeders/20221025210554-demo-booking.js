@@ -34,7 +34,19 @@ module.exports = {
       },
       {
         spotId: 4,
-        userId:1,
+        userId: 1,
+        startDate: Sequelize.literal("CURRENT_TIMESTAMP"),
+        endDate: "2023-10-25 11:00",
+      },
+      {
+        spotId: 4,
+        userId: 2,
+        startDate: Sequelize.literal("CURRENT_TIMESTAMP"),
+        endDate: "2023-10-25 11:00",
+      },
+      {
+        spotId: 4,
+        userId: 3,
         startDate: Sequelize.literal("CURRENT_TIMESTAMP"),
         endDate: "2023-10-25 11:00",
       }
@@ -50,7 +62,7 @@ module.exports = {
      */
 
     await queryInterface.bulkDelete("Bookings", {
-      id: [1, 2, 3, 4]
+      id: [1, 2, 3, 4, 5, 6]
     });
   }
 };
