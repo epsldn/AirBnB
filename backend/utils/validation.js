@@ -8,9 +8,9 @@ const handleValidationErrors = (req, res, next) => {
     if (!validationErrors.isEmpty()) {
         const errors = validationErrors
             .array()
-            .reduce((accum, next) => {
-                accum[next.param] = next.msg;
-                return accum;
+            .reduce((errObject, err) => {
+                errObject[err.param] = err.msg;
+                return errObject;
             }, {});
 
         const err = Error("Validation Error");
