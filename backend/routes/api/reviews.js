@@ -32,7 +32,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
     return res.json({ reviews });
 });
 
-router.post("/:reviewId/images", reviewImageValidator, async (req, res, next) => {
+router.post("/:reviewId/images", requireAuth, reviewImageValidator, async (req, res, next) => {
     const reviewId = parseInt(req.params.reviewId);
     const { url } = req.body;
     const review = await Review.findByPk(reviewId, {
