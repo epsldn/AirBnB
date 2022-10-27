@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert("Reviews", [
+    return await queryInterface.bulkInsert("Reviews", [
       {
         spotId: 1,
         userId: 1,
@@ -26,16 +26,16 @@ module.exports = {
         stars: 3
       },
       {
-        spotId: 1,
-        userId: 3,
-        review: "This place kinda nice but not great",
-        stars: 4
-      },
-      {
         spotId: 2,
         userId: 1,
         review: "This place is so much better than the other one",
         stars: 5
+      },
+      {
+        spotId: 1,
+        userId: 3,
+        review: "This place kinda nice but not great",
+        stars: 4
       },
     ]);
   },
@@ -49,7 +49,7 @@ module.exports = {
      */
 
     await queryInterface.bulkDelete("Reviews", {
-      id: [1, 2, 3, 4]
+      id: [1, 2, , 4]
     });
   }
 };
