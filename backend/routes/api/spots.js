@@ -3,6 +3,7 @@ const { setTokenCookie, restoreUser, requireAuth } = require("../../utils/auth")
 const { Spot, SpotImage, Review, Sequelize, sequelize, User, ReviewImage } = require("../../db/models");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
+const review = require("../../db/models/review");
 const router = express.Router();
 
 const validateSpot = [
@@ -23,6 +24,11 @@ const validateSpotImages = [
     handleValidationErrors
 ];
 
+const validateReview = [
+    check("review").exists({ checkFalsy: true }).withMessage("Review text is required"),
+    check("stars").exists({ checkFalsy: true }).isInt({ min: 1, max: 5 }).withMessage("Stars must be an integer from 1 to 5"),
+    handleValidationErrors
+];
 router.get("/current", requireAuth, async (req, res, next) => {
     const ownerId = req.user.id;
 
@@ -72,7 +78,29 @@ router.get("/:spotId/reviews", async (req, res, next) => {
         return next(err);
     };
 
-    res.json(spot);
+    return res.json(spot);
+});
+
+router.post("/:spotId/reviews", requireAuth, validateReview, async (req, res, next) => {
+    const spotId = parseInt(req.params.spotId);
+    const userId = parseInt(req.user.id);
+    const { review, stars } = req.body;
+
+    const reviews = await Review.findAll({
+        where: { spotId, userId }
+    });
+
+    if (reviews.length > 0) {
+        const err = new Error("User already has a review for this spot");
+        err.status = 403;
+        return next(err);
+    }
+
+    const newReview = Review.build({ review, stars, spotId, userId });
+    await newReview.save();
+
+    res.status(201);
+    return res.json(newReview);
 });
 
 router.get("/:spotId", async (req, res, next) => {
@@ -106,6 +134,7 @@ router.get("/:spotId", async (req, res, next) => {
     };
     return res.json(spot);
 });
+
 router.get("/", async (req, res, next) => {
     let spot = await Spot.findAll({
         include: [{
@@ -188,7 +217,7 @@ router.put("/:spotId", requireAuth, validateSpot, async (req, res, next) => {
     });
 
     spot.save();
-    res.json(spot);
+    return res.json(spot);
 });
 
 router.delete("/:spotId", requireAuth, async (req, res, next) => {
@@ -210,7 +239,7 @@ router.delete("/:spotId", requireAuth, async (req, res, next) => {
 
     spot.destroy();
 
-    res.json({
+    return res.json({
         message: "Successfully deleted",
         "statusCode": 200
     });
