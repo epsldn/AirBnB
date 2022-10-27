@@ -54,6 +54,7 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       User.hasMany(models.Review, {
+        sourceKey: "id",
         foreignKey: "userId"
       });
 

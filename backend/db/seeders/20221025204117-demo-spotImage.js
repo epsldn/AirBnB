@@ -32,7 +32,7 @@ module.exports = {
       {
         spotId: 3,
         url: "www.thisisaspot.com/4",
-        preview: false
+        preview: true
       },
     ]);
   },
