@@ -13,17 +13,15 @@ router.get("/current", requireAuth, async (req, res, next) => {
         },
         include: {
             model: Spot,
-            include: {
-                model: SpotImage
-            },
             attributes: {
+                include: [[sequelize.literal("(SELECT url FROM SpotImages WHERE spotId = Spot.id and preview = 1 ORDER BY updatedAt ASC LIMIT 1)"), "previewImage"]],
                 exclude: ["createdAt", "updatedAt"]
-            }
-        }
+            },
+        },
     });
 
     res.json({
-        bookings
+        Bookings: bookings
     });
 });
 module.exports = router;
