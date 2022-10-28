@@ -261,7 +261,6 @@ router.get("/", validateSpotQueries, async (req, res, next) => {
     pagination.offset = (parseInt(req.query.page) - 1) * pagination.limit;
 
     let spot = await Spot.findAll({
-        // ...pagination,
         include: [{
             model: SpotImage,
             attributes: [],
@@ -272,7 +271,7 @@ router.get("/", validateSpotQueries, async (req, res, next) => {
             model: Review,
             attributes: [],
         }],
-        attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "description", "price", "createdAt", "updatedAt"], // [Sequelize.literal(`(select "url" from "SpotImages" where "preview" = true and "spotId" = "Spot"."id")`), "previewImage"]],
+        attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "description", "price", "createdAt", "updatedAt", [Sequelize.literal(`(select avg(stars) from "Reviews" where "spotId" = "Spot"."id")`), "avgRating"]], // [Sequelize.literal(`(select "url" from "SpotImages" where "preview" = true and "spotId" = "Spot"."id")`), "previewImage"]],
         group: [["Spot.id"]],
     });
 
