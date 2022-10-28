@@ -50,6 +50,12 @@ module.exports = {
         startDate: new Date("2022-12-10"),
         endDate: new Date("2022-12-15"),
       },
+      {
+        spotId: 3,
+        userId: 1,
+        startDate: new Date("2022-10-20"),
+        endDate: new Date("2022-10-25"),
+      },
     ]);
   },
 
@@ -62,7 +68,7 @@ module.exports = {
      */
 
     await queryInterface.bulkDelete("Bookings", {
-      id: [1, 2, 3, 4, 5, 6]
+      id: [1, 2, 3, 4, 5, 6, 7]
     });
   }
 };
