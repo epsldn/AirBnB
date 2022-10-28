@@ -2,9 +2,8 @@ const express = require("express");
 const { setTokenCookie, restoreUser, requireAuth } = require("../../utils/auth");
 const { Spot, SpotImage, Review, Sequelize, sequelize, User, ReviewImage, Booking } = require("../../db/models");
 const { Op } = require("sequelize");
-const { check, body } = require("express-validator");
+const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
-const review = require("../../db/models/review");
 const router = express.Router();
 
 const validateSpot = [
@@ -115,7 +114,7 @@ router.post("/:spotId/bookings", requireAuth, validateBooking, async (req, res, 
     };
 
     if (spot.ownerId === userId) {
-        const err = new Error("Forbidden");
+        const err = new Error();
         err.message = "Forbidden";
         err.status = 403;
         return next(err);
@@ -144,7 +143,8 @@ router.post("/:spotId/bookings", requireAuth, validateBooking, async (req, res, 
         return res.json(newBooking);
     }
 
-    const err = new Error("Sorry, this spot is already booked for the specified dates");
+    const err = new Error();
+    err.message = "Sorry, this spot is already booked for the specified dates";
     err.errors = {};
     if (Date.parse(bookings[0].startDate) <= Date.parse(startDate)) err.errors.startDate = "Start date conflicts with an existing booking";
     if (Date.parse(bookings[0].endDate) >= Date.parse(endDate) || Date.parse(bookings[0].startDate) <= Date.parse(endDate)) err.errors.endDate = "End date conflicts with an existing booking";
@@ -314,7 +314,7 @@ router.put("/:spotId", requireAuth, validateSpot, async (req, res, next) => {
     };
 
     if (spot.ownerId !== ownerId) {
-        const err = new Error("Forbidden");
+        const err = new Error();
         err.message = "Forbidden";
         err.status = 403;
         return next(err);
@@ -341,7 +341,7 @@ router.delete("/:spotId", requireAuth, async (req, res, next) => {
     };
 
     if (spot.ownerId !== ownerId) {
-        const err = new Error("Forbidden");
+        const err = new Error();
         err.message = "Forbidden";
         err.status = 403;
         return next(err);
@@ -354,4 +354,5 @@ router.delete("/:spotId", requireAuth, async (req, res, next) => {
         "statusCode": 200
     });
 });
+
 module.exports = router;

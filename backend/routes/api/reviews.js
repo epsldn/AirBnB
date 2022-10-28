@@ -107,6 +107,7 @@ router.delete("/:reviewId", requireAuth, async (req, res, next) => {
 
     if (foundReview.userId !== userId) {
         const err = new Error("Forbidden");
+        err.message = "Forbidden";
         err.status = 403;
         return next(err);
     }
@@ -118,5 +119,4 @@ router.delete("/:reviewId", requireAuth, async (req, res, next) => {
         "statusCode": 200
     });
 });
-
 module.exports = router;

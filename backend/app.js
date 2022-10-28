@@ -50,7 +50,6 @@ app.use((req, res, next) => {
 // check if error was Validation Error thrown out by sequelize
 app.use((err, req, res, next) => {
     if (err instanceof ValidationError) {
-        console.log(err);
         err.errors = { [err.errors[0].path]: err.errors[0].message };
         err.status = 403;
     }
