@@ -34,29 +34,10 @@ const validateReview = [
 const validateBooking = [
     check("startDate", "Start date cannot be in the past").isAfter(),
     check("startDate", "Please provide a start date.").exists({ checkFalsy: true }),
-    check("endDate", "endDate cannot be on or before startDate").isAfter().custom((value, { req }) => Date.parse(value) > Date.parse(req.body.startDate)),
+    check("endDate", "endDate cannot be on or before startDate").isAfter().custom((value, { req }) => Date.parse(value) >= Date.parse(req.body.startDate)),
     check("endDate", "Please provide an end date.").exists({ checkFalsy: true }),
     handleValidationErrors
 ];
-
-const dateConflictChecker = async (req, res, next) => {
-    let { startDate, endDate } = req.body;
-    startDate = new Date(startDate).toISOString();
-    endDate = new Date(endDate).toISOString();
-    const bookings = await Booking.findAll({
-        where: {
-            [Op.or]: [
-                {
-                    startDate: {
-                        [Op.between]: [startDate, endDate]
-                    }
-                }
-            ]
-        }
-    });
-
-    console.log(bookings)
-};
 
 router.get("/current", requireAuth, async (req, res, next) => {
     const ownerId = req.user.id;
@@ -115,10 +96,60 @@ router.get("/:spotId/bookings", requireAuth, async (req, res, next) => {
     res.json({ Bookings: bookings });
 });
 
-router.post("/:spotId/bookings", requireAuth, validateBooking, dateConflictChecker, async (req, res, next) => {
-    // To check for date in existing query for any startDate or endDate date is between the dates being submitted by the user. If the array is not empty, throw an error.
+router.post("/:spotId/bookings", requireAuth, validateBooking, async (req, res, next) => {
+    const spotId = parseInt(req.params.spotId);
+    const userId = parseInt(req.user.id);
+    let { startDate, endDate } = req.body;
+    const spot = await Spot.findByPk(spotId, {
+        include: {
+            model: Booking,
+            attributes: ["startDate", "endDate"]
+        },
+    });
 
-    return res.json("Testing");
+    if (!spot) {
+        const err = new Error();
+        err.message = "Spot couldn't be found";
+        err.status = 404;
+        return next(err);
+    };
+
+    if (spot.ownerId === userId) {
+        const err = new Error("Forbidden");
+        err.message = "Forbidden";
+        err.status = 403;
+        return next(err);
+    }
+
+    const bookings = await Booking.findAll({
+        attributes: ["startDate", "endDate"],
+        where: {
+            endDate: {
+                [Op.gte]: startDate
+            },
+            startDate: {
+                [Op.lte]: endDate
+            },
+            spotId
+        },
+        order: ["startDate"],
+        raw: true
+    });
+
+    if (bookings.length === 0) {
+        const newBooking = Booking.build({
+            startDate, endDate, spotId, userId
+        });
+        await newBooking.save();
+        return res.json(newBooking);
+    }
+
+    const err = new Error("Sorry, this spot is already booked for the specified dates");
+    err.errors = {};
+    if (Date.parse(bookings[0].startDate) <= Date.parse(startDate)) err.errors.startDate = "Start date conflicts with an existing booking";
+    if (Date.parse(bookings[0].endDate) >= Date.parse(endDate) || Date.parse(bookings[0].startDate) <= Date.parse(endDate)) err.errors.endDate = "End date conflicts with an existing booking";
+    err.status = 403;
+    next(err);
 });
 
 router.get("/:spotId/reviews", async (req, res, next) => {
