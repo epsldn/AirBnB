@@ -41,7 +41,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
         }
         ]
     });
-    return res.json({ Reviews });
+    return res.json({ Reviews: reviews });
 });
 
 router.post("/:reviewId/images", requireAuth, reviewImageValidator, async (req, res, next) => {
