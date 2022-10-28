@@ -173,6 +173,12 @@ router.get("/:spotId/reviews", async (req, res, next) => {
                         attributes: ["id", "url"]
                     },
                     {
+                        model: Spot,
+                        attributes: {
+                            exclude: ["description", "createdAt", "updatedAt"]
+                        }
+                    },
+                    {
                         model: User
                     }
                 ]
