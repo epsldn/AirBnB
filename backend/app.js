@@ -53,7 +53,6 @@ app.use((err, req, res, next) => {
         console.log(err);
         err.errors = { [err.errors[0].path]: err.errors[0].message };
         err.status = 403;
-        err.message = "User already exists";
     }
     next(err);
 });
