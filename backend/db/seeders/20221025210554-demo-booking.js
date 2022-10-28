@@ -17,39 +17,39 @@ module.exports = {
       {
         spotId: 1,
         userId: 1,
-        startDate: Sequelize.literal("CURRENT_TIMESTAMP"),
-        endDate: "2023-10-25 11:00",
+        startDate: "2022-11-20",
+        endDate: "2022-11-25",
       },
       {
         spotId: 2,
         userId: 2,
-        startDate: Sequelize.literal("CURRENT_TIMESTAMP"),
-        endDate: "2023-10-25 11:00",
+        startDate: "2022-12-20",
+        endDate: "2022-12-25",
       },
       {
         spotId: 3,
         userId: 1,
-        startDate: Sequelize.literal("CURRENT_TIMESTAMP"),
-        endDate: "2023-10-25 11:00",
+        startDate: "2023-10-20",
+        endDate: "2023-10-25",
       },
       {
         spotId: 4,
         userId: 1,
-        startDate: Sequelize.literal("CURRENT_TIMESTAMP"),
-        endDate: "2023-10-25 11:00",
+        startDate: "2022-11-20",
+        endDate: "2022-11-25",
       },
       {
         spotId: 4,
         userId: 2,
-        startDate: Sequelize.literal("CURRENT_TIMESTAMP"),
-        endDate: "2023-10-25 11:00",
+        startDate: "2022-11-30",
+        endDate: "2022-12-05",
       },
       {
         spotId: 4,
         userId: 3,
-        startDate: Sequelize.literal("CURRENT_TIMESTAMP"),
-        endDate: "2023-10-25 11:00",
-      }
+        startDate: "2022-12-10",
+        endDate: "2022-12-15",
+      },
     ]);
   },
 
