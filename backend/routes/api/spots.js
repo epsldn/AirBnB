@@ -259,9 +259,8 @@ router.get("/", validateSpotQueries, async (req, res, next) => {
     const pagination = {};
     pagination.limit = parseInt(req.query.size);
     pagination.offset = (parseInt(req.query.page) - 1) * pagination.limit;
-
+    console.log(pagination);
     let spot = await Spot.findAll({
-        ...pagination,
         subQuery: false,
         include: [{
             model: SpotImage,
