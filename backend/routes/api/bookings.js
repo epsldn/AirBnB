@@ -32,6 +32,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
                 limit: 1
             },
             attributes: {
+                include: [[sequelize.literal(`(SELECT url FROM "SpotImages" WHERE "spotId" = Spot.id and "preview" = 1 ORDER BY "updatedAt" ASC LIMIT 1)`), "previewImage"]],
                 exclude: ["createdAt", "updatedAt"]
             },
         },
@@ -133,7 +134,6 @@ router.delete("/:bookingId", requireAuth, async (req, res, next) => {
         return next(err);
     }
 
-    if
     return res.json(booking);
 });
 
