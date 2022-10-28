@@ -39,8 +39,8 @@ const validateBooking = [
 ];
 
 const validateSpotQueries = [
-    query("page", "Page must be greater than or equal to 1").optional({ checkFalsy: true }).isInt({ min: 1, max: 10 }).default(1),
-    query("size", "Size must be greater than or equal to 1").optional({ checkFalsy: true }).isInt({ min: 1, max: 20 }).default(20),
+    query("page", "Page must be greater than or equal to 1").default(1).isInt({ min: 1, max: 10 }),
+    query("size", "Size must be greater than or equal to 1").default(20).isInt({ min: 1, max: 20 }),
     query("maxLat", "Maximum latitude is invalid").optional({ checkFalsy: true }).isFloat(),
     query("minLat", "Minimum latitude is invalid").optional({ checkFalsy: true }).isFloat(),
     query("maxLng", "Maximum longitude is invalid").optional({ checkFalsy: true }).isFloat(),
@@ -259,8 +259,8 @@ router.get("/", validateSpotQueries, async (req, res, next) => {
     const pagination = {};
     pagination.limit = parseInt(req.query.size);
     pagination.offset = (parseInt(req.query.page) - 1) * pagination.limit;
-    console.log(pagination);
-    let spot = await Spot.findAll({
+    const spot = await Spot.findAll({
+        ...pagination,
         subQuery: false,
         include: [{
             model: SpotImage,
