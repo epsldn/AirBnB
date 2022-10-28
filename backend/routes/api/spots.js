@@ -1,7 +1,7 @@
 const express = require("express");
 const { setTokenCookie, restoreUser, requireAuth } = require("../../utils/auth");
 const { Spot, SpotImage, Review, Sequelize, sequelize, User, ReviewImage, Booking } = require("../../db/models");
-const { check } = require("express-validator");
+const { check, body } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const review = require("../../db/models/review");
 const router = express.Router();
@@ -27,6 +27,14 @@ const validateSpotImages = [
 const validateReview = [
     check("review").exists({ checkFalsy: true }).withMessage("Review text is required"),
     check("stars").exists({ checkFalsy: true }).isInt({ min: 1, max: 5 }).withMessage("Stars must be an integer from 1 to 5"),
+    handleValidationErrors
+];
+
+const validateBooking = [
+    check("startDate", "Start date cannot be in the past").isAfter(),
+    check("startDate", "Please provide a start date.").exists({ checkFalsy: true }),
+    check("endDate", "endDate cannot be on or before startDate").isAfter().custom((value, { req }) => Date.parse(value) > Date.parse(req.body.startDate)),
+    check("endDate", "Please provide an end date.").exists({ checkFalsy: true }),
     handleValidationErrors
 ];
 
@@ -84,7 +92,13 @@ router.get("/:spotId/bookings", requireAuth, async (req, res, next) => {
             attributes: ["spotId", "startDate", "endDate"]
         });
     }
-    res.json({Bookings: bookings});
+    res.json({ Bookings: bookings });
+});
+
+router.post("/:spotId/bookings", requireAuth, validateBooking, async (req, res, next) => {
+    // To check for date in existing query for any startDate or endDate date is between the dates being submitted by the user. If the array is not empty, throw an error.
+
+    return res.json("Testing");
 });
 
 router.get("/:spotId/reviews", async (req, res, next) => {
