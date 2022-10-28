@@ -51,6 +51,42 @@ module.exports = {
       },
       {
         ownerId: 1,
+        address: "4Some address",
+        city: "4Some city",
+        state: "4some state",
+        country: "4some country",
+        lat: 1.54151345,
+        lng: -23.31441,
+        name: "Some cool name",
+        description: "Marketing stuff",
+        price: 70000000
+      },
+      {
+        ownerId: 2,
+        address: "5Some address2",
+        city: "5Some city2",
+        state: "5some state2",
+        country: "5some country2",
+        lat: 2.54151345,
+        lng: -34.31441,
+        name: "Some cool name2",
+        description: "Marketing stuff2",
+        price: 29045
+      },
+      {
+        ownerId: 2,
+        address: "6Some address3",
+        city: "6Some city3",
+        state: "6some state3",
+        country: "6some country3",
+        lat: 3.54151345,
+        lng: -45.31441,
+        name: "Some cool name3",
+        description: "Marketing stuff3",
+        price: 112
+      },
+      {
+        ownerId: 1,
         "address": "123 Disney Lane",
         "city": "San Francisco",
         "state": "California",
