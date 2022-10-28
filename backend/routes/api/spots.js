@@ -1,6 +1,7 @@
 const express = require("express");
 const { setTokenCookie, restoreUser, requireAuth } = require("../../utils/auth");
 const { Spot, SpotImage, Review, Sequelize, sequelize, User, ReviewImage, Booking } = require("../../db/models");
+const { Op } = require("sequelize");
 const { check, body } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const review = require("../../db/models/review");
@@ -37,6 +38,25 @@ const validateBooking = [
     check("endDate", "Please provide an end date.").exists({ checkFalsy: true }),
     handleValidationErrors
 ];
+
+const dateConflictChecker = async (req, res, next) => {
+    let { startDate, endDate } = req.body;
+    startDate = new Date(startDate).toISOString();
+    endDate = new Date(endDate).toISOString();
+    const bookings = await Booking.findAll({
+        where: {
+            [Op.or]: [
+                {
+                    startDate: {
+                        [Op.between]: [startDate, endDate]
+                    }
+                }
+            ]
+        }
+    });
+
+    console.log(bookings)
+};
 
 router.get("/current", requireAuth, async (req, res, next) => {
     const ownerId = req.user.id;
@@ -95,7 +115,7 @@ router.get("/:spotId/bookings", requireAuth, async (req, res, next) => {
     res.json({ Bookings: bookings });
 });
 
-router.post("/:spotId/bookings", requireAuth, validateBooking, async (req, res, next) => {
+router.post("/:spotId/bookings", requireAuth, validateBooking, dateConflictChecker, async (req, res, next) => {
     // To check for date in existing query for any startDate or endDate date is between the dates being submitted by the user. If the array is not empty, throw an error.
 
     return res.json("Testing");
