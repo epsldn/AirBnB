@@ -68,7 +68,7 @@ app.use((err, req, res, next) => {
         errors: err.errors,
     };
 
-    data.stack = err.stack;
+    if (!isProduction) data.stack = err.stack;
 
     res.json(data);
 
