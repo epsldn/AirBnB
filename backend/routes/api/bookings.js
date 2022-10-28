@@ -124,7 +124,7 @@ router.delete("/:bookingId", requireAuth, async (req, res, next) => {
                 id: bookingId
             },
         },
-        attributes: ["ownerid"]
+        attributes: ["ownerId"]
     });
 
     if (!booking) {
