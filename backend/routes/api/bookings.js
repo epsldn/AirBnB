@@ -145,7 +145,7 @@ router.delete("/:bookingId", requireAuth, async (req, res, next) => {
         const err = new Error();
         err.message = "Bookings that have started can't be deleted";
         err.status = 403;
-        next(err);
+        return next(err);
     }
 
     await booking.Bookings[0].destroy();
