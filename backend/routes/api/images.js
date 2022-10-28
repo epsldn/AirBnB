@@ -34,13 +34,43 @@ router.delete("/spot-images/:imageId", requireAuth, async (req, res, next) => {
     }
 
     await image.SpotImages[0].destroy();
-    res.json({
+    return res.json({
         message: "Successfully deleted",
         statusCode: 404
     });
 });
 
 router.delete("/review-images/:imageId", async (req, res, next) => {
-    res.json("TeSTINg")
+    const userId = parseInt(req.user.id);
+    const imageId = parseInt(req.params.imageId);
+    const image = await Review.findOne({
+        attributes: ["userId"],
+        include: {
+            model: ReviewImage,
+            where: {
+                id: imageId
+            }
+        }
+    });
+
+    if (!image) {
+        const err = new Error();
+        err.status = 404;
+        err.message = "Review Image couldn't be found";
+        return next(err);
+    }
+
+    if (image.userId !== userId) {
+        const err = new Error();
+        err.status = 403;
+        err.message = "Forbidden";
+        return next(err);
+    }
+
+    await image.ReviewImages[0].destroy();
+    return res.json({
+        message: "Successfully deleted",
+        statusCode: 404
+    });
 });
 module.exports = router;
