@@ -259,6 +259,33 @@ router.get("/", validateSpotQueries, async (req, res, next) => {
     const pagination = {};
     pagination.limit = parseInt(req.query.size);
     pagination.offset = (parseInt(req.query.page) - 1) * pagination.limit;
+
+    const where = {};
+
+    if (req.query.maxLat && req.query.minLat) {
+        where.lat = { [Op.between]: [parseFloat(req.query.minLat), parseFloat(req.query.maxLat)] };
+    } else if (req.query.minLat) {
+        where.lat = { [Op.gte]: parseFloat(req.query.minLat) };
+    } else if (req.query.maxLat) {
+        where.lat = { [Op.lte]: parseFloat(req.query.maxLat) };
+    }
+
+    if (req.query.maxLng && req.query.minLng) {
+        where.lng = { [Op.between]: [parseFloat(req.query.minLng), parseFloat(req.query.maxLng)] };
+    } else if (req.query.minLng) {
+        where.lng = { [Op.gte]: parseFloat(req.query.minLng) };
+    } else if (req.query.maxLng) {
+        where.lng = { [Op.lte]: parseFloat(req.query.maxLng) };
+    }
+
+    if (req.query.maxPrice && req.query.minPrice) {
+        where.price = { [Op.between]: [parseFloat(req.query.minPrice), parseFloat(req.query.maxPrice)] };
+    } else if (req.query.minPrice) {
+        where.price = { [Op.gte]: parseFloat(req.query.minPrice) };
+    } else if (req.query.maxPrice) {
+        where.price = { [Op.lte]: parseFloat(req.query.maxPrice) };
+    }
+
     const spot = await Spot.findAll({
         ...pagination,
         subQuery: false,
@@ -275,6 +302,7 @@ router.get("/", validateSpotQueries, async (req, res, next) => {
         attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "description", "price", "createdAt", "updatedAt", [Sequelize.literal(`(select avg("stars") from "Reviews" where "spotId" = "Spot"."id")`), "avgRating"], [Sequelize.literal(`(select "url" from "SpotImages" where "preview" = true and "spotId" = ("Spot"."id") limit 1)`), "previewImage"]],
         order: ["id"],
         group: [["Spot.id"]],
+        where
     });
 
     return res.json({ Spots: spot, page: +req.query.page, size: +req.query.size });
