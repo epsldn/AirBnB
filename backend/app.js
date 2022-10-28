@@ -70,7 +70,7 @@ app.use((err, req, res, next) => {
 
     if (!isProduction) data.stack = err.stack;
 
-    res.json(err);
+    res.json(data);
 
 });
 module.exports = app;
