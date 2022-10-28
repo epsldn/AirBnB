@@ -9,6 +9,7 @@ const usersRouter = require("./users.js");
 const spotsRouter = require("./spots.js");
 const reviewRouter = require("./reviews.js");
 const bookingsRouter = require("./bookings.js");
+const imagesRouter = require("./images.js");
 // Test Routes
 router.use(restoreUser);
 router.use("/session", sessionRouter);
@@ -16,6 +17,7 @@ router.use("/users", usersRouter);
 router.use("/spots", spotsRouter);
 router.use("/reviews", reviewRouter);
 router.use("/bookings", bookingsRouter);
+router.use(imagesRouter);
 router.get("/test", (req, res, next) => {
     res.json({ requestBody: req.body });
 });
