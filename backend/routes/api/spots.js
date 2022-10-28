@@ -99,10 +99,22 @@ router.post("/:spotId/bookings", requireAuth, validateBooking, async (req, res, 
     const spotId = parseInt(req.params.spotId);
     const userId = parseInt(req.user.id);
     let { startDate, endDate } = req.body;
+    startDate = new Date(startDate);
+    endDate = new Date(endDate);
     const spot = await Spot.findByPk(spotId, {
+        attributes: [],
         include: {
             model: Booking,
-            attributes: ["startDate", "endDate"]
+            where: {
+                endDate: {
+                    [Op.gte]: startDate
+                },
+                startDate: {
+                    [Op.lte]: endDate
+                },
+            },
+            attributes: ["startDate", "endDate"],
+            required: false
         },
     });
 
@@ -120,22 +132,7 @@ router.post("/:spotId/bookings", requireAuth, validateBooking, async (req, res, 
         return next(err);
     }
 
-    const bookings = await Booking.findAll({
-        attributes: ["startDate", "endDate"],
-        where: {
-            endDate: {
-                [Op.gte]: startDate
-            },
-            startDate: {
-                [Op.lte]: endDate
-            },
-            spotId
-        },
-        order: ["startDate"],
-        raw: true
-    });
-
-    if (bookings.length === 0) {
+    if (spot.Bookings.length === 0) {
         const newBooking = Booking.build({
             startDate, endDate, spotId, userId
         });
@@ -146,8 +143,8 @@ router.post("/:spotId/bookings", requireAuth, validateBooking, async (req, res, 
     const err = new Error();
     err.message = "Sorry, this spot is already booked for the specified dates";
     err.errors = {};
-    if (Date.parse(bookings[0].startDate) <= Date.parse(startDate)) err.errors.startDate = "Start date conflicts with an existing booking";
-    if (Date.parse(bookings[0].endDate) >= Date.parse(endDate) || Date.parse(bookings[0].startDate) <= Date.parse(endDate)) err.errors.endDate = "End date conflicts with an existing booking";
+    if (Date.parse(spot.Bookings[0].startDate) <= Date.parse(startDate)) err.errors.startDate = "Start date conflicts with an existing booking";
+    if (Date.parse(spot.Bookings[0].endDate) >= Date.parse(endDate)) err.errors.endDate = "End date conflicts with an existing booking";
     err.status = 403;
     next(err);
 });
