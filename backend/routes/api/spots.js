@@ -174,7 +174,12 @@ router.get("/:spotId/reviews", async (req, res, next) => {
                     },
                     {
                         model: Spot,
+                        include: {
+                            model: SpotImage,
+                            attributes: []
+                        },
                         attributes: {
+                            include: [[Sequelize.literal(`(select "url" from "SpotImages" where "preview" = true and "spotId" = ("Spot"."id") limit 1)`), "previewImage"]],
                             exclude: ["description", "createdAt", "updatedAt"]
                         }
                     },
