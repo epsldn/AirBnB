@@ -29,7 +29,8 @@ router.get("/current", requireAuth, async (req, res, next) => {
                 },
                 attributes: ["url"],
                 required: false,
-                limit: 1
+                limit: 1,
+                subQuery: false
             },
             attributes: {
                 include: [[sequelize.literal(`(SELECT url FROM "SpotImages" WHERE "spotId" = Spot.id and "preview" = 1 ORDER BY "updatedAt" ASC LIMIT 1)`), "previewImage"]],
