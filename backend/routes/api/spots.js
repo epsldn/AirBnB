@@ -262,6 +262,7 @@ router.get("/", validateSpotQueries, async (req, res, next) => {
 
     let spot = await Spot.findAll({
         limit: 5,
+        offset:5,
         subQuery: false,
         include: [{
             model: SpotImage,
