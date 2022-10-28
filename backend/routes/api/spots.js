@@ -31,9 +31,9 @@ const validateReview = [
 ];
 
 const validateBooking = [
-    check("startDate", "Start date cannot be in the past").isAfter(),
+    check("startDate", "Start date cannot be in the past").custom((value, { req }) => Date.parse(value) >= Date.parse(new Date().toDateString())),
     check("startDate", "Please provide a start date.").exists({ checkFalsy: true }),
-    check("endDate", "endDate cannot be on or before startDate").isAfter().custom((value, { req }) => Date.parse(value) >= Date.parse(req.body.startDate)),
+    check("endDate", "endDate cannot be on or before startDate").custom((value, { req }) => { return Date.parse(value) > Date.parse(req.body.startDate); }),
     check("endDate", "Please provide an end date.").exists({ checkFalsy: true }),
     handleValidationErrors
 ];
