@@ -29,9 +29,9 @@ router.put("/:bookingId", requireAuth, async (req, res, next) => {
     const userId = parseInt(req.user.id);
     const bookingId = parseInt(req.params.bookingId);
 
-    const booking = await Booking.findAll();
+    const booking = await Booking.findByPk(bookingId);
 
-    console.log(booking)
+    console.log(booking);
     res.json(booking);
 });
 
