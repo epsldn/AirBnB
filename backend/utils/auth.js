@@ -50,7 +50,8 @@ const restoreUser = (req, res, next) => {
 const requireAuth = [restoreUser, function (req, _res, next) {
     if (req.user) return next();
 
-    const err = new Error("Auhtentication Required");
+    const err = new Error();
+    err.message = "Authentication Required";
     err.status = 401;
     return next(err);
 }];
