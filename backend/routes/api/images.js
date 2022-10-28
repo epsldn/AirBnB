@@ -36,7 +36,7 @@ router.delete("/spot-images/:imageId", requireAuth, async (req, res, next) => {
     await image.SpotImages[0].destroy();
     return res.json({
         message: "Successfully deleted",
-        statusCode: 404
+        statusCode: 200
     });
 });
 
@@ -70,7 +70,7 @@ router.delete("/review-images/:imageId", async (req, res, next) => {
     await image.ReviewImages[0].destroy();
     return res.json({
         message: "Successfully deleted",
-        statusCode: 404
+        statusCode: 200
     });
 });
 module.exports = router;
