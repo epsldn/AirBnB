@@ -33,22 +33,21 @@ router.get("/current", requireAuth, async (req, res, next) => {
                 subQuery: false
             },
             attributes: {
-                include: [[sequelize.literal(`(SELECT "url" FROM "SpotImages" WHERE "spotId" = Spot.id and "preview" = 1 ORDER BY "updatedAt" ASC LIMIT 1)`), "previewImage"]],
                 exclude: ["createdAt", "updatedAt"]
             },
         },
     });
 
-    // bookings = bookings.map(booking => {
-    //     booking = booking.toJSON();
-    //     if (booking.Spot.SpotImages.length > 0) {
-    //         booking.Spot.previewImage = booking.Spot.SpotImages[0].url;
-    //     } else {
-    //         booking.Spot.previewImage = null;
-    //     }
-    //     delete booking.Spot.SpotImages;
-    //     return booking;
-    // });
+    bookings = bookings.map(booking => {
+        booking = booking.toJSON();
+        if (booking.Spot.SpotImages.length > 0) {
+            booking.Spot.previewImage = booking.Spot.SpotImages[0].url;
+        } else {
+            booking.Spot.previewImage = null;
+        }
+        delete booking.Spot.SpotImages;
+        return booking;
+    });
 
     return res.json({
         Bookings: bookings
