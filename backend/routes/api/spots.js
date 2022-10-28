@@ -100,6 +100,8 @@ router.post("/:spotId/bookings", requireAuth, validateBooking, async (req, res, 
     const spotId = parseInt(req.params.spotId);
     const userId = parseInt(req.user.id);
     let { startDate, endDate } = req.body;
+    startDate = new Date(startDate);
+    endDate = new Date(endDate);
     const spot = await Spot.findByPk(spotId, {
         include: {
             model: Booking,

@@ -25,5 +25,14 @@ router.get("/current", requireAuth, async (req, res, next) => {
     });
 });
 
+router.put("/:bookingId", requireAuth, async (req, res, next) => {
+    const userId = parseInt(req.user.id);
+    const bookingId = parseInt(req.params.bookingId);
+
+    const booking = await Booking.findAll();
+
+    console.log(booking)
+    res.json(booking);
+});
 
 module.exports = router;
