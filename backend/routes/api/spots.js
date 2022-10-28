@@ -330,7 +330,7 @@ router.post("/:spotId/images", requireAuth, validateSpotImages, async (req, res,
     const newImage = await SpotImage.build({ preview, url, spotId: parseInt(req.params.spotId) });
     await newImage.save();
 
-    return res.json(newImage);
+    return res.json({ id: newImage.id, url: newImage.url, preview: newImage.preview });
 });
 
 router.post("/", requireAuth, validateSpot, async (req, res, next) => {
