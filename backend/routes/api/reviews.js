@@ -26,7 +26,12 @@ router.get("/current", requireAuth, async (req, res, next) => {
         },
         {
             model: Spot,
+            include: {
+                model: SpotImage,
+                attributes: []
+            },
             attributes: {
+                include: [[Sequelize.literal(`(select "url" from "SpotImages" where "preview" = true and "spotId" = ("Spot"."id") limit 1)`), "previewImage"]],
                 exclude: ["description", "createdAt", "updatedAt"]
             }
         },
@@ -36,7 +41,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
         }
         ]
     });
-    return res.json({ reviews });
+    return res.json({ Reviews: reviews });
 });
 
 router.post("/:reviewId/images", requireAuth, reviewImageValidator, async (req, res, next) => {

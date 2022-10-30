@@ -299,7 +299,7 @@ router.get("/", validateSpotQueries, async (req, res, next) => {
             model: Review,
             attributes: [],
         }],
-        attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "description", "price", "createdAt", "updatedAt", [Sequelize.literal(`(select avg("stars") from "Reviews" where "spotId" = "Spot"."id")`), "avgRating"], [Sequelize.literal(`(select "url" from "SpotImages" where "preview" = true and "spotId" = ("Spot"."id") limit 1)`), "previewImage"]],
+        attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "description", "price", "createdAt", "updatedAt", [Sequelize.literal(`(select cast(avg("stars") AS DECIMAL(2,1)) from "Reviews" where "spotId" = "Spot"."id")`), "avgRating"], [Sequelize.literal(`(select "url" from "SpotImages" where "preview" = true and "spotId" = ("Spot"."id") limit 1)`), "previewImage"]],
         order: ["id"],
         group: [["Spot.id"]],
         where
@@ -330,7 +330,7 @@ router.post("/:spotId/images", requireAuth, validateSpotImages, async (req, res,
     const newImage = await SpotImage.build({ preview, url, spotId: parseInt(req.params.spotId) });
     await newImage.save();
 
-    return res.json(newImage);
+    return res.json({ id: newImage.id, url: newImage.url, preview: newImage.preview });
 });
 
 router.post("/", requireAuth, validateSpot, async (req, res, next) => {

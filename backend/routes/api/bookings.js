@@ -64,7 +64,7 @@ router.put("/:bookingId", requireAuth, validateBooking, async (req, res, next) =
     const booking = await Booking.findByPk(bookingId);
     if (!booking) {
         const err = new Error();
-        err.message = "Review couldn't be found";
+        err.message = "Booking couldn't be found";
         err.status = 404;
         return next(err);
     }
