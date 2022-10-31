@@ -370,7 +370,7 @@ router.put("/:spotId", requireAuth, validateSpot, async (req, res, next) => {
     });
 
     await spot.save();
-    return res.json({...values});
+    return res.json({spot});
 });
 
 router.delete("/:spotId", requireAuth, async (req, res, next) => {
