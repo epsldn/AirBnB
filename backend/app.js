@@ -50,6 +50,7 @@ app.use((req, res, next) => {
 // check if error was Validation Error thrown out by sequelize
 app.use((err, req, res, next) => {
     if (err instanceof ValidationError) {
+        if(err.errors[0].path === "email" || err.errors[0].path === "username") err.message = "User already exists."
         err.errors = { [err.errors[0].path]: err.errors[0].message };
         err.status = 403;
     }
