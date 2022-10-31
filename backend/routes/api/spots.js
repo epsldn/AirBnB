@@ -119,7 +119,7 @@ router.post("/:spotId/bookings", requireAuth, validateBooking, async (req, res, 
     startDate = new Date(startDate);
     endDate = new Date(endDate);
     const spot = await Spot.findByPk(spotId, {
-        attributes: [],
+        attributes: ["ownerId"],
         include: {
             model: Booking,
             where: {
