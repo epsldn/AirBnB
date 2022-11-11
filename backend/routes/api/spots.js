@@ -76,7 +76,6 @@ router.get("/current", requireAuth, async (req, res, next) => {
         group: ["Spot.id", ["SpotImages.id"]]
     });
     return res.json({ Spots: spot });
-
 });
 
 router.get("/:spotId/bookings", requireAuth, async (req, res, next) => {
