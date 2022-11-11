@@ -26,12 +26,10 @@ export const getUserFromDb = (credential, password) => async dispatch => {
 
     if (response.ok) {
         const user = await response.json();
-        console.log(user)
+        console.log(user);
         dispatch(addUser(user));
         return user;
-    } else {
-        throw response;
-    }
+    } 
 };
 
 export default (state = { user: null }, action) => {
