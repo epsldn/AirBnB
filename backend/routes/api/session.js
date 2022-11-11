@@ -20,6 +20,8 @@ const validateLogin = [
 
 router.get("/", requireAuth, (req, res, next) => {
     const { user } = req;
+    user.token = req.cookies.token;
+    
     if (user) {
         return res.json({
             ...user.toSafeObject()

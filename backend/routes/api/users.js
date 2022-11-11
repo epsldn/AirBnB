@@ -35,7 +35,7 @@ router.post("/", validateSignup, async (req, res, next) => {
 
     const resUser = user.toSafeObject();
 
-    resUser.token = token;
+    resUser.user.token = token;
 
     return res.json(resUser);
 });
