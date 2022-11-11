@@ -86,7 +86,7 @@ router.put("/:bookingId", requireAuth, validateBooking, async (req, res, next) =
         err.status = 403;
         return next(err);
     }
-
+    const spotId = parseInt(booking.spotId);
     const bookings = await Booking.findAll({
         where: {
             endDate: {
@@ -95,12 +95,12 @@ router.put("/:bookingId", requireAuth, validateBooking, async (req, res, next) =
             startDate: {
                 [Op.lte]: endDate
             },
+            spotId
         },
         attributes: ["startDate", "endDate"],
         raw: true
     });
 
-    const spotId = parseInt(booking.spotId);
 
     if (bookings.length === 0) {
         booking.set({
