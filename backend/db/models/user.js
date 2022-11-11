@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     toSafeObject() {
       const { id, username, email, firstName, lastName, token } = this;
-      return { id, username, email, firstName, lastName, token };
+      return { user: { id, username, email, firstName, lastName, token } };
     }
 
     validatePassword(password) {
