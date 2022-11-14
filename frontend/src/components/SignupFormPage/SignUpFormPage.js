@@ -48,7 +48,6 @@ export default function SignupFormPage({ setShowModal }) {
         event.preventDefault();
         setHasSubmitted(true);
         const returnedErrors = validateData();
-        console.log(returnedErrors);
         if (returnedErrors.length > 1) return;
 
         const user = {
