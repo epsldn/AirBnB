@@ -23,6 +23,8 @@ const validateSignup = [
     check("lastName")
         .exists({ checkFalsy: true })
         .withMessage("Last name is required"),
+    check("password")
+        .exists({ checkFalsy: true }),
     handleValidationErrors
 ];
 
