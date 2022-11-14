@@ -18,7 +18,7 @@ const removeUser = (userId) => {
     };
 };
 
-export const getUserFromDb = (credential, password) => async dispatch => {
+export const login = (credential, password) => async dispatch => {
     const response = await csrfFetch("/api/session", {
         method: "POST",
         body: JSON.stringify({ credential, password })
@@ -29,7 +29,7 @@ export const getUserFromDb = (credential, password) => async dispatch => {
         console.log(user);
         dispatch(addUser(user));
         return user;
-    } 
+    }
 };
 
 export default (state = { user: null }, action) => {
