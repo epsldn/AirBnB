@@ -19,6 +19,25 @@
 }
 
 #modal-content {
+  display: flex;
+  padding: 10px 15px;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  background-color:white;
+  background-color: white;
+  min-height: 250px;
+  min-width: 350px;
+  border-radius: 12px;
+}
+
+#modal-content label {
+  color: red;
+  display: block;
+  width: 100%;
+}
+
+#modal-content input {
+  background-color: red;
+  display: block;
+  width: max-content;
 }

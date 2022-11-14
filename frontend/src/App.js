@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import SignupFormPage from "./components/SignupFormPage/SignUpFormPage";
-import * as sessionReducer from "./store/sessionReducer";
+import * as sessionReducer from "./store/session";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ function App() {
 
   return isLoaded && (
     <>
-      <Navigation />
+      <Navigation isLoaded={isLoaded} />
       <Switch>
         <Route path="/signup">
           <SignupFormPage />

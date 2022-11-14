@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createUser } from "../../store/sessionReducer";
-import "./SignUpFormPage.css"
+import { createUser } from "../../store/session";
+import "./SignUpFormPage.css";
 
 export default function SignupFormPage() {
     const dispatch = useDispatch();
@@ -45,7 +45,7 @@ export default function SignupFormPage() {
     const handleSubmit = (event) => {
         event.preventDefault();
         setHasSubmitted(true);
-        // if (errors.length > 1) return;
+        if (errors.length > 1) return;
 
         const user = {
             firstName,
@@ -61,8 +61,9 @@ export default function SignupFormPage() {
             if (data?.errors) errors.push(Object.values(data.errors));
             setErrors(errors);
         });
-        // resetData();
-        // history.push("/");
+
+        resetData();
+        history.push("/");
     };
 
     return (
