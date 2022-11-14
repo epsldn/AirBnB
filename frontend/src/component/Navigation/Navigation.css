@@ -1,0 +1,18 @@
+#home-button {
+    color: #FF385C;
+    font-weight: bold;
+    grid-area: "home";
+}
+
+#profile-button {
+    grid-area: "profileButton";
+}
+
+.navigation {
+    display: flex;
+    /* display: grid;
+    grid-template-columns: "home search profileButton"; */
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+}

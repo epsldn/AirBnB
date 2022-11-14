@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/sessionReducer';
 
 export default function ProfileButton() {
@@ -35,7 +36,13 @@ export default function ProfileButton() {
             <button onClick={openMenu}>
                 <i className="fa-solid fa-user" />
             </button>
-            {showMenu && (
+            {!user && showMenu && (
+                <ul className="profile-dropdown">
+                    <li><Link to="/login">Log in</Link></li>
+                    <li><Link to="/signup">Sign up</Link></li>
+                </ul>
+            )}
+            {user && showMenu && (
                 <ul className="profile-dropdown">
                     <li>{user.username}</li>
                     <li>{user.email}</li>

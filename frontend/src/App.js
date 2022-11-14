@@ -25,7 +25,7 @@ function App() {
           <SignupFormPage />
         </Route>
         <Route path="/">
-          <h1>Hell from app</h1>
+          <h1>Hello from app</h1>
         </Route>
       </Switch>
     </>

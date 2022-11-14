@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createUser } from "../../store/sessionReducer";
+import "./SignUpFormPage.css"
 
 export default function SignupFormPage() {
     const dispatch = useDispatch();
@@ -124,7 +125,7 @@ export default function SignupFormPage() {
                     required
                 />
             </label>
-            <button type="submit" disabled={hasSubmitted && errors.length > 1}> Submit </button>
+            <button id="submit" type="submit" disabled={hasSubmitted && errors.length > 1}> Submit </button>
         </form>
     );
 }
