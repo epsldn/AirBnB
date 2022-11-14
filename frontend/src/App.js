@@ -7,6 +7,7 @@ function App() {
       <Route path="/login">
         <LoginFormPage />
       </Route>
+      <h1>Hell from app</h1>
     </Switch>
   );
 }

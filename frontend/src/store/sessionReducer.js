@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 
 const ADD_USER = "session/addUser";
+const GET_USER = "session/getUser";
 const REMOVE_USER = "session/removeUser";
 
 const addUser = (user) => {
@@ -30,6 +31,13 @@ export const login = (credential, password) => async dispatch => {
         dispatch(addUser(user));
         return user;
     }
+};
+
+export const getSession = () => async dispatch => {
+    const response = await csrfFetch("/api/session");
+    const session = await response.json();
+    dispatch(addUser(session.user));
+    return response;
 };
 
 export default (state = { user: null }, action) => {
