@@ -17,9 +17,6 @@ export default function Navigation() {
             <div>
                 <ProfileButton id="profile-button" />
             </div>
-            {/* {user && <NavLink to="/logout">Log out</NavLink>} */}
-            {/* {!user && <NavLink to="/signup">Sign up</NavLink>}
-            {!user && <NavLink to="/login">Log in</NavLink>} */}
         </ul>
     );
 };

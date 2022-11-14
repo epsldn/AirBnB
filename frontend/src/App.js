@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import LoginFormPage from "./component/LoginFormPage/LoginFormPage";
-import Navigation from "./component/Navigation";
-import SignupFormPage from "./component/SignupFormPage/SignUpFormPage";
+import LoginFormPage from "./components/LoginForm/LoginForm";
+import Navigation from "./components/Navigation";
+import SignupFormPage from "./components/SignupFormPage/SignUpFormPage";
 import * as sessionReducer from "./store/sessionReducer";
 
 function App() {

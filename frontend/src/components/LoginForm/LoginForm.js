@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/sessionReducer";
 import "./LoginFormPage.css";
 
-export default function LoginFormPage() {
+export default function LoginForm() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const [credential, setCredential] = useState("");
