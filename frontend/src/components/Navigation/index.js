@@ -13,31 +13,18 @@ function Navigation({ isLoaded }) {
     const [showModal, setShowModal] = useState(false);
     const [login, setLogin] = useState(true);
 
-    let sessionLinks;
-    if (sessionUser) {
-        sessionLinks = (
-            <ProfileButton user={sessionUser} />
-        );
-    } else {
-        sessionLinks = (
-            <>
-                <LoginFormModal />
-                <NavLink to="/signup">Sign Up</NavLink>
-            </>
-        );
-    }
-
-    console.log(sessionLinks);
+    console.log(showModal);
     return (
         <>
             <ul>
                 <li>
                     <NavLink exact to="/">Home</NavLink>
-                    {isLoaded && sessionLinks}
+                    {isLoaded && <ProfileButton user={sessionUser} setLogin={setLogin} setShowModal={setShowModal} />}
                 </li>
-                {showModal && <Modal onClose={() => setShowModal(false)}>
-                    {login ? <LoginForm /> : <SignupFormPage />}
-                </Modal>}
+                {showModal &&
+                    <Modal onClose={() => setShowModal(false)}>
+                        {login ? <LoginForm setShowModal={setShowModal} /> : <SignupFormPage setShowModal={setShowModal} />}
+                    </Modal>}
             </ul>
         </>
     );

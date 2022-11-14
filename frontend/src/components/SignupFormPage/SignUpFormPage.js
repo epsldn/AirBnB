@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { createUser } from "../../store/session";
 import "./SignUpFormPage.css";
 
-export default function SignupFormPage() {
+export default function SignupFormPage({ setShowModal }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -55,12 +55,14 @@ export default function SignupFormPage() {
             password
         };
 
-        dispatch(createUser(user)).catch(async res => {
-            const data = await res.json();
-            const errors = [];
-            if (data?.errors) errors.push(Object.values(data.errors));
-            setErrors(errors);
-        });
+        dispatch(createUser(user))
+            .then(_ => setShowModal(false))
+            .catch(async res => {
+                const data = await res.json();
+                const errors = [];
+                if (data?.errors) errors.push(Object.values(data.errors));
+                setErrors(errors);
+            });
 
         resetData();
         history.push("/");
@@ -68,7 +70,6 @@ export default function SignupFormPage() {
 
     return (
         <form onSubmit={handleSubmit} onChange={validateData}>
-            <h1>Sign up</h1>
             {hasSubmitted && <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>}
