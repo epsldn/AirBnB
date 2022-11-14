@@ -1,5 +1,5 @@
 import { csrfFetch } from "./csrf";
-
+import Cookies from "js-cookie";
 
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
@@ -31,14 +31,10 @@ export const login = (credential, password) => async dispatch => {
 };
 
 export const getSession = () => async dispatch => {
-    try {
-        const response = await csrfFetch("/api/session");
-        const session = await response.json();
-        dispatch(setUser(session));
-        return response;
-    } catch {
-        dispatch(setUser({ user: null }));
-    }
+    const response = await csrfFetch("/api/session");
+    const session = await response.json();
+    dispatch(setUser(session));
+    return response;
 };
 
 export const createUser = (user) => async dispatch => {

@@ -37,16 +37,19 @@ export default function SignupFormPage() {
         if (email.length > 256) errors.push("Email must be less than 256 charcters long");
         if (username.length < 4 || username.length > 30) errors.push("Username must be between 4 and 30 character long");
         if (password.length < 8) errors.push("Password must be longer than 8 characters");
-        if (retypedPassowrd.length < 8 || retypedPassowrd !== password) errors.push("Passwords must match!");
+        if (retypedPassowrd !== password) errors.push("Passwords must match!");
 
         setErrors(errors);
+
+        return errors;
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        validateData();
         setHasSubmitted(true);
-        if (errors.length > 1) return;
+        const returnedErrors = validateData();
+        console.log(returnedErrors);
+        if (returnedErrors.length > 1) return;
 
         const user = {
             firstName,
@@ -62,6 +65,9 @@ export default function SignupFormPage() {
             if (data?.errors) errors.push(Object.values(data.errors));
             setErrors(errors);
         });
+
+        resetData();
+        history.push("/");
     };
 
     return (
