@@ -1,0 +1,31 @@
+/* TODO Add site wide styles */
+
+body {
+    display: flex;
+    justify-content: center;
+
+    margin: 0 auto;
+    padding: 0 80px;
+}
+
+header {
+    border-bottom: solid lightgray 1px;
+}
+
+#root {
+    width: 100%;
+    max-width: 2500px;
+}
+
+#submit {
+    background-color: #FF385C;
+    color: white;
+    border-radius: 25px;
+    padding: 5px 10px;
+}
+
+input{
+    border: 1px lightgrey solid;
+    border-radius: 25px;
+    padding: 5px 10px;
+}

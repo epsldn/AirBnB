@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/sessionReducer";
+import "./LoginFormPage.css";
 
 export default function LoginFormPage() {
     const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export default function LoginFormPage() {
     };
     return (
         <form onSubmit={handleSubmit}>
+            <h2>Log in</h2>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
@@ -44,7 +46,7 @@ export default function LoginFormPage() {
                     required
                 />
             </label>
-            <button type="submit">Log In</button>
+            <button id="submit" type="submit">Log In</button>
         </form>
     );
 }
