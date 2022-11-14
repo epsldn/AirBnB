@@ -59,7 +59,6 @@ export const signout = () => async dispatch => {
         method: "DELETE"
     });
 
-    console.log(response);
     if (response.ok) {
         const data = await response.json();
         dispatch(removeUser());
