@@ -6,22 +6,20 @@ import "./LoginFormPage.css";
 
 export default function LoginForm() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = event => {
         event.preventDefault();
-        const errors = [];
         return dispatch(sessionActions.login(credential, password))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(Object.values(data.errors));
             });
     };
+
     return (
         <form onSubmit={handleSubmit}>
             <h2>Log in</h2>

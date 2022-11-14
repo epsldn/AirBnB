@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/sessionReducer';
+import LoginFormModal from "../LoginForm";
 
 export default function ProfileButton() {
     const dispatch = useDispatch();
@@ -16,8 +17,9 @@ export default function ProfileButton() {
     useEffect(() => {
         if (!showMenu) return;
 
-        const closeMenu = () => {
-            setShowMenu(false);
+        const closeMenu = (e) => {
+            console.log(e.target);
+            if (e.target.tagName !== "BUTTON") setShowMenu(false);
         };
 
         document.addEventListener('click', closeMenu);
@@ -38,10 +40,12 @@ export default function ProfileButton() {
             </button>
             {!user && showMenu && (
                 <ul className="profile-dropdown">
-                    <li><Link to="/login">Log in</Link></li>
+                    <LoginFormModal />
                     <li><Link to="/signup">Sign up</Link></li>
                 </ul>
             )}
+
+
             {user && showMenu && (
                 <ul className="profile-dropdown">
                     <li>{user.username}</li>
