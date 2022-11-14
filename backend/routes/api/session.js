@@ -18,12 +18,12 @@ const validateLogin = [
     handleValidationErrors
 ];
 
-router.get("/", requireAuth, (req, res, next) => {
+router.get("/", validateLogin, (req, res, next) => {
     const { user } = req;
     user.token = req.cookies.token;
     if (user) {
         res.json(user.toSafeObject());
-    } else return res.json({});
+    } else return res.json(null);
 });
 
 router.post("/", validateLogin, async (req, res, next) => {
