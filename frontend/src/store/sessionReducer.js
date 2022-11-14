@@ -11,10 +11,9 @@ const setUser = (user) => {
     };
 };
 
-const removeUser = (userId) => {
+const removeUser = () => {
     return {
-        action: REMOVE_USER,
-        userId
+        type: REMOVE_USER,
     };
 };
 
@@ -32,10 +31,14 @@ export const login = (credential, password) => async dispatch => {
 };
 
 export const getSession = () => async dispatch => {
-    const response = await csrfFetch("/api/session");
-    const session = await response.json();
-    dispatch(setUser(session));
-    return response;
+    try {
+        const response = await csrfFetch("/api/session");
+        const session = await response.json();
+        dispatch(setUser(session));
+        return response;
+    } catch {
+        dispatch(setUser({ user: null }));
+    }
 };
 
 export const createUser = (user) => async dispatch => {
@@ -48,6 +51,19 @@ export const createUser = (user) => async dispatch => {
         const user = await response.json();
         dispatch(setUser(user));
         return response;
+    }
+};
+
+export const signout = () => async dispatch => {
+    const response = await csrfFetch("/api/session", {
+        method: "DELETE"
+    });
+
+    console.log(response);
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(removeUser());
+        return data.message;
     }
 };
 
