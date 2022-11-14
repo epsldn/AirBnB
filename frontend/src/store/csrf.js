@@ -4,7 +4,7 @@ export const csrfFetch = async (url, options = {}) => {
     options.headers ??= {};
     options.method ??= "GET";
 
-    if (options.method !== "GET") {
+    if (options.method.toUpperCase() !== "GET") {
         options.headers["Content-Type"] ??= "application/json";
         options.headers["XSRF-TOKEN"] = Cookies.get("XSRF-TOKEN");
     }

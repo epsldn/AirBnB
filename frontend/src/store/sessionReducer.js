@@ -26,7 +26,6 @@ export const login = (credential, password) => async dispatch => {
 
     if (response.ok) {
         const user = await response.json();
-        console.log(user);
         dispatch(setUser(user));
         return user;
     }
@@ -35,8 +34,21 @@ export const login = (credential, password) => async dispatch => {
 export const getSession = () => async dispatch => {
     const response = await csrfFetch("/api/session");
     const session = await response.json();
-    dispatch(setUser(session.user));
+    dispatch(setUser(session));
     return response;
+};
+
+export const createUser = (user) => async dispatch => {
+    const response = await csrfFetch("api/users", {
+        method: "POST",
+        body: JSON.stringify(user)
+    });
+
+    if (response.ok) {
+        const user = await response.json();
+        dispatch(setUser(user));
+        return response;
+    }
 };
 
 export default (state = { user: null }, action) => {
