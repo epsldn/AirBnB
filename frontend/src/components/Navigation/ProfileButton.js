@@ -30,30 +30,42 @@ function ProfileButton({ user, setLogin, setShowModal }) {
     };
 
     return (
-        <>
-            <button onClick={openMenu}>
-                <i className="fas fa-user-circle" />
-            </button>
+        <div className="profile-button">
+            <div>
+                <button onClick={openMenu} className="button-outline">
+                    <div className="profile-button-icon">
+                        <i class="fas fa-bars" />
+                    </div>
+                    <div className="profile-button-icon">
+                        <i className="fas fa-user-circle" />
+                    </div>
+                </button>
+            </div >
             {showMenu && (user ? (
                 <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
+                    <p>{user.username}</p>
+                    <p>{user.email}</p>
                     <li>
                         <button onClick={logout}>Log Out</button>
                     </li>
                 </ul>
             ) :
                 (<ul className="profile-dropdown">
-                    <button onClick={() => {
+                    <li onClick={() => {
                         setShowModal(true);
                         setLogin(true);
-                    }}>Log in</button>
-                    <button onClick={() => {
+                    }}>
+                        Log in
+                    </li>
+                    <li onClick={() => {
                         setShowModal(true);
                         setLogin(false);
-                    }}>Sign Up</button>
-                </ul>))}
-        </>
+                    }}>
+                        Sign Up
+                    </li>
+                </ul>))
+            }
+        </div >
     );
 }
 

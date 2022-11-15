@@ -21,13 +21,12 @@ export default function LoginForm({ setShowModal }) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Log in</h2>
+        <form onSubmit={handleSubmit} className="form">
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
             <label>
-                Username or Email{" "}
+                Username or Email:
                 <input
                     type="text"
                     value={credential}
@@ -36,7 +35,7 @@ export default function LoginForm({ setShowModal }) {
                 />
             </label>
             <label>
-                Password
+                Password:
                 <input
                     type="password"
                     value={password}

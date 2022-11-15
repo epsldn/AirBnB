@@ -20,7 +20,7 @@
 
 #modal-content {
   display: flex;
-  padding: 10px 15px;
+  padding: 20px 5px;
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -30,14 +30,21 @@
   border-radius: 12px;
 }
 
-#modal-content label {
-  color: red;
-  display: block;
-  width: 100%;
+#modal-content .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
 }
 
-#modal-content input {
+.form label {
+  display: block;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.form input {
   background-color: white;
   display: block;
-  width: max-content;
+  width: 100%;
 }

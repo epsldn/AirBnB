@@ -15,12 +15,20 @@ function App() {
 
   return isLoaded && (
     <>
-      <Navigation isLoaded={isLoaded} />
-      <Switch>
-        <Route path="/">
-          <h1>Hello from app</h1>
-        </Route>
-      </Switch>
+      <header>
+        <Navigation isLoaded={isLoaded} />
+      </header>
+      <main>
+        <Switch>
+          <Route path="/">
+            <h1>Hello from app</h1>
+          </Route>
+        </Switch>
+      </main>
+      <footer>
+        <h1>Placeholder</h1>
+        <h1>Placeholder</h1>
+      </footer>
     </>
   );
 }

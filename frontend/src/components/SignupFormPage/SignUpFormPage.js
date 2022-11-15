@@ -7,7 +7,7 @@ import "./SignUpFormPage.css";
 export default function SignupFormPage({ setShowModal }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const user = useSelector(state => state.session.user);
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -58,19 +58,21 @@ export default function SignupFormPage({ setShowModal }) {
             password
         };
 
-        dispatch(createUser(user)).catch(async res => {
-            const data = await res.json();
-            const errors = [];
-            if (data?.errors) errors.push(Object.values(data.errors));
-            setErrors(errors);
-        });
+        dispatch(createUser(user))
+            .then(_ => setShowModal(false))
+            .catch(async res => {
+                const data = await res.json();
+                const errors = [];
+                if (data?.errors) errors.push(Object.values(data.errors));
+                setErrors(errors);
+            });
 
         resetData();
         history.push("/");
     };
 
     return (
-        <form onSubmit={handleSubmit} onChange={validateData}>
+        <form onSubmit={handleSubmit} onChange={validateData} className="form">
             {hasSubmitted && <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>}
@@ -128,7 +130,7 @@ export default function SignupFormPage({ setShowModal }) {
                     required
                 />
             </label>
-            <button id="submit" type="submit" disabled={hasSubmitted && errors.length > 1}> Submit </button>
+            <button id="submit" type="submit" disabled={hasSubmitted && errors.length > 1}> Sign Up </button>
         </form>
     );
 }
