@@ -1,0 +1,60 @@
+#modal-content .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.signup-main {
+    display: flex;
+    height: 100%;
+    width: 40vw;
+    height: 50vh;
+    min-width: 350px;
+    max-width: 550px;
+    max-height: 530px;
+    flex-flow: column;
+    align-items: center;
+    padding-bottom: 60px;
+    overflow-y: scroll;
+}
+
+.form input[type] {
+    box-sizing: border-box;
+    border-top: 1px lightgrey solid;
+    border-left: 1px lightgrey solid;
+    border-right: 1px lightgrey solid;
+    padding: 15px 10px;
+    width: 100%;
+}
+
+.form-first {
+    border-radius: 10px 10px 0 0;
+}
+
+.form-last {
+    border-bottom: 1px lightgray solid;
+    border-radius: 0 0 10px 10px;
+}
+
+
+.form-login input {
+    box-sizing: border-box;
+    border-top: 1px lightgrey solid;
+    border-left: 1px lightgrey solid;
+    border-right: 1px lightgrey solid;
+    padding: 15px 10px;
+    width: 100%;
+}
+
+#submit {
+    background-color: #e51d54;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    padding: 12px 20px;
+    margin-top: 30px;
+    width: 100%;
+    margin-bottom: 15px;
+}
