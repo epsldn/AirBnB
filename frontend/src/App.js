@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+import AllSpots from "./components/AllSpots/AllSpots";
 import Navigation from "./components/Navigation";
 import SignupFormPage from "./components/SignupFormPage/SignUpFormPage";
 import * as sessionReducer from "./store/session";
@@ -21,14 +22,14 @@ function App() {
       <main>
         <Switch>
           <Route path="/">
-            <h1>Hello from app</h1>
+            <AllSpots />
+            <footer>
+              <h1>Placeholder</h1>
+              <h1>Placeholder</h1>
+            </footer>
           </Route>
         </Switch>
       </main>
-      <footer>
-        <h1>Placeholder</h1>
-        <h1>Placeholder</h1>
-      </footer>
     </>
   );
 }

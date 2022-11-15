@@ -9,12 +9,14 @@ import configureStore from "./store";
 import { csrfFetch, restoreCSRF } from './store/csrf';
 import * as sessionActions from './store/session';
 import { ModalProvider } from './context/Modal';
+import * as spotActions from './store/spots';
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
   restoreCSRF();
 
   window.sessionActions = sessionActions;
+  window.spotActions = spotActions;
   window.csrfFetch = csrfFetch;
   window.store = store;
 };
