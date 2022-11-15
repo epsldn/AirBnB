@@ -33,7 +33,7 @@ export default function AllSpots() {
                                     </ul>
                                 </div>
                                 <div>
-                                    <li><i class="fa-solid fa-star"></i>{`${spot.avgRating ?? "Be the first to Review!"}`}</li>
+                                    <li><i class="fa-solid fa-star"></i> {`${spot.avgRating ??= "New"}`}</li>
                                 </div>
                             </div>
                         </div>
