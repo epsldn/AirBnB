@@ -19,32 +19,16 @@
 }
 
 #modal-content {
-  display: flex;
-  padding: 20px 5px;
-  align-items: center;
-  justify-content: center;
   position: absolute;
   background-color: white;
-  min-height: 250px;
-  min-width: 350px;
-  border-radius: 12px;
+  border-radius: 8px;
 }
 
-#modal-content .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-}
-
-.form label {
-  display: block;
-  width: 100%;
-  padding-bottom: 5px;
-}
-
-.form input {
-  background-color: white;
-  display: block;
-  width: 100%;
-}
+/* border-radius: 12px;
+flex-flow: column;
+align-items: center; */
+/* height: 75%;
+width: 80%;
+min-height: 300px;
+min-width: 350px;
+max-width: 500px; */

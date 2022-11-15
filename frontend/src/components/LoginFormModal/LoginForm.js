@@ -21,29 +21,39 @@ export default function LoginForm({ setShowModal }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="form">
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-            <label>
-                Username or Email:
+        <div className="login-main">
+            <div className="form-header-login">
+                <div className="login-form-x">
+                    <button onClick={() => setShowModal(false)}>x</button>
+                </div>
+                <p>Log In or Sign Up</p>
+            </div>
+            <form onSubmit={handleSubmit} className="form-login">
+                <div className="form-welcome-login">
+                    <h2>Welcome to AirBnCF</h2>
+                </div>
+                <ul className="errors">
+                    {errors.map((error, idx) => <li key={idx}><i class="fa-solid fa-circle-exclamation"></i>{" " + error}</li>)}
+                </ul>
                 <input
                     type="text"
                     value={credential}
                     onChange={event => setCredential(event.target.value)}
                     required={true}
+                    placeholder="Username or Email"
+                    className="form-first"
                 />
-            </label>
-            <label>
-                Password:
                 <input
                     type="password"
                     value={password}
                     onChange={event => setPassword(event.target.value)}
                     required
+                    placeholder="Password"
+                    className="form-last"
+                    id="last"
                 />
-            </label>
-            <button id="submit" type="submit">Log In</button>
-        </form>
+                <button id="submit" type="submit">Log In</button>
+            </form>
+        </div>
     );
 }

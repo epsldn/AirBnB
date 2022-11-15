@@ -72,65 +72,67 @@ export default function SignupFormPage({ setShowModal }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} onChange={validateData} className="form">
-            {hasSubmitted && <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>}
-            <label>
-                First Name:
+        <div className="signup-main">
+            <div className="form-header-login">
+                <div className="login-form-x">
+                    <button onClick={() => setShowModal(false)}>x</button>
+                </div>
+                <p>Log In or Sign Up</p>
+            </div>
+            <form onSubmit={handleSubmit} onChange={validateData} className="form">
+                <div className="form-welcome-login">
+                    <h2>Welcome to AirBnCF</h2>
+                </div>
+                {hasSubmitted && <ul className="errors">
+                    {errors.map((error, idx) => <li key={idx}><i class="fa-solid fa-circle-exclamation"></i>{" " + error}</li>)}
+                </ul>}
                 <input
                     type="text"
                     onChange={event => setFirstName(event.target.value)}
                     value={firstName}
+                    placeholder="First Name"
+                    className="form-first"
                     required
                 />
-            </label>
-            <label>
-                Last Name:
                 <input
                     type="text"
                     onChange={event => setLastName(event.target.value)}
                     value={lastName}
+                    placeholder="Last Name"
                     required
                 />
-            </label>
-            <label>
-                username:
+
                 <input
                     type="text"
                     onChange={event => setUsername(event.target.value)}
                     value={username}
+                    placeholder="Username"
                     required
                 />
-            </label>
-            <label>
-                email:
                 <input
                     type="email"
                     onChange={event => setEmail(event.target.value)}
                     value={email}
+                    placeholder="Email"
                     required
                 />
-            </label>
-            <label>
-                password:
                 <input
                     type="password"
                     onChange={event => setPassword(event.target.value)}
                     value={password}
+                    placeholder="password"
                     required
                 />
-            </label>
-            <label>
-                Confirm password
                 <input
                     type="password"
                     onChange={event => setRetypedPassword(event.target.value)}
                     value={retypedPassowrd}
+                    placeholder="Confirm Password"
+                    className="form-last"
                     required
                 />
-            </label>
-            <button id="submit" type="submit" disabled={hasSubmitted && errors.length > 1}> Sign Up </button>
-        </form>
+                <button id="submit" type="submit" disabled={hasSubmitted && errors.length > 1}> Sign Up </button>
+            </form>
+        </div>
     );
-}
+};;

@@ -39,17 +39,7 @@ footer {
     box-sizing: border-box;
 }
 
-#submit {
-    background-color: #FF385C;
-    color: white;
-    border-radius: 25px;
-    padding: 12px 20px;
-}
-
-input {
-    box-sizing: border-box;
-    border: 1px lightgrey solid;
-    border-radius: 25px;
-    padding: 5px 10px;
-    margin: 5px 0;
+.errors {
+    color: red;
+    margin-bottom: 10px;
 }
