@@ -302,10 +302,14 @@ router.get("/", validateSpotQueries, async (req, res, next) => {
         }, {
             model: Review,
             attributes: [],
+        }, {
+            model: User,
+            as: "Owner",
+            attributes: []
         }],
-        attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "description", "price", "createdAt", "updatedAt", [Sequelize.literal(`(select cast(avg("stars") AS DECIMAL(2,1)) from "Reviews" where "spotId" = "Spot"."id")`), "avgRating"], [Sequelize.literal(`(select "url" from "SpotImages" where "preview" = true and "spotId" = ("Spot"."id") limit 1)`), "previewImage"]],
+        attributes: [[Sequelize.col("Owner.firstName"), "ownerName"], "id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "description", "price", "createdAt", "updatedAt", [Sequelize.literal(`(select cast(avg("stars") AS DECIMAL(2,1)) from "Reviews" where "spotId" = "Spot"."id")`), "avgRating"], [Sequelize.literal(`(select "url" from "SpotImages" where "preview" = true and "spotId" = ("Spot"."id") limit 1)`), "previewImage"]],
         order: ["id"],
-        group: [["Spot.id"]],
+        group: [["Spot.id"], ["Owner.firstName"]],
         where
     });
 
