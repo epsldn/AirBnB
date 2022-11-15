@@ -8,7 +8,12 @@
     flex-flow: column;
     align-items: center;
     padding-bottom: 60px;
-    overflow: scroll;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.login-main::-webkit-scrollbar {
+    display: none;
 }
 
 .form-login {
