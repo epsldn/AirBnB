@@ -7,7 +7,7 @@ import "./SignUpFormPage.css";
 export default function SignupFormPage({ setShowModal }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const user = useSelector(state => state.session.user);
+    
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
