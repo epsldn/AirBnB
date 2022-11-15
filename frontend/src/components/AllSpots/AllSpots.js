@@ -16,11 +16,11 @@ export default function AllSpots() {
     if (spots.length < 1) return;
 
     return (
-        <div className="all-spots-gallery">
-            <ul>
+        <div className="all-spots-gallery-container">
+            <ul className="all-spots-gallery">
                 {spots.map(spot => (
-                    <li key={spot.id}>
-                        <div className="spot-outer-frame">
+                    <li key={spot.id} className="spot-outer-frame">
+                        <div>
                             <div>
                                 <img src={spot.previewImage ?? console.log(spot.previewImage)} />
                             </div>
