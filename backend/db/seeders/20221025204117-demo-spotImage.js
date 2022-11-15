@@ -16,7 +16,7 @@ module.exports = {
     await queryInterface.bulkInsert("SpotImages", [
       {
         spotId: 1,
-        url: "https://applet3d.com/wp-content/uploads/2021/08/locke-lane-exterior-services-1024x576.jpg",
+        url: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg",
         preview: true
       },
       {
@@ -91,7 +91,7 @@ module.exports = {
       },
       {
         spotId: 4,
-        url: "https://applet3d.com/wp-content/uploads/2021/08/locke-lane-exterior-services-1024x576.jpg",
+        url: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg",
         preview: true
       },
       {
