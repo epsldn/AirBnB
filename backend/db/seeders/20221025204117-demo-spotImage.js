@@ -16,29 +16,154 @@ module.exports = {
     await queryInterface.bulkInsert("SpotImages", [
       {
         spotId: 1,
-        url: "www.thisisaspot.com/1",
+        url: "https://applet3d.com/wp-content/uploads/2021/08/locke-lane-exterior-services-1024x576.jpg",
         preview: true
       },
       {
         spotId: 1,
-        url: "www.thisisaspot.com/1",
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
         preview: false
       },
       {
         spotId: 2,
-        url: "www.thisisaspot.com/2",
+        url: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Fitzgerald_House_%28Los_Angeles%29.jpg",
+        preview: true
+      },
+      {
+        spotId: 2,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: "https://images.pexels.com/photos/3637662/pexels-photo-3637662.jpeg",
         preview: true
       },
       {
         spotId: 3,
-        url: "www.thisisaspot.com/4",
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "https://applet3d.com/wp-content/uploads/2021/08/locke-lane-exterior-services-1024x576.jpg",
         preview: true
       },
       {
-        spotId: 1,
-        url: "www.thisisaspot.com/2",
+        spotId: 4,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Fitzgerald_House_%28Los_Angeles%29.jpg",
         preview: true
-      }
+      },
+      {
+        spotId: 5,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: "https://images.pexels.com/photos/3637662/pexels-photo-3637662.jpeg",
+        preview: true
+      },
+      {
+        spotId: 6,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
     ]);
   },
 
