@@ -1,31 +1,55 @@
 /* TODO Add site wide styles */
+* {
+    font-size: 62.5%;
+}
 
-body {
+main {
     display: flex;
     justify-content: center;
-
-    margin: 0 auto;
-    padding: 0 80px;
+    padding: 0 5%;
+    height: 1000px;
+    background-color: lightblue;
 }
 
 header {
-    border-bottom: solid lightgray 1px;
+    position: sticky;
+    top: 0px;
+    border-bottom: 1px rgba(211, 211, 211, 0.533) solid;
+    padding: 0 5%;
+    background-color: #fffffffd;
+    box-shadow: 0px 0px 10px rgba(211, 211, 211, 0.383);
+}
+
+footer {
+    align-items: center;
+    background-color: white;
+    bottom: 0px;
+    border-top: 1px lightgray solid;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 5%;
+    position: fixed;
+    width: 100%;
 }
 
 #root {
     width: 100%;
     max-width: 2500px;
+    box-sizing: border-box;
 }
 
 #submit {
     background-color: #FF385C;
     color: white;
     border-radius: 25px;
-    padding: 5px 10px;
+    padding: 12px 20px;
 }
 
-input{
+input {
+    box-sizing: border-box;
     border: 1px lightgrey solid;
     border-radius: 25px;
     padding: 5px 10px;
+    margin: 5px 0;
 }

@@ -12,15 +12,17 @@ function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
     const [showModal, setShowModal] = useState(false);
     const [login, setLogin] = useState(true);
-
-    console.log(showModal);
+    
     return (
         <>
-            <ul>
-                <li>
-                    <NavLink exact to="/">Home</NavLink>
-                    {isLoaded && <ProfileButton user={sessionUser} setLogin={setLogin} setShowModal={setShowModal} />}
+            <ul className="navigation">
+                <li className="logo">
+                    <i class="fa-solid fa-broom"></i>
+                    <div className="navTitle">
+                        <NavLink to="/">AirBnCF</NavLink>
+                    </div>
                 </li>
+                <li>{isLoaded && <ProfileButton user={sessionUser} setLogin={setLogin} setShowModal={setShowModal} />}</li>
                 {showModal &&
                     <Modal onClose={() => setShowModal(false)}>
                         {login ? <LoginForm setShowModal={setShowModal} /> : <SignupFormPage setShowModal={setShowModal} />}
