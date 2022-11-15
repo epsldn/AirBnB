@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
-import * as sessionActions from '../../store/sessionReducer';
+// frontend/src/components/Navigation/ProfileButton.js
+import React, { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import * as sessionActions from '../../store/session';
 
-export default function ProfileButton() {
+function ProfileButton({ user, setLogin, setShowModal }) {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
-    const user = useSelector(select => select.session.user);
 
     const openMenu = () => {
         if (showMenu) return;
@@ -30,19 +29,12 @@ export default function ProfileButton() {
         dispatch(sessionActions.signout());
     };
 
-
     return (
         <>
             <button onClick={openMenu}>
-                <i className="fa-solid fa-user" />
+                <i className="fas fa-user-circle" />
             </button>
-            {!user && showMenu && (
-                <ul className="profile-dropdown">
-                    <li><Link to="/login">Log in</Link></li>
-                    <li><Link to="/signup">Sign up</Link></li>
-                </ul>
-            )}
-            {user && showMenu && (
+            {showMenu && (user ? (
                 <ul className="profile-dropdown">
                     <li>{user.username}</li>
                     <li>{user.email}</li>
@@ -50,7 +42,19 @@ export default function ProfileButton() {
                         <button onClick={logout}>Log Out</button>
                     </li>
                 </ul>
-            )}
+            ) :
+                (<ul className="profile-dropdown">
+                    <button onClick={() => {
+                        setShowModal(true);
+                        setLogin(true);
+                    }}>Log in</button>
+                    <button onClick={() => {
+                        setShowModal(true);
+                        setLogin(false);
+                    }}>Sign Up</button>
+                </ul>))}
         </>
     );
-};
+}
+
+export default ProfileButton;

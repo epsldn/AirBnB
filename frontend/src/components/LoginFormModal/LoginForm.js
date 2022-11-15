@@ -1,27 +1,25 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import * as sessionActions from "../../store/sessionReducer";
+import * as sessionActions from "../../store/session";
 import "./LoginFormPage.css";
 
-export default function LoginFormPage() {
+export default function LoginForm({ setShowModal }) {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return <Redirect to="/" />;
-
     const handleSubmit = event => {
         event.preventDefault();
-        const errors = [];
         return dispatch(sessionActions.login(credential, password))
+            .then(_ => setShowModal(false))
             .catch(async (res) => {
                 const data = await res.json();
-                if (data && data.errors) setErrors(Object.values(data.errors));
+                if (data && data.message) setErrors([data.message]);
             });
     };
+
     return (
         <form onSubmit={handleSubmit}>
             <h2>Log in</h2>

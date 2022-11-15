@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import LoginFormPage from "./component/LoginFormPage/LoginFormPage";
-import Navigation from "./component/Navigation";
-import SignupFormPage from "./component/SignupFormPage/SignUpFormPage";
-import * as sessionReducer from "./store/sessionReducer";
+import Navigation from "./components/Navigation";
+import SignupFormPage from "./components/SignupFormPage/SignUpFormPage";
+import * as sessionReducer from "./store/session";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,14 +15,8 @@ function App() {
 
   return isLoaded && (
     <>
-      <Navigation />
+      <Navigation isLoaded={isLoaded} />
       <Switch>
-        <Route path="/login">
-          <LoginFormPage />
-        </Route>
-        <Route path="/signup">
-          <SignupFormPage />
-        </Route>
         <Route path="/">
           <h1>Hello from app</h1>
         </Route>
