@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { loginDemoUser } from "../../store/session";
 
 function ProfileButton({ user, setLogin, setShowModal }) {
     const dispatch = useDispatch();
@@ -29,12 +30,15 @@ function ProfileButton({ user, setLogin, setShowModal }) {
         dispatch(sessionActions.signout());
     };
 
+    const handleDemoLogin = () => {
+        dispatch(loginDemoUser())
+    };
     return (
         <div className="profile-button">
             <div>
                 <button onClick={openMenu} className="button-outline">
                     <div className="profile-button-icon">
-                        <i class="fas fa-bars" />
+                        <i className="fas fa-bars" />
                     </div>
                     <div className="profile-button-icon">
                         <i className="fas fa-user-circle" />
@@ -62,7 +66,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
                             setShowModal(true);
                             setLogin(false);
                         }}>
-                        Sign Up
+                        Sign up
                     </li>
                     <li onClick={() => {
                         setShowModal(true);
@@ -70,6 +74,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
                     }}>
                         Log in
                     </li>
+                    <li onClick={_ => dispatch(loginDemoUser())}>Log in as Demo User</li>
                 </ul>))
             }
         </div >

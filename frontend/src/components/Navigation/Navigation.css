@@ -94,3 +94,7 @@ i.fa-broom {
 .profile-button li:hover {
     background-color: #f1f1f1;
 }
+
+.profile-dropdown  li:nth-child(2){
+    border-bottom: 1px solid lightgray;
+}

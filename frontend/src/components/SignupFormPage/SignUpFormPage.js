@@ -84,7 +84,7 @@ export default function SignupFormPage({ setShowModal }) {
                     <h2>Welcome to AirBnCF</h2>
                 </div>
                 {hasSubmitted && <ul className="errors">
-                    {errors.map((error, idx) => <li key={idx}><i class="fa-solid fa-circle-exclamation"></i>{" " + error}</li>)}
+                    {errors.map((error, idx) => <li key={idx}><i className="fa-solid fa-circle-exclamation"></i>{" " + error}</li>)}
                 </ul>}
                 <input
                     type="text"

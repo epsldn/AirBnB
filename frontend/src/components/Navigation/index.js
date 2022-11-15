@@ -12,12 +12,12 @@ function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
     const [showModal, setShowModal] = useState(false);
     const [login, setLogin] = useState(true);
-    
+
     return (
         <>
             <ul className="navigation">
                 <li className="logo">
-                    <i class="fa-solid fa-broom"></i>
+                    <i className="fa-solid fa-broom"></i>
                     <div className="navTitle">
                         <NavLink to="/">AirBnCF</NavLink>
                     </div>
