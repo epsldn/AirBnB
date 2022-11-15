@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import { createUser } from "../../store/sessionReducer";
+import { createUser } from "../../store/session";
 import "./SignUpFormPage.css";
 
 export default function SignupFormPage({ setShowModal }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector(state => state.session.user);
-    if(user)<
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
