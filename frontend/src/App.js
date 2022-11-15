@@ -17,19 +17,23 @@ function App() {
   return isLoaded && (
     <>
       <header>
-        <Navigation isLoaded={isLoaded} />
+        <div className="navigation-container">
+          <Navigation isLoaded={isLoaded} />
+        </div>
       </header>
       <main>
         <Switch>
           <Route path="/">
             <AllSpots />
-            <footer>
-              <h1>Placeholder</h1>
-              <h1>Placeholder</h1>
-            </footer>
           </Route>
         </Switch>
       </main>
+      <footer>
+        <div className="footer-container">
+          <h1>Placeholder</h1>
+          <h1>Placeholder</h1>
+        </div>
+      </footer>
     </>
   );
 }

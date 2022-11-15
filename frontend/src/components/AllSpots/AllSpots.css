@@ -1,3 +1,8 @@
-.spot-outer-frame{
-    
+.all-spots-gallery {
+    width: 100%;
+    gap: 1rem;
+    display: grid;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+    justify-content: space-between;
 }
