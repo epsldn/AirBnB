@@ -62,6 +62,10 @@
     padding-top: 15px;
 }
 
+#spot-host{
+    color: #949494;
+}
+
 #spot-price span {
     font-weight: 550;
 }

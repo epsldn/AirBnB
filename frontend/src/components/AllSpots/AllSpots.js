@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getSpotsFromDb } from "../../store/spots";
 import "./AllSpots.css";
 
 export default function AllSpots() {
-    const history = useHistory();
     const dispatch = useDispatch();
-    const spots = useSelector(state => Object.values(state.spots.Spots));
+    const spots = useSelector(state => state.spots.Spots);
 
     useEffect(() => {
         dispatch(getSpotsFromDb());
@@ -20,11 +19,11 @@ export default function AllSpots() {
     return (
         <div className="all-spots-gallery-container">
             <ul className="all-spots-gallery">
-                {spots.map(spot => (
-                    <Link to={`/spots/${spot.id}`} key={spot.id} className="spots-outer-frame">
+                {Object.values(spots).map(spot => (
+                    <Link to={{ pathname: `/spots/${spot.id}`, state: spots }} key={spot.id} className="spots-outer-frame">
                         <div>
                             <div className="spots-gallery-image-container">
-                                <img src={spot.previewImage ?? console.log(spot.previewImage)} />
+                                <img alt="Property" src={spot.previewImage ?? console.log(spot.previewImage)} />
                             </div>
                             <div className="spots-information-container">
                                 <div className="spots-information">
@@ -42,6 +41,6 @@ export default function AllSpots() {
                     </Link>
                 ))}
             </ul>
-        </div>
+        </div >
     );
 }
