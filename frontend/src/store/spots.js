@@ -56,7 +56,6 @@ export const deleteSpotById = (spotId) => async dispatch => {
 
     if (response.ok) {
         const spot = await response.json();
-        console.log(spot);
         dispatch(deleteSpot(spotId));
         return spot;
     }

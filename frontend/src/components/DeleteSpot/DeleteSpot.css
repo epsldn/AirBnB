@@ -1,0 +1,11 @@
+.delete{
+    font-weight: 700;
+    background: red;
+    text-align: center;
+    color: white;
+    border-radius: 25px;
+    padding: 12px 20px;
+    margin-top: 30px;
+    width: 10vw;
+    margin-bottom: 15px;
+}
