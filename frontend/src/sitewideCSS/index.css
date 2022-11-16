@@ -40,7 +40,6 @@ footer {
 }
 
 #root {
-    width: 100%;
     box-sizing: border-box;
     margin: 0 auto;
 }
@@ -62,7 +61,7 @@ footer {
 }
 
 .spot-showcase{
-    box-sizing: content-box;
+    box-sizing: border-box;
     max-width: 1120px;
     padding: 0 5%;
 }
