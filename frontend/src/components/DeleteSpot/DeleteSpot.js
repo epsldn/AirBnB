@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteSpotById } from "../../store/spots";
+import "./DeleteSpot.css";
 
 export default function DeleteSpot({ spotId }) {
     const dispatch = useDispatch();

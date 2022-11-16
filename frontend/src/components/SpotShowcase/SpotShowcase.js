@@ -10,9 +10,12 @@ const SpotShowCase = () => {
     const dispatch = useDispatch();
     const spot = useSelector(state => state.spots.spotById);
     const user = useSelector(state => state.session.user);
+
     useEffect(() => {
         dispatch(getSpotById(spotId));
     }, [dispatch]);
+
+    const usDollar = Intl.NumberFormat("en-US");
 
     if (!spot.id) return null;
     return (
@@ -52,7 +55,7 @@ const SpotShowCase = () => {
             </div>
             <div>
                 <p>Price PlaceHolder</p>
-                <p>{spot.price}</p>
+                <p>${usDollar.format(Number(spot.price))} a night</p>
             </div>
             {spot.ownerId === user?.id && <DeleteSpot spotId={spot.id} />}
         </div >
