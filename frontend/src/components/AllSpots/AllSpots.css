@@ -1,8 +1,61 @@
 .all-spots-gallery {
     width: 100%;
-    gap: 1rem;
+    column-gap: 1.7rem;
     display: grid;
     grid-auto-flow: dense;
-    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+    grid-template-columns: repeat(auto-fill, minmax(275px, auto));
     justify-content: space-between;
+}
+
+.spots-gallery-image-container {
+    display: flex;
+    height: 70%;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.spots-gallery-image-container img {
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.spots-outer-frame {
+    display: flex;
+    height: 375px;
+}
+
+.spots-rating {
+    display: grid;
+    justify-self: right;
+    font-weight: 400;
+    grid-template-columns: 1fr 1fr;
+    height: fit-content;
+}
+
+.spots-rating i {
+    font-size: .6rem;
+    align-self: center;
+    width: fit-content;
+    justify-self: end;
+    padding: 0 .2rem;
+}
+
+.spots-information-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding-top: 1rem;
+    font-size: .9rem;
+}
+
+#spot-address{
+    font-weight: 575;
+    padding-bottom: 3px;
+}
+
+#spot-price {
+    padding-top: 15px;
+}
+
+#spot-price span {
+    font-weight: 550;
 }
