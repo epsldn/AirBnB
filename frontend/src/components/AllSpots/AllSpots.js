@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getSpotsFromDb } from "../../store/spots";
 import "./AllSpots.css";
 
 export default function AllSpots() {
-    const history = useHistory();
     const dispatch = useDispatch();
     const spots = useSelector(state => Object.values(state.spots.Spots));
 
@@ -24,7 +23,7 @@ export default function AllSpots() {
                     <Link to={`/spots/${spot.id}`} key={spot.id} className="spots-outer-frame">
                         <div>
                             <div className="spots-gallery-image-container">
-                                <img src={spot.previewImage ?? console.log(spot.previewImage)} />
+                                <img alt="Property" src={spot.previewImage ?? console.log(spot.previewImage)} />
                             </div>
                             <div className="spots-information-container">
                                 <div className="spots-information">

@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import AllSpots from "./components/AllSpots/AllSpots";
 import Navigation from "./components/Navigation";
-import SignupFormPage from "./components/SignupFormPage/SignUpFormPage";
 import * as sessionReducer from "./store/session";
 
 function App() {
