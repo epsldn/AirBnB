@@ -9,6 +9,7 @@
 
 #spot-information-summary {
     display: flex;
+    flex-wrap: wrap;
     column-gap: .5rem;
     grid-auto-flow: dense;
 }
@@ -24,9 +25,9 @@
 
 .spot-images-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: .5rem;
-    width: 100%;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fit, minmax(320px, auto));
+    gap: .5rem;
     border-radius: 12px;
     overflow: hidden;
 }
@@ -39,7 +40,17 @@
 
 .non-preview-images-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(50px, auto));
     gap: .5rem;
+}
+
+
+.information-break {
+    padding-right: .5rem;
+}
+
+@media screen and (min-width: 720px) {
+    .non-preview-images-container div:nth-child(2n + 1){
+        grid-column: 1;
+    }
 }
