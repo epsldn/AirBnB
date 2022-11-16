@@ -1,11 +1,11 @@
 /* TODO Add site wide styles */
 * {
     font-size: 62.5%;
+    box-sizing: border-box;
 }
 
 main {
-    padding: 0 5%;
-    height: 1400px;
+    padding: 0 5% 13% 5%;
     max-width: 2500px;
     margin: 0 auto;
 }

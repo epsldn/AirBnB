@@ -23,3 +23,18 @@
   background-color: white;
   border-radius: 8px;
 }
+
+#modal input[type]:first-of-type:focus{
+  border: 2px solid black;
+  border-radius: 8px 8px 0px 0px;
+}
+
+#modal input[type]:last-of-type:focus{
+  border: 2px solid black;
+  border-radius: 0px 0px 8px 8px;
+}
+
+#modal input[type]:focus{
+  border: 2px solid black;
+  border-radius: 8px;
+}

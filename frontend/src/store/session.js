@@ -1,5 +1,4 @@
 import { csrfFetch } from "./csrf";
-import Cookies from "js-cookie";
 
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
@@ -33,7 +32,7 @@ export const login = (credential, password) => async dispatch => {
 export const loginDemoUser = () => async dispatch => {
     const credential = "Demo-lition";
     const password = "password";
-    const response = await csrfFetch("api/session", {
+    const response = await csrfFetch("/api/session", {
         method: "POST",
         body: JSON.stringify({ credential, password })
     });
@@ -53,7 +52,7 @@ export const getSession = () => async dispatch => {
 };
 
 export const createUser = (user) => async dispatch => {
-    const response = await csrfFetch("api/users", {
+    const response = await csrfFetch("/api/users", {
         method: "POST",
         body: JSON.stringify(user)
     });
@@ -77,7 +76,7 @@ export const signout = () => async dispatch => {
     }
 };
 
-export default (state = { user: null }, action) => {
+const sessionReducer = (state = { user: null }, action) => {
     switch (action.type) {
         case SET_USER: {
             return action.user;
@@ -92,3 +91,5 @@ export default (state = { user: null }, action) => {
         }
     }
 };
+
+export default sessionReducer;
