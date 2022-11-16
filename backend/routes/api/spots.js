@@ -234,8 +234,8 @@ router.get("/:spotId", async (req, res, next) => {
             {
                 model: SpotImage,
                 attributes: {
-                    exclude: ["spotId", "updatedAt"]
-                },
+                    exclude: ["spotId", "createdAt", "updatedAt"]
+                }
             }, {
                 model: User,
                 as: "Owner"
@@ -245,10 +245,9 @@ router.get("/:spotId", async (req, res, next) => {
                 attributes: []
             }],
         attributes: {
-            include: [[Sequelize.fn("COUNT", sequelize.col("Reviews.id")), "numReviews"], [Sequelize.fn("avg", sequelize.col("Reviews.stars")), "avgStarRating"]],
+            include: [[Sequelize.fn("COUNT", sequelize.col("Reviews.id")), "numReviews"], [Sequelize.literal(`(select cast(avg("stars") AS DECIMAL(2,1)) from "Reviews" where "spotId" = "Spot"."id")`), "avgStarRating"]],
         },
-        group: ["Spot.id", "Owner.id", "SpotImages.id"],
-        order: [["SpotImages", "preview", "DESC"], ["SpotImages", "updatedAt"]]
+        group: ["Spot.id", "Owner.id", "SpotImages.id"]
     });
 
     if (!spot) {
