@@ -6,7 +6,7 @@ import "./AllSpots.css";
 
 export default function AllSpots() {
     const dispatch = useDispatch();
-    const spots = useSelector(state => Object.values(state.spots.Spots));
+    const spots = useSelector(state => state.spots.Spots);
 
     useEffect(() => {
         dispatch(getSpotsFromDb());
@@ -19,8 +19,8 @@ export default function AllSpots() {
     return (
         <div className="all-spots-gallery-container">
             <ul className="all-spots-gallery">
-                {spots.map(spot => (
-                    <Link to={`/spots/${spot.id}`} key={spot.id} className="spots-outer-frame">
+                {Object.values(spots).map(spot => (
+                    <Link to={{ pathname: `/spots/${spot.id}`, state: spots }} key={spot.id} className="spots-outer-frame">
                         <div>
                             <div className="spots-gallery-image-container">
                                 <img alt="Property" src={spot.previewImage ?? console.log(spot.previewImage)} />
@@ -41,6 +41,6 @@ export default function AllSpots() {
                     </Link>
                 ))}
             </ul>
-        </div>
+        </div >
     );
 }
