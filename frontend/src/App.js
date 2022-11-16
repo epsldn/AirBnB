@@ -18,11 +18,11 @@ function App() {
   return isLoaded && (
     <>
       <header>
-        <div className="navigation-container">
+        <div className={`navigation-container ${location.pathname.includes("/spots/") ? "spot-showcase" : null}`}>
           <Navigation isLoaded={isLoaded} />
         </div>
       </header>
-      <main>
+      <main className={`app-content ${location.pathname.includes("/spots/") ? "spot-showcase" : null}`}>
         <Switch>
           <Route path="/spots/:spotId">
             <SpotShowCase />
@@ -33,7 +33,7 @@ function App() {
         </Switch>
       </main>
       {location.pathname === "/" && <footer>
-        <div className="footer-container">
+        <div className={`footer-container ${location.pathname.includes("/spots/") ? "spot-showcase" : null}`}>
           <h1>Placeholder</h1>
           <h1>Placeholder</h1>
         </div>

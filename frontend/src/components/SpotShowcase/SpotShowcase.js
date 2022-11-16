@@ -25,12 +25,11 @@ const SpotShowCase = () => {
                 <div id="spot-information-summary-container">
                     <div id="spot-information-summary">
                         <div id="spot-review-information">
-                            <div key="avgRating" id="spot-review-rating"> <i className="fa-solid fa-star"></i><p>{spot.avgStarRating ??= "New"}</p></div>
+                            <div id="spot-review-rating"> <i className="fa-solid fa-star"></i><p>{spot.avgStarRating ??= "New"}</p></div>
                             <p>·</p>
-                            <p key="numReviews">{`${spot.numReviews} Reviews`}</p>
+                            <p id="numReviews">{`${spot.numReviews} Reviews`}</p>
                         </div>
-                        <p>.</p>
-                        <p key="spotAddress">{`${spot.city}, ${spot.state}, ${spot.country}`}</p>
+                        <p id="spotAddress"><span className="information-break">.</span>{`${spot.city}, ${spot.state}, ${spot.country}`}</p>
                     </div>
                 </div>
             </div>
