@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { getSpotsFromDb } from "../../store/spots";
 import "./AllSpots.css";
 
@@ -21,7 +21,7 @@ export default function AllSpots() {
         <div className="all-spots-gallery-container">
             <ul className="all-spots-gallery">
                 {spots.map(spot => (
-                    <li key={spot.id} className="spots-outer-frame">
+                    <Link to={`/spots/${spot.id}`} key={spot.id} className="spots-outer-frame">
                         <div>
                             <div className="spots-gallery-image-container">
                                 <img src={spot.previewImage ?? console.log(spot.previewImage)} />
@@ -39,7 +39,7 @@ export default function AllSpots() {
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </Link>
                 ))}
             </ul>
         </div>

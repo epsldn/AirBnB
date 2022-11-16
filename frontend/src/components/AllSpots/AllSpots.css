@@ -1,10 +1,12 @@
 .all-spots-gallery {
     width: 100%;
     column-gap: 1.7rem;
+    row-gap: 2rem;
     display: grid;
     grid-auto-flow: dense;
     grid-template-columns: repeat(auto-fill, minmax(275px, auto));
     justify-content: space-between;
+    padding-top: 2%;
 }
 
 .spots-gallery-image-container {
@@ -21,7 +23,7 @@
 
 .spots-outer-frame {
     display: flex;
-    height: 375px;
+    height: 350px;
 }
 
 .spots-rating {
@@ -40,10 +42,14 @@
     padding: 0 .2rem;
 }
 
+.spots-rating p {
+    align-self: center;
+}
+
 .spots-information-container {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    padding-top: 1rem;
+    padding-top: 1.5rem;
     font-size: .9rem;
 }
 

@@ -23,7 +23,7 @@ function App() {
       </header>
       <main>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <AllSpots />
           </Route>
         </Switch>
