@@ -15,25 +15,27 @@ export default function AllSpots() {
 
     if (spots.length < 1) return;
 
+    const usDollar = Intl.NumberFormat("en-US");
+
     return (
         <div className="all-spots-gallery-container">
             <ul className="all-spots-gallery">
                 {spots.map(spot => (
-                    <li key={spot.id} className="spot-outer-frame">
+                    <li key={spot.id} className="spots-outer-frame">
                         <div>
-                            <div>
+                            <div className="spots-gallery-image-container">
                                 <img src={spot.previewImage ?? console.log(spot.previewImage)} />
                             </div>
-                            <div>
-                                <div>
+                            <div className="spots-information-container">
+                                <div className="spots-information">
                                     <ul>
-                                        <li>{`${spot.city}, ${spot.state}`}</li>
-                                        <li>{`Hosted by ${spot.ownerName[0].toUpperCase() + spot.ownerName.slice(1).toLowerCase()}`}</li>
-                                        <li>{`$${spot.price} night`}</li>
+                                        <li id="spot-address">{`${spot.city}, ${spot.state}`}</li>
+                                        <li id="spot-host">{`Hosted by ${spot.ownerName[0].toUpperCase() + spot.ownerName.slice(1).toLowerCase()}`}</li>
+                                        <li id="spot-price"><span>{"$" + usDollar.format(Number(spot.price))}</span> {`night`}</li>
                                     </ul>
                                 </div>
-                                <div>
-                                    <li><i class="fa-solid fa-star"></i> {`${spot.avgRating ??= "New"}`}</li>
+                                <div className="spots-rating">
+                                    <i className="fa-solid fa-star"></i> <p>{`${spot.avgRating ??= "New"}`}</p>
                                 </div>
                             </div>
                         </div>
