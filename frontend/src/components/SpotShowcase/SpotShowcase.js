@@ -18,6 +18,11 @@ const SpotShowCase = () => {
     const usDollar = Intl.NumberFormat("en-US");
 
     if (!spot.id) return null;
+    const arrLength = spot.SpotImages.length;
+
+    spot.SpotImages.length = 5;
+    spot.SpotImages.fill({}, arrLength);
+
     return (
         <div className="spot-container">
             <div>
@@ -26,39 +31,58 @@ const SpotShowCase = () => {
                     <div id="spot-information-summary">
                         <div id="spot-review-information">
                             <div id="spot-review-rating"> <i className="fa-solid fa-star"></i><p>{spot.avgStarRating ??= "New"}</p></div>
-                            <p>·</p>
-                            <p id="numReviews">{`${spot.numReviews} Reviews`}</p>
+                            <p id="spot-review-numreviews-separator">·</p>
+                            <p id="numReviews">{`${spot.numReviews} `}<span>reviews</span></p>
                         </div>
-                        <p id="spotAddress"><span className="information-break">.</span>{`${spot.city}, ${spot.state}, ${spot.country}`}</p>
+                        <div id="spot-address">
+                            <p className="information-break">.</p>
+                            <p>{`${spot.city}, ${spot.state}, ${spot.country}`}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="spot-images-container">
-                <div className="preview-image-container">
+            <div className="spot-grid-container">
+                <div className="spot-images-container">
                     <img src={`${spot.SpotImages[0].url}`} className="spot-image" id="spot-preview-image" />
-                </div>
-                <div className="non-preview-images-container">
                     {spot.SpotImages.slice(1, 5).map((image, idx) => {
-                        return <div><img src={`${image.url}`} className="spot-image" /></div>;
+                        console.log(idx);
+                        return <img key={idx} id={`spot-image-${+idx + 2}`} src={`${image.url ?? "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png"}`} className="spot-image" />;
                     })}
                 </div>
             </div>
-            <div>
-                <p>{`Entire place hosted by ${spot.Owner.firstName[0].toUpperCase() + spot.Owner.firstName.slice(1)}`}</p>
+            <div id="spot-description-and-booking">
+                <div id="spot-description-container">
+                    <div id="hosted-by-container">
+                        <div>
+                            <p id="hosted-by">{`Entire place hosted by ${spot.Owner.firstName[0].toUpperCase() + spot.Owner.firstName.slice(1)}`}</p>
+                        </div>
+                        <div id="hosted-by-pfp">
+                            <i className="fas fa-user-circle fa-10x" />
+                        </div>
+                    </div>
+                    <div id="aircover-container">
+                        <p id="aircover"><span id="aircover-air">air</span>cover</p>
+                        <p id="aircover-description">Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>
+                        <p class="learn-more">Learn more</p>
+                    </div>
+                    <div id="spot-long-description-container">
+                        <p id="spot-long-description">{spot.description}</p>
+                        <div id="show-more-container">
+                            <p id="show-more">Show More</p><i className="fa-solid fa-greater-than"></i>
+                        </div>
+                    </div>
+                    <div id ="button-holder-spot-description">
+                        {spot.ownerId === user?.id && <DeleteSpot spotId={spot.id} />}
+
+                    </div>
+                </div>
+                <div>
+                    <p>Price PlaceHolder</p>
+                    <p>${usDollar.format(Number(spot.price))} a night</p>
+                </div>
             </div>
-            <div>
-                <p>Air Cover Placeholder</p>
-            </div>
-            <div>
-                <p>{spot.description}</p>
-            </div>
-            <div>
-                <p>Price PlaceHolder</p>
-                <p>${usDollar.format(Number(spot.price))} a night</p>
-            </div>
-            {spot.ownerId === user?.id && <DeleteSpot spotId={spot.id} />}
         </div >
     );
 };
 
-export default SpotShowCase;
+export default SpotShowCase;;

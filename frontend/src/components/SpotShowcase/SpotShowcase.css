@@ -4,7 +4,8 @@
 
 #spot-name {
     font-size: 1.5rem;
-    font-weight: 550;
+    font-weight: 530;
+    padding-bottom: .5%;
 }
 
 #spot-information-summary {
@@ -12,25 +13,79 @@
     flex-wrap: wrap;
     column-gap: .5rem;
     grid-auto-flow: dense;
+    font-size: .85rem;
+    padding-bottom: 2%;
 }
 
 #spot-review-information {
     display: flex;
     column-gap: .2rem;
+    font-weight: 600;
 }
 
 #spot-review-rating {
     display: flex;
 }
 
+#spot-review-rating>i {
+    padding-right: 10%;
+    align-self: center;
+    font-size: .8rem;
+}
+
+#spot-review-numreviews-separator {
+    padding: 0 1px 0 2px;
+}
+
+#numReviews>span {
+    text-decoration: underline;
+    text-decoration-thickness: 1.2px;
+}
+
+#spot-address {
+    display: flex;
+}
+
+.information-break {
+    width: min-content;
+    text-decoration: none;
+    padding-right: .5rem;
+}
+
+#spot-address :nth-child(2) {
+    text-decoration: underline;
+    text-decoration-thickness: 1.2px;
+}
+
 .spot-images-container {
     display: grid;
-    grid-auto-flow: dense;
-    grid-template-columns: repeat(auto-fit, minmax(520px, auto));
-    grid-template-rows: 450px;
+    grid-template-areas:
+        "preview preview img2 img3"
+        "preview preview img4 img5";
     gap: .5rem;
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
+    grid-template-rows: minmax(180px, 20vh) minmax(180px, 20vh);
+}
+
+#spot-preview-image {
+    grid-area: preview;
+}
+
+#spot-image-2 {
+    grid-area: img2;
+}
+
+#spot-image-3 {
+    grid-area: img3;
+}
+
+#spot-image-4 {
+    grid-area: img4;
+}
+
+#spot-image-5 {
+    grid-area: img5;
 }
 
 .spot-images-container img {
@@ -39,30 +94,100 @@
     height: 100%;
 }
 
-.non-preview-images-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, auto));
-    gap: .5rem;
-}
 
-.information-break {
-    padding-right: .5rem;
-}
-
-@media screen and (max-width: 1170px) {
-    .non-preview-images-container {
-        grid-template-rows: minmax(200px, 250px)
-    }
-}
-
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     .spot-images-container {
-        grid-template-columns: repeat(auto-fit, minmax(320px, auto));
+        grid-template-areas:
+            "preview preview preview preview"
+            "preview preview preview preview"
+            "img2 img3 img4 img5";
     }
 }
 
-@media screen and (min-width: 720px) {
-    .non-preview-images-container div:nth-child(2n + 1) {
-        grid-column: 1;
-    }
+#spot-description-and-booking {
+    --margin-right: 10px;
+    --bottom-border: 1px solid #dddddd;
+    padding-top: 3.5%;
+    display: flex;
+    width: 100%;
+    border-bottom: var(--bottom-border);
+}
+
+#spot-description-container {
+    width: 65%;
+}
+
+#hosted-by-container {
+    display: flex;
+    justify-content: space-between;
+    height: 56px;
+    padding-bottom: 10px;
+    margin-right: var(--margin-right);
+    border-bottom: var(--bottom-border)
+}
+
+#hosted-by {
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+#hosted-by-pfp {
+    align-self: center;
+}
+
+#aircover-container {
+    padding: 32px 0;
+    margin-right: var(--margin-right);
+    border-bottom: var(--bottom-border);
+}
+
+#aircover {
+    font-size: 1.6rem;
+    font-weight: 650;
+    line-height: 20px;
+    font-stretch: extra-condensed;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+#aircover-air {
+    color: #ff365b;
+}
+
+#aircover-description {
+    margin-bottom: 16px;
+}
+
+.learn-more {
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+#spot-long-description-container {
+    padding: 32px 0;
+    margin-right: var(--margin-right);
+    border-bottom: var(--bottom-border);
+}
+
+#show-more-container {
+    margin-top: 16px;
+    display: flex;
+    height: 21px;
+}
+
+#show-more {
+    font-weight: 500;
+}
+
+#show-more-container .fa-solid {
+    font-weight: 600;
+    padding-left: .5rem;
+    font-size: .75rem;
+    height: min-content;
+    align-self: center;
+}
+
+#button-holder-spot-description {
+    padding: 32px 0;
+    margin-right: var(--margin-right);
 }
