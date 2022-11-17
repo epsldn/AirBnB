@@ -71,7 +71,7 @@ const SpotShowCase = () => {
                             <p id="show-more">Show More</p><i className="fa-solid fa-greater-than"></i>
                         </div>
                     </div>
-                    <div id ="button-holder-spot-description">
+                    <div id="button-holder-spot-description">
                         {spot.ownerId === user?.id && <DeleteSpot spotId={spot.id} />}
 
                     </div>
@@ -79,6 +79,13 @@ const SpotShowCase = () => {
                 <div>
                     <p>Price PlaceHolder</p>
                     <p>${usDollar.format(Number(spot.price))} a night</p>
+                </div>
+            </div>
+            <div id="spot-reviews-container">
+                <div id="spot-reviews-information">
+                    <div id="spot-reviews-rating"> <i className="fa-solid fa-star"></i><p>{spot.avgStarRating ??= "New"}</p></div>
+                    <p id="spot-reviews-numreviews-separator">·</p>
+                    <p id="spot-reviews-num-reviews">{`${spot.numReviews} `}<span>reviews</span></p>
                 </div>
             </div>
         </div >
