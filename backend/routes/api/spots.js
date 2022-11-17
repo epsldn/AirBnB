@@ -66,7 +66,7 @@ router.get("/current", requireAuth, async (req, res, next) => {
             model: SpotImage,
             attributes: [],
             where: { preview: true },
-            order: ["preview"],
+            order: [["preview"], ["updatedAt"]],
             required: false
         }, {
             model: Review,
@@ -247,6 +247,7 @@ router.get("/:spotId", async (req, res, next) => {
         attributes: {
             include: [[Sequelize.fn("COUNT", sequelize.col("Reviews.id")), "numReviews"], [Sequelize.literal(`(select cast(avg("stars") AS DECIMAL(2,1)) from "Reviews" where "spotId" = "Spot"."id")`), "avgStarRating"]],
         },
+        order: [["SpotImages", "preview"], ["SpotImages", "updatedAt", "DESC"]],
         group: ["Spot.id", "Owner.id", "SpotImages.id"]
     });
 
@@ -307,8 +308,8 @@ router.get("/", validateSpotQueries, async (req, res, next) => {
             as: "Owner",
             attributes: []
         }],
-        attributes: [[Sequelize.col("Owner.firstName"), "ownerName"], "id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "description", "price", "createdAt", "updatedAt", [Sequelize.literal(`(select cast(avg("stars") AS DECIMAL(2,1)) from "Reviews" where "spotId" = "Spot"."id")`), "avgRating"], [Sequelize.literal(`(select "url" from "SpotImages" where "preview" = true and "spotId" = ("Spot"."id") limit 1)`), "previewImage"]],
-        order: ["id"],
+        attributes: [[Sequelize.col("Owner.firstName"), "ownerName"], "id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "description", "price", "createdAt", "updatedAt", [Sequelize.literal(`(select cast(avg("stars") AS DECIMAL(2,1)) from "Reviews" where "spotId" = "Spot"."id")`), "avgRating"], [Sequelize.literal(`(select "url" from "SpotImages" where "preview" = true and "spotId" = ("Spot"."id") ORDER BY "preview", "updatedAt" DESC limit 1)`), "previewImage"]],
+        order: [["id"], ["SpotImages", "preview"], ["SpotImages", "updatedAt", "DESC"]],
         group: [["Spot.id"], ["Owner.firstName"]],
         where
     });

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import { addImageToSpot } from "../../store/spotImages";
 import { createSpot, updateSpot } from "../../store/spots";
 import "./SpotForm.css";
 
@@ -27,12 +28,13 @@ export default function SpotForm() {
     const user = useSelector(state => state.session.user);
 
     const [name, setName] = useState(spot?.name ?? "");
-    const [price, setPrice] = useState(spot?.price ?? "");
     const [address, setAddress] = useState(spot?.address ?? "");
     const [city, setCity] = useState(spot?.city ?? "");
     const [state, setState] = useState(spot?.state ?? "");
     const [country, setCountry] = useState(spot?.country ?? "");
     const [description, setDescription] = useState(spot?.description ?? "");
+    const [previewImageUrl, setPreviewImageUrl] = useState(spot?.SpotImages[0].url ?? "");
+    const [price, setPrice] = useState(spot?.price ?? "");
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [errors, setErrors] = useState([]);
 
@@ -64,15 +66,22 @@ export default function SpotForm() {
             price: parseInt(price),
         };
 
+        const previewImage = {
+            url: previewImageUrl,
+            preview: true
+        };
+
         if (inCreateSpot === false) submission.id = spot.id;
 
-        console.log("8".repeat(50),submission);
         try {
             const response = inCreateSpot ? await dispatch(createSpot(submission)) : await dispatch(updateSpot(submission));
-            console.log(response);
+
+            if (response) {
+                const image = await dispatch(addImageToSpot(spot.id, previewImage));
+            }
         } catch (error) {
+            console.log(error)
             const data = await error.json();
-            console.log(data);
             setErrors(Object.values(data.errors));
             return;
         }
@@ -81,8 +90,10 @@ export default function SpotForm() {
         setPrice("");
         setAddress("");
         setCity("");
+        setState("");
         setCountry("");
         setDescription("");
+        setPreviewImageUrl("");
         setHasSubmitted(false);
         setErrors([]);
 
@@ -134,6 +145,13 @@ export default function SpotForm() {
                         placeholder="Tell us about your place"
                         id="spot-form-textarea"
                     />
+                    <input
+                        type="text"
+                        onChange={event => setPreviewImageUrl(event.target.value)}
+                        value={previewImageUrl}
+                        placeholder="Preview Image Link"
+                    />
+
                     <input
                         type="number"
                         onChange={event => setPrice(event.target.value.replace(".", ""))}

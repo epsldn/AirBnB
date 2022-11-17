@@ -29,10 +29,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
         e.preventDefault();
         dispatch(sessionActions.signout());
     };
-
-    const handleDemoLogin = () => {
-        dispatch(loginDemoUser())
-    };
+    
     return (
         <div className="profile-button">
             <div>
