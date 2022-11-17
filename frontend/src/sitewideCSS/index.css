@@ -15,6 +15,7 @@ header {
 }
 
 .navigation-container {
+    --app-theme-color: #FF385C;
     margin: 0 auto;
     padding: 0 5%;
     max-width: 2500px;

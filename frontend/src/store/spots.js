@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_SPOTS = "spots/getAllSpots";
 const GET_ONE_SPOT = "spots/getSpotById";
+const ADD_SPOT = "spots/addSpot";
 const DELETE_SPOT = "spots/deleteSpot";
 
 const getSpots = (spots) => {
@@ -22,6 +23,13 @@ const deleteSpot = (spotId) => {
     return {
         type: DELETE_SPOT,
         spotId
+    };
+};
+
+const addSpot = (spot) => {
+    return {
+        type: ADD_SPOT,
+        spot
     };
 };
 
@@ -60,6 +68,34 @@ export const deleteSpotById = (spotId) => async dispatch => {
         return spot;
     }
 };
+
+export const createSpot = (spot) => async dispatch => {
+    const response = await csrfFetch("/api/spots", {
+        method: "POST",
+        body: JSON.stringify(spot)
+    });
+
+    if (response.ok) {
+        const spot = await response.json();
+        dispatch(addSpot(spot));
+        return spot;
+    }
+};
+
+
+export const updateSpot = (spot) => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${spot.id}`, {
+        method: "PUT",
+        body: JSON.stringify(spot)
+    });
+
+    if (response.ok) {
+        const spot = await response.json();
+        dispatch(addSpot(spot));
+        return spot;
+    }
+};
+
 
 export default function (state = { Spots: {}, page: 1, size: 20, spotById: {} }, action) {
     switch (action.type) {
