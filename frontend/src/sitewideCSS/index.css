@@ -61,7 +61,7 @@ footer {
 }
 
 .spot-showcase{
-    box-sizing: border-box;
+    box-sizing: content-box;
     max-width: 1120px;
     padding: 0 5%;
 }
