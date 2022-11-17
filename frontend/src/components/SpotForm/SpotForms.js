@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation, useParams } from "react-router-dom";
-import { createSpot, getSpotById, updateSpot } from "../../store/spots";
+import { createSpot, updateSpot } from "../../store/spots";
 import "./SpotForm.css";
 
 function validateData(name, price, address, city, state, country, description) {
@@ -26,20 +26,20 @@ export default function SpotForm() {
     const inCreateSpot = location.pathname.endsWith("/create");
     const user = useSelector(state => state.session.user);
 
-    const [name, setName] = useState(spot.name ?? "");
-    const [price, setPrice] = useState(spot.price ?? "");
-    const [address, setAddress] = useState(spot.address ?? "");
-    const [city, setCity] = useState(spot.city ?? "");
-    const [state, setState] = useState(spot.state ?? "");
-    const [country, setCountry] = useState(spot.country ?? "");
-    const [description, setDescription] = useState(spot.description ?? "");
+    const [name, setName] = useState(spot?.name ?? "");
+    const [price, setPrice] = useState(spot?.price ?? "");
+    const [address, setAddress] = useState(spot?.address ?? "");
+    const [city, setCity] = useState(spot?.city ?? "");
+    const [state, setState] = useState(spot?.state ?? "");
+    const [country, setCountry] = useState(spot?.country ?? "");
+    const [description, setDescription] = useState(spot?.description ?? "");
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [errors, setErrors] = useState([]);
 
+    if (inCreateSpot === false && !spot) return history.push("/");
 
     if (!user) return history.push("/");
 
-    if (inCreateSpot === false && !spot) return history.push("/");
 
 
     const onSubmit = async (event) => {
@@ -52,7 +52,7 @@ export default function SpotForm() {
             return;
         };
 
-        const submission = spot ?? {
+        const submission = {
             name,
             address,
             city,
@@ -64,10 +64,12 @@ export default function SpotForm() {
             price: parseInt(price),
         };
 
-        if (inCreateSpot === false) spot.id = spot.id;
+        if (inCreateSpot === false) submission.id = spot.id;
 
+        console.log("8".repeat(50),submission);
         try {
-            inCreateSpot ? await dispatch(createSpot(spot)) : await dispatch(updateSpot(spot));
+            const response = inCreateSpot ? await dispatch(createSpot(submission)) : await dispatch(updateSpot(submission));
+            console.log(response);
         } catch (error) {
             const data = await error.json();
             console.log(data);

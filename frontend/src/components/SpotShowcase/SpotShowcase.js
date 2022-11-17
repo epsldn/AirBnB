@@ -43,7 +43,7 @@ const SpotShowCase = () => {
             </div>
             <div className="spot-grid-container">
                 <div className="spot-images-container">
-                    <img src={`${spot.SpotImages[0].url}`} className="spot-image" id="spot-preview-image" />
+                    <img src={spot.SpotImages[0].url ?? "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png"} className="spot-image" id="spot-preview-image" />
                     {spot.SpotImages.slice(1, 5).map((image, idx) => {
                         console.log(idx);
                         return <img key={idx} id={`spot-image-${+idx + 2}`} src={`${image.url ?? "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png"}`} className="spot-image" />;
@@ -63,7 +63,7 @@ const SpotShowCase = () => {
                     <div id="aircover-container">
                         <p id="aircover"><span id="aircover-air">air</span>cover</p>
                         <p id="aircover-description">Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>
-                        <p class="learn-more">Learn more</p>
+                        <p className="learn-more">Learn more</p>
                     </div>
                     <div id="spot-long-description-container">
                         <p id="spot-long-description">{spot.description}</p>
