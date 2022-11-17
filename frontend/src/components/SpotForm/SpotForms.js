@@ -145,12 +145,12 @@ export default function SpotForm() {
                         placeholder="Tell us about your place"
                         id="spot-form-textarea"
                     />
-                    <input
+                    {inCreateSpot && <input
                         type="text"
                         onChange={event => setPreviewImageUrl(event.target.value)}
                         value={previewImageUrl}
                         placeholder="Preview Image Link"
-                    />
+                    />}
 
                     <input
                         type="number"

@@ -247,7 +247,7 @@ router.get("/:spotId", async (req, res, next) => {
         attributes: {
             include: [[Sequelize.fn("COUNT", sequelize.col("Reviews.id")), "numReviews"], [Sequelize.literal(`(select cast(avg("stars") AS DECIMAL(2,1)) from "Reviews" where "spotId" = "Spot"."id")`), "avgStarRating"]],
         },
-        order: [["SpotImages", "preview"], ["SpotImages", "updatedAt", "DESC"]],
+        order: [["SpotImages", "preview", "DESC"], ["SpotImages", "updatedAt", "DESC"]],
         group: ["Spot.id", "Owner.id", "SpotImages.id", "SpotImages.preview", "SpotImages.updatedAt"]
     });
 
