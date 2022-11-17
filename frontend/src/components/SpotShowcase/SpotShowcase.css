@@ -15,12 +15,14 @@
     grid-auto-flow: dense;
     font-size: .85rem;
     padding-bottom: 2%;
+    font-stretch: extra-condensed;
 }
 
 #spot-review-information {
     display: flex;
-    column-gap: .2rem;
     font-weight: 600;
+    width: fit-content;
+    justify-content: space-around;
 }
 
 #spot-review-rating {
@@ -29,12 +31,21 @@
 
 #spot-review-rating>i {
     padding-right: 10%;
+    height: min-content;
     align-self: center;
+    padding-bottom: 4px;
     font-size: .8rem;
 }
 
+#spot-review-rating>p {
+    padding-right: .3vw;
+}
+
 #spot-review-numreviews-separator {
-    padding: 0 1px 0 2px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    width: 10px;
 }
 
 #numReviews>span {

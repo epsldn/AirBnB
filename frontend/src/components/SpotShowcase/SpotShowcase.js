@@ -30,8 +30,13 @@ const SpotShowCase = () => {
                 <div id="spot-information-summary-container">
                     <div id="spot-information-summary">
                         <div id="spot-review-information">
-                            <div id="spot-review-rating"> <i className="fa-solid fa-star"></i><p>{spot.avgStarRating ??= "New"}</p></div>
-                            <p id="spot-review-numreviews-separator">·</p>
+                            <div id="spot-review-rating">
+                                <i className="fa-solid fa-star"></i>
+                                <p>{spot.avgStarRating ??= "New"}</p>
+                            </div>
+                            <div id="spot-review-numreviews-separator">
+                                <p>·</p>
+                            </div>
                             <p id="numReviews">{`${spot.numReviews} `}<span>reviews</span></p>
                         </div>
                         <div id="spot-address">
@@ -56,7 +61,7 @@ const SpotShowCase = () => {
                             <p id="hosted-by">{`Entire place hosted by ${spot.Owner.firstName[0].toUpperCase() + spot.Owner.firstName.slice(1)}`}</p>
                         </div>
                         <div id="hosted-by-pfp">
-                            <i className="fas fa-user-circle fa-10x" />
+                            <i className="fas fa-user-circle" />
                         </div>
                     </div>
                     <div id="aircover-container">
