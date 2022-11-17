@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { getSpotById, getSpotsFromDb } from "../../store/spots";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./SpotShowcase.css";
@@ -73,7 +73,7 @@ const SpotShowCase = () => {
                     </div>
                     <div id="button-holder-spot-description">
                         {spot.ownerId === user?.id && <DeleteSpot spotId={spot.id} />}
-
+                        {spot.ownerId === user?.id && <Link to={{ pathname: `/spots/edit/${spot.id}`, state: { spot } }} id="spot-edit-button"> Edit </Link>}
                     </div>
                 </div>
                 <div>

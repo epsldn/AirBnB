@@ -218,3 +218,13 @@
 #spot-reviews-numreviews-separator {
     padding: 0 1px 0 2px;
 }
+
+#spot-edit-button {
+    font-weight: 700;
+    background: white;
+    text-align: center;
+    border: #ff365b 1px solid;
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-left: 20px;
+}

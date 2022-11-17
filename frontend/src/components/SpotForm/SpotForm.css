@@ -1,15 +1,25 @@
 #spot-form-outer-container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    --inner-width: 50%;
+}
+
+#spot-form-outer-container>div {
+    display: flex;
     align-items: center;
     flex-direction: column;
-    --inner-width: 50%;
+    min-width: 350px;
+    max-width: 550px;
+    width: 40vw;
 }
 
 #spot-form-title {
     padding: 32px 0;
     font-size: 2rem;
     font-weight: 600;
-    width: var(--inner-width);
+    width: 100%;
 }
 
 #spot-form-container {
@@ -17,7 +27,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: var(--inner-width);
+    width: 100%;
 }
 
 #spot-form-textarea {
@@ -28,4 +38,9 @@
     padding: 15px 10px;
     width: 100%;
     resize: none;
+}
+
+#spot-form-errors {
+    width: 100%;
+    margin-bottom: 32px;
 }

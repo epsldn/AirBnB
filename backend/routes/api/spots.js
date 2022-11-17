@@ -11,11 +11,11 @@ const validateSpot = [
     check("city").exists({ checkFalsy: true }).withMessage("City is required"),
     check("state").exists({ checkFalsy: true }).withMessage("State is required"),
     check("country").exists({ checkFalsy: true }).withMessage("Country is required"),
-    check("lat").exists({ checkFalsy: true }).isNumeric().withMessage("Lattitude is not valid"),
-    check("lng").exists({ checkFalsy: true }).isNumeric().withMessage("Longtitude is not valid"),
+    check("lat").exists({ checkNull: true }).isNumeric().withMessage("Lattitude is not valid"),
+    check("lng").exists({ checkNull: true }).isNumeric().withMessage("Longtitude is not valid"),
     check("name").exists({ checkFalsy: true }).isLength({ min: 1, max: 50 }).withMessage("Name must be less than 50 characters"),
     check("description").exists({ checkFalsy: true }).withMessage("Description is required"),
-    check("price").exists({ checkFalsy: true }).isNumeric().withMessage("Price per day is required"),
+    check("price").exists({ checkNull: true }).isNumeric().withMessage("Price per day is required"),
     handleValidationErrors
 ];
 

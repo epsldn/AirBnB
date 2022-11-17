@@ -23,7 +23,7 @@ export default function AllSpots() {
                     <Link to={{ pathname: `/spots/${spot.id}`, state: spots }} key={spot.id} className="spots-outer-frame">
                         <div>
                             <div className="spots-gallery-image-container">
-                                <img alt="Property" src={spot.previewImage ?? console.log(spot.previewImage)} />
+                                <img alt="Property" src={spot.previewImage ?? "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png"} />
                             </div>
                             <div className="spots-information-container">
                                 <div className="spots-information">
