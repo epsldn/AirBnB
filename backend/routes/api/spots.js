@@ -248,7 +248,7 @@ router.get("/:spotId", async (req, res, next) => {
             include: [[Sequelize.fn("COUNT", sequelize.col("Reviews.id")), "numReviews"], [Sequelize.literal(`(select cast(avg("stars") AS DECIMAL(2,1)) from "Reviews" where "spotId" = "Spot"."id")`), "avgStarRating"]],
         },
         order: [["SpotImages", "preview"], ["SpotImages", "updatedAt", "DESC"]],
-        group: ["Spot.id", "Owner.id", "SpotImages.id"]
+        group: ["Spot.id", "Owner.id", "SpotImages.id", "SpotImages.preview"]
     });
 
     if (!spot) {
@@ -310,7 +310,7 @@ router.get("/", validateSpotQueries, async (req, res, next) => {
         }],
         attributes: [[Sequelize.col("Owner.firstName"), "ownerName"], "id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "description", "price", "createdAt", "updatedAt", [Sequelize.literal(`(select cast(avg("stars") AS DECIMAL(2,1)) from "Reviews" where "spotId" = "Spot"."id")`), "avgRating"], [Sequelize.literal(`(select "url" from "SpotImages" where "preview" = true and "spotId" = ("Spot"."id") ORDER BY "preview", "updatedAt" DESC limit 1)`), "previewImage"]],
         order: [["id"], ["SpotImages", "preview"], ["SpotImages", "updatedAt", "DESC"]],
-        group: [["Spot.id"], ["Owner.firstName"]],
+        group: [["Spot.id"], ["Owner.firstName"], "SpotImages.preview"],
         where
     });
 
