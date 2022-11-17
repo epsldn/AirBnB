@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { createUser } from "../../store/session";
@@ -16,6 +16,10 @@ export default function SignupFormPage({ setShowModal }) {
     const [retypedPassowrd, setRetypedPassword] = useState("");
     const [errors, setErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
+
+    useEffect(() => {
+        document.body.scrollTo(0, 0)
+    }, [dispatch]);
 
     function resetData() {
         setFirstName("");

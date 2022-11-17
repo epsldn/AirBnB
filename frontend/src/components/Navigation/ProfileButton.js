@@ -29,11 +29,11 @@ function ProfileButton({ user, setLogin, setShowModal }) {
         e.preventDefault();
         dispatch(sessionActions.signout());
     };
-    
+
     return (
-        <div className="profile-button">
+        <div onClick={openMenu} className="profile-button">
             <div>
-                <button onClick={openMenu} className="button-outline">
+                <button className="button-outline fill-button">
                     <div className="profile-button-icon">
                         <i className="fas fa-bars" />
                     </div>
