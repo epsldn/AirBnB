@@ -90,6 +90,21 @@ module.exports = {
         preview: false
       },
       {
+        spotId: 4,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        preview: false
+      },
+      {
         spotId: 5,
         url: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Fitzgerald_House_%28Los_Angeles%29.jpg",
         preview: true

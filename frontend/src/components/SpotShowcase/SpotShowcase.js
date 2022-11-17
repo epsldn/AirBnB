@@ -38,7 +38,7 @@ const SpotShowCase = () => {
                     <img src={`${spot.SpotImages[0].url}`} className="spot-image" id="spot-preview-image" />
                 </div>
                 <div className="non-preview-images-container">
-                    {spot.SpotImages.slice(1).map((image, idx) => {
+                    {spot.SpotImages.slice(1, 5).map((image, idx) => {
                         return <div><img src={`${image.url}`} className="spot-image" /></div>;
                     })}
                 </div>

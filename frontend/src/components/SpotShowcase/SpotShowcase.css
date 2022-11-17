@@ -26,7 +26,8 @@
 .spot-images-container {
     display: grid;
     grid-auto-flow: dense;
-    grid-template-columns: repeat(auto-fit, minmax(320px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(520px, auto));
+    grid-template-rows: 450px;
     gap: .5rem;
     border-radius: 12px;
     overflow: hidden;
@@ -48,10 +49,15 @@
     padding-right: .5rem;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 1170px) {
     .non-preview-images-container {
         grid-template-rows: minmax(200px, 250px)
+    }
+}
 
+@media screen and (max-width: 500px) {
+    .spot-images-container {
+        grid-template-columns: repeat(auto-fit, minmax(320px, auto));
     }
 }
 
