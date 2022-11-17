@@ -16,12 +16,12 @@ function Navigation({ isLoaded }) {
     return (
         <>
             <ul className="navigation">
-                <li className="logo">
+                <NavLink to="/" className="logo">
                     <i className="fa-solid fa-broom"></i>
                     <div className="navTitle">
-                        <NavLink to="/">AirBnCF</NavLink>
+                        <p>AirBnCF</p>
                     </div>
-                </li>
+                </NavLink>
                 <li>{isLoaded && <ProfileButton user={sessionUser} setLogin={setLogin} setShowModal={setShowModal} />}</li>
                 {showModal &&
                     <Modal onClose={() => setShowModal(false)}>
