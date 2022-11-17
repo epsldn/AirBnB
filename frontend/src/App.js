@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import AllSpots from "./components/AllSpots/AllSpots";
 import Navigation from "./components/Navigation";
 import SpotForm from "./components/SpotForm/SpotForms";

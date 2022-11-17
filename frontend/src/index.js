@@ -8,15 +8,17 @@ import App from './App';
 import configureStore from "./store";
 import { csrfFetch, restoreCSRF } from './store/csrf';
 import * as sessionActions from './store/session';
-import { ModalProvider } from './context/Modal';
 import * as spotActions from './store/spots';
+import * as spotImageActions from "./store/spotImages";
+import { ModalProvider } from './context/Modal';
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
   restoreCSRF();
-
+  
   window.sessionActions = sessionActions;
   window.spotActions = spotActions;
+  window.spotImageAction = spotImageActions;
   window.csrfFetch = csrfFetch;
   window.store = store;
 };
