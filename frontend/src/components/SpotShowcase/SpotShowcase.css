@@ -44,13 +44,19 @@
     gap: .5rem;
 }
 
-
 .information-break {
     padding-right: .5rem;
 }
 
+@media screen and (max-width: 720px) {
+    .non-preview-images-container {
+        grid-template-rows: minmax(200px, 250px)
+
+    }
+}
+
 @media screen and (min-width: 720px) {
-    .non-preview-images-container div:nth-child(2n + 1){
+    .non-preview-images-container div:nth-child(2n + 1) {
         grid-column: 1;
     }
 }
