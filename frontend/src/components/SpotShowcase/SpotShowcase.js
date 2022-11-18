@@ -64,6 +64,32 @@ const SpotShowCase = () => {
                             <i className="fas fa-user-circle" />
                         </div>
                     </div>
+                    <div id="three-selling-points">
+                        <div>
+                            <div>
+
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
                     <div id="aircover-container">
                         <p id="aircover"><span id="aircover-air">air</span>cover</p>
                         <p id="aircover-description">Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>

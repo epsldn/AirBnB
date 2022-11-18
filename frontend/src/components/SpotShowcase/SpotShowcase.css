@@ -76,7 +76,7 @@
     gap: .5rem;
     border-radius: 10px;
     overflow: hidden;
-    grid-template-rows: minmax(180px, 27vh) minmax(180px, 27vh);
+    grid-template-rows: minmax(180px, 280px) minmax(180px, 280px);
 }
 
 #spot-preview-image {
@@ -114,6 +114,9 @@
             "img2 img3 img4 img5";
         grid-template-rows: minmax(180px, 10vh) minmax(180px, 27vh);
     }
+    img{
+        object-position: bottom;
+    }
 }
 
 #spot-description-and-booking {
@@ -127,7 +130,7 @@
 }
 
 #spot-description-container {
-    max-width: 750px;
+    max-width: 60%;
 }
 
 #hosted-by-container {
