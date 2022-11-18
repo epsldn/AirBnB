@@ -5,7 +5,7 @@ import { addImageToSpot } from "../../store/spotImages";
 import { createSpot, updateSpot } from "../../store/spots";
 import "./SpotForm.css";
 
-function validateData(name, price, address, city, state, country, description) {
+function validateData(name, price, address, city, state, country, description, previewImageUrl) {
     const errors = [];
     price = +price;
     if (name.length < 1) errors.push("Please enter your name!");
@@ -16,7 +16,7 @@ function validateData(name, price, address, city, state, country, description) {
     if (city.length < 1) errors.push("Please enter your city!");
     if (country.length < 1) errors.push("Please enter your country!");
     if (description.length < 1) errors.push("Please enter your description!");
-
+    // if (previewImageUrl.length < 1) errors.push("Please provide a valid image url");
     return errors;
 }
 
@@ -39,11 +39,10 @@ export default function SpotForm() {
     if (!user) return history.push("/");
 
 
-
     const onSubmit = async (event) => {
         event.preventDefault();
         setHasSubmitted(true);
-        const errors = validateData(name, price, address, city, state, country, description);
+        const errors = validateData(name, price, address, city, state, country, description, previewImageUrl);
 
         if (errors.length > 0) {
             setErrors(errors);
@@ -70,9 +69,11 @@ export default function SpotForm() {
 
         try {
             const spot = await dispatch(createSpot(submission));
-            dispatch(addImageToSpot(spot.id, previewImage));
+            const test = await dispatch(addImageToSpot(spot.id, previewImage));
+            console.log(test);
         } catch (error) {
             const data = await error.json();
+            console.log(data);
             setErrors(Object.values(data.errors));
             return;
         }
