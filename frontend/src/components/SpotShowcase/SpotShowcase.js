@@ -2,19 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { getSpotById, getSpotsFromDb } from "../../store/spots";
+import { amenityPicker, featurePicker, features } from "../../dynamic-icon-feature";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./SpotShowcase.css";
-
-const features = [];
-const featurePicker = (availableFeatures, pickedFeatures = []) => {
-    if (pickedFeatures.length === 2) return pickedFeatures;
-
-    const randomIndex = Math.random() * availableFeatures.length;
-    pickedFeatures.push(availableFeatures[randomIndex]);
-    [availableFeatures[0], availableFeatures[randomIndex]] = [availableFeatures[randomIndex], availableFeatures[0]];
-
-    featurePicker(availableFeatures.slice(1), pickedFeatures);
-};
 
 const SpotShowCase = () => {
     const { spotId } = useParams();
@@ -33,6 +23,10 @@ const SpotShowCase = () => {
 
     spot.SpotImages.length = 5;
     spot.SpotImages.fill({}, arrLength);
+
+    const [feature1, feature2] = featurePicker(features);
+    const amenityArray = amenityPicker();
+    const bedNumber = Math.floor(Math.random() * 4 + 2);
 
     return (
         <div className="spot-container">
@@ -77,34 +71,50 @@ const SpotShowCase = () => {
                     <div id="hosted-by-container">
                         <div>
                             <p id="hosted-by">{`Entire place hosted by ${spot.Owner.firstName[0].toUpperCase() + spot.Owner.firstName.slice(1)}`}</p>
+                            <p id="spot-rooms">{bedNumber * 2} Guests · {Math.floor(bedNumber * 1.5)} bedrooms · {bedNumber} beds · {Math.floor(bedNumber * .75)} baths</p>
                         </div>
                         <div id="hosted-by-pfp">
                             <i className="fas fa-user-circle" />
                         </div>
                     </div>
                     <div id="three-selling-points">
-                        <div>
-                            <div>
-
+                        <div className="three-selling-points-div">
+                            <div className="three-selling-points-icon">
+                                <i className="fa-solid fa-medal"></i>
                             </div>
-                            <div>
-
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-
-                            </div>
-                            <div>
-
+                            <div className="three-selling-points-summary">
+                                <div className="three-selling-points-title">
+                                    <p>{spot.Owner.firstName[0].toUpperCase() + spot.Owner.firstName.slice(1)} is a Superhost</p>
+                                </div>
+                                <div className="three-selling-points-description">
+                                    <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <div>
-
+                        <div className="three-selling-points-div">
+                            <div className="three-selling-points-icon">
+                                {feature1.icon}
                             </div>
-                            <div>
-
+                            <div className="three-selling-points-summary">
+                                <div className="three-selling-points-title">
+                                    {feature1.title}
+                                </div>
+                                <div className="three-selling-points-description">
+                                    {feature1.description}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="three-selling-points-div" id="three-selling-points-last">
+                            <div className="three-selling-points-icon">
+                                {feature2.icon}
+                            </div>
+                            <div className="three-selling-points-summary">
+                                <div className="three-selling-points-title">
+                                    {feature2.title}
+                                </div>
+                                <div className="three-selling-points-description">
+                                    {feature2.description}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -119,10 +129,27 @@ const SpotShowCase = () => {
                             <p id="show-more">Show More</p><i className="fa-solid fa-greater-than"></i>
                         </div>
                     </div>
-                    <div id="button-holder-spot-description">
-                        {spot.ownerId === user?.id && <DeleteSpot spotId={spot.id} />}
-                        {spot.ownerId === user?.id && <Link to={{ pathname: `/spots/${spot.id}/edit`, state: { spot } }} id="spot-edit-button"> Edit </Link>}
+                    <div id="amenity-list-container">
+                        <div id="amenity-list-title">
+                            <p>What this place offers</p>
+                        </div>
+                        <div id="amenity-list">
+                            {amenityArray.map((amenity, idx) => (
+                                <div className={`amenity-container`} key={amenity.title}>
+                                    <div className="amenity-icon">
+                                        {amenity.icon}
+                                    </div>
+                                    <div className="amenity-title">
+                                        {amenity.title}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
+                    {spot.ownerId === user?.id && <div id="button-holder-spot-description">
+                        {<DeleteSpot spotId={spot.id} />}
+                        {<Link to={{ pathname: `/spots/${spot.id}/edit`, state: { spot } }} id="spot-edit-button"> Edit </Link>}
+                    </div>}
                 </div>
                 <div>
                     <p>Price PlaceHolder</p>
