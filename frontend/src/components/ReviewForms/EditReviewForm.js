@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useSpotEditedContext } from "../../context/isEditedContext";
 import { createReview, updateReview } from "../../store/reviews";
 import "./ReviewForms.css";

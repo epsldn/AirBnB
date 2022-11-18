@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { createUser } from "../../store/session";
 import "./SignUpFormPage.css";
 
 export default function SignupFormPage({ setShowModal }) {
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -18,7 +16,7 @@ export default function SignupFormPage({ setShowModal }) {
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
     useEffect(() => {
-        document.body.scrollTo(0, 0)
+        document.body.scrollTo(0, 0);
     }, [dispatch]);
 
     function resetData() {
@@ -32,7 +30,7 @@ export default function SignupFormPage({ setShowModal }) {
 
     function validateData() {
         const errors = [];
-        const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
         if (firstName.length < 1) errors.push("Please enter your first name");
         if (lastName.length < 1) errors.push("Please enter your last name");

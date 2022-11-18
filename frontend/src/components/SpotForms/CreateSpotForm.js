@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { addImageToSpot } from "../../store/spotImages";
-import { createSpot, updateSpot } from "../../store/spots";
+import { createSpot } from "../../store/spots";
 import "./SpotForm.css";
 
 function validateData(name, price, address, city, state, country, description, previewImageUrl) {
@@ -69,7 +69,7 @@ export default function SpotForm() {
 
         try {
             const spot = await dispatch(createSpot(submission));
-            const test = await dispatch(addImageToSpot(spot.id, previewImage));
+            await dispatch(addImageToSpot(spot.id, previewImage));
         } catch (error) {
             const data = await error.json();
             setErrors(Object.values(data.errors));
