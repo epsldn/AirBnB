@@ -70,10 +70,8 @@ export default function SpotForm() {
         try {
             const spot = await dispatch(createSpot(submission));
             const test = await dispatch(addImageToSpot(spot.id, previewImage));
-            console.log(test);
         } catch (error) {
             const data = await error.json();
-            console.log(data);
             setErrors(Object.values(data.errors));
             return;
         }

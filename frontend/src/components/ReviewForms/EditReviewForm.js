@@ -42,7 +42,6 @@ export default function EditReviewForm({ spot, review: oldReview, setShowModal }
                 dispatch(createReview(spot.id, submission));
             }
         } catch (error) {
-            console.log(error);
             const data = await error.json();
             data.errors ? setErrors(Object.values(data.errors)) : setErrors(data.message);
             return;
