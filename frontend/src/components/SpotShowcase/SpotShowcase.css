@@ -15,12 +15,14 @@
     grid-auto-flow: dense;
     font-size: .85rem;
     padding-bottom: 2%;
+    font-stretch: extra-condensed;
 }
 
 #spot-review-information {
     display: flex;
-    column-gap: .2rem;
-    font-weight: 600;
+    font-weight: 500;
+    width: fit-content;
+    justify-content: space-around;
 }
 
 #spot-review-rating {
@@ -29,17 +31,35 @@
 
 #spot-review-rating>i {
     padding-right: 10%;
+    height: min-content;
     align-self: center;
+    padding-bottom: 4px;
     font-size: .8rem;
 }
 
+#spot-review-rating>p {
+    padding-right: .3vw;
+}
+
 #spot-review-numreviews-separator {
-    padding: 0 1px 0 2px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    width: 10px;
 }
 
 #numReviews>span {
     text-decoration: underline;
     text-decoration-thickness: 1.2px;
+}
+
+#super-host {
+    display: flex;
+}
+
+#super-host-content-container {
+    display: inherit;
+
 }
 
 #spot-address {
@@ -52,9 +72,26 @@
     padding-right: .5rem;
 }
 
-#spot-address :nth-child(2) {
+#super-host-content-container {
+    display: flex;
+}
+
+#super-host-content-container>i {
+    height: min-content;
+    align-self: center;
+    padding-right: .5rem;
+}
+
+.information-break:last-of-type {
+    padding-left: .5rem;
+    padding-right: 0;
+}
+
+
+#spot-address {
     text-decoration: underline;
     text-decoration-thickness: 1.2px;
+    font-weight: 500;
 }
 
 .spot-images-container {
@@ -65,7 +102,7 @@
     gap: .5rem;
     border-radius: 10px;
     overflow: hidden;
-    grid-template-rows: minmax(180px, 20vh) minmax(180px, 20vh);
+    grid-template-rows: minmax(180px, 280px) minmax(180px, 280px);
 }
 
 #spot-preview-image {
@@ -95,12 +132,17 @@
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
     .spot-images-container {
         grid-template-areas:
             "preview preview preview preview"
             "preview preview preview preview"
             "img2 img3 img4 img5";
+        grid-template-rows: minmax(180px, 10vh) minmax(180px, 27vh);
+    }
+
+    img {
+        object-position: bottom;
     }
 }
 
@@ -111,10 +153,11 @@
     display: flex;
     width: 100%;
     border-bottom: var(--bottom-border);
+    flex-wrap: wrap;
 }
 
 #spot-description-container {
-    width: 65%;
+    max-width: 60%;
 }
 
 #hosted-by-container {
@@ -125,6 +168,13 @@
     margin-right: var(--margin-right);
     border-bottom: var(--bottom-border)
 }
+
+@media screen and (max-width: 1000px) {
+    #spot-description-container {
+        max-width: 1000px;
+    }
+}
+
 
 #hosted-by {
     font-weight: 500;

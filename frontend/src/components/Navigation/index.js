@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
@@ -8,6 +8,7 @@ import LoginForm from '../LoginFormModal/LoginForm';
 import SignupFormPage from '../SignupFormPage/SignUpFormPage';
 
 function Navigation({ isLoaded }) {
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const [showModal, setShowModal] = useState(false);
     const [login, setLogin] = useState(true);
@@ -16,12 +17,17 @@ function Navigation({ isLoaded }) {
         <>
             <ul className="navigation">
                 <NavLink to="/" className="logo">
-                    <i className="fa-solid fa-broom"></i>
-                    <div className="navTitle">
-                        <p>AirBnCF</p>
+                    <div>
+                        <i className="fa-solid fa-broom"></i>
+                        <div className="navTitle">
+                            <p>AirBnCF</p>
+                        </div>
                     </div>
                 </NavLink>
-                <li>{isLoaded && <ProfileButton user={sessionUser} setLogin={setLogin} setShowModal={setShowModal} />}</li>
+                <div id="right-navigation-container">
+                    {sessionUser && <button id="right-navigation-airbncf" onClick={_ => history.push("/spots/create")}>AirBnCF your home</button>}
+                    <li>{isLoaded && <ProfileButton user={sessionUser} setLogin={setLogin} setShowModal={setShowModal} />}</li>
+                </div>
                 {showModal &&
                     <Modal onClose={() => setShowModal(false)}>
                         {login ? <LoginForm setShowModal={setShowModal} /> : <SignupFormPage setShowModal={setShowModal} />}

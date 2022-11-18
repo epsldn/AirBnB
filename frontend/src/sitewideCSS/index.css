@@ -1,9 +1,10 @@
 /* TODO Add site wide styles */
 .app-content {
-    padding: 0 5% 13% 5%;
+    padding: 0 5%;
     max-width: 2500px;
     margin: 0 auto;
     min-width: 390px;
+    padding-bottom: 60px;
 }
 
 header {
@@ -41,7 +42,7 @@ footer {
 }
 
 #root {
-    box-sizing: border-box;
+    box-sizing: content-box;
     margin: 0 auto;
 }
 
@@ -63,7 +64,7 @@ footer {
 }
 
 .spot-showcase {
-    box-sizing: border-box;
-    max-width: 1280px;
-    padding: 0 5%;
+    box-sizing: content-box;
+    max-width: 1120px;
+    padding-bottom: 0px;
 }

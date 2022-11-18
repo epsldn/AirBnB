@@ -5,6 +5,17 @@ import { getSpotById, getSpotsFromDb } from "../../store/spots";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./SpotShowcase.css";
 
+const features = [];
+const featurePicker = (availableFeatures, pickedFeatures = []) => {
+    if (pickedFeatures.length === 2) return pickedFeatures;
+
+    const randomIndex = Math.random() * availableFeatures.length;
+    pickedFeatures.push(availableFeatures[randomIndex]);
+    [availableFeatures[0], availableFeatures[randomIndex]] = [availableFeatures[randomIndex], availableFeatures[0]];
+
+    featurePicker(availableFeatures.slice(1), pickedFeatures);
+};
+
 const SpotShowCase = () => {
     const { spotId } = useParams();
     const dispatch = useDispatch();
@@ -30,12 +41,24 @@ const SpotShowCase = () => {
                 <div id="spot-information-summary-container">
                     <div id="spot-information-summary">
                         <div id="spot-review-information">
-                            <div id="spot-review-rating"> <i className="fa-solid fa-star"></i><p>{spot.avgStarRating ??= "New"}</p></div>
-                            <p id="spot-review-numreviews-separator">·</p>
+                            <div id="spot-review-rating">
+                                <i className="fa-solid fa-star"></i>
+                                <p>{spot.avgStarRating ??= "New"}</p>
+                            </div>
+                            <div id="spot-review-numreviews-separator">
+                                <p>·</p>
+                            </div>
                             <p id="numReviews">{`${spot.numReviews} `}<span>reviews</span></p>
                         </div>
-                        <div id="spot-address">
+                        <div id="super-host">
                             <p className="information-break">.</p>
+                            <div id="super-host-content-container">
+                                <i className="fa-solid fa-medal"></i>
+                                <p>Superhost</p>
+                            </div>
+                            <p className="information-break">.</p>
+                        </div>
+                        <div id="spot-address">
                             <p>{`${spot.city}, ${spot.state}, ${spot.country}`}</p>
                         </div>
                     </div>
@@ -56,7 +79,33 @@ const SpotShowCase = () => {
                             <p id="hosted-by">{`Entire place hosted by ${spot.Owner.firstName[0].toUpperCase() + spot.Owner.firstName.slice(1)}`}</p>
                         </div>
                         <div id="hosted-by-pfp">
-                            <i className="fas fa-user-circle fa-10x" />
+                            <i className="fas fa-user-circle" />
+                        </div>
+                    </div>
+                    <div id="three-selling-points">
+                        <div>
+                            <div>
+
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+
+                            </div>
+                            <div>
+
+                            </div>
                         </div>
                     </div>
                     <div id="aircover-container">
@@ -72,7 +121,7 @@ const SpotShowCase = () => {
                     </div>
                     <div id="button-holder-spot-description">
                         {spot.ownerId === user?.id && <DeleteSpot spotId={spot.id} />}
-                        {spot.ownerId === user?.id && <Link to={{ pathname: `/spots/edit/${spot.id}`, state: { spot } }} id="spot-edit-button"> Edit </Link>}
+                        {spot.ownerId === user?.id && <Link to={{ pathname: `/spots/${spot.id}/edit`, state: { spot } }} id="spot-edit-button"> Edit </Link>}
                     </div>
                 </div>
                 <div>

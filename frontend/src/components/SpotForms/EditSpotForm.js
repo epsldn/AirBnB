@@ -10,6 +10,7 @@ function validateData(name, price, address, city, state, country, description) {
     price = +price;
     if (name.length < 1) errors.push("Please enter your name!");
     if (isNaN(price) || price < 0) errors.push("Price must be a positive number!");
+    if (+price > 999999) errors.push("Please keep the amount below $1 million");
     if (address.length < 1) errors.push("Please enter your street address!");
     if (state.length < 1) errors.push("Please enter your state!");
     if (city.length < 1) errors.push("Please enter your city!");
@@ -23,26 +24,21 @@ export default function SpotForm() {
     const dispatch = useDispatch();
     const history = useHistory();
     const location = useLocation();
-    const spot = location.state?.spot;
-    const inCreateSpot = location.pathname.endsWith("/create");
+
+    const { spot } = location.state;
     const user = useSelector(state => state.session.user);
 
-    const [name, setName] = useState(spot?.name ?? "");
-    const [address, setAddress] = useState(spot?.address ?? "");
-    const [city, setCity] = useState(spot?.city ?? "");
-    const [state, setState] = useState(spot?.state ?? "");
-    const [country, setCountry] = useState(spot?.country ?? "");
-    const [description, setDescription] = useState(spot?.description ?? "");
-    const [previewImageUrl, setPreviewImageUrl] = useState(spot?.SpotImages[0].url ?? "");
-    const [price, setPrice] = useState(spot?.price ?? "");
+    const [name, setName] = useState(spot.name);
+    const [address, setAddress] = useState(spot.address);
+    const [city, setCity] = useState(spot.city);
+    const [state, setState] = useState(spot.state);
+    const [country, setCountry] = useState(spot.country);
+    const [description, setDescription] = useState(spot.description);
+    const [price, setPrice] = useState(spot.price);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [errors, setErrors] = useState([]);
 
-    if (inCreateSpot === false && !spot) return history.push("/");
-
     if (!user) return history.push("/");
-
-
 
     const onSubmit = async (event) => {
         event.preventDefault();
@@ -55,6 +51,7 @@ export default function SpotForm() {
         };
 
         const submission = {
+            id: spot.id,
             name,
             address,
             city,
@@ -66,21 +63,9 @@ export default function SpotForm() {
             price: parseInt(price),
         };
 
-        const previewImage = {
-            url: previewImageUrl,
-            preview: true
-        };
-
-        if (inCreateSpot === false) submission.id = spot.id;
-
         try {
-            const response = inCreateSpot ? await dispatch(createSpot(submission)) : await dispatch(updateSpot(submission));
-
-            if (response) {
-                const image = await dispatch(addImageToSpot(spot.id, previewImage));
-            }
+            await dispatch(updateSpot(submission));
         } catch (error) {
-            console.log(error)
             const data = await error.json();
             setErrors(Object.values(data.errors));
             return;
@@ -93,7 +78,6 @@ export default function SpotForm() {
         setState("");
         setCountry("");
         setDescription("");
-        setPreviewImageUrl("");
         setHasSubmitted(false);
         setErrors([]);
 
@@ -101,11 +85,11 @@ export default function SpotForm() {
     };
 
     return (
-        <div id="spot-form-outer-container">
+        <div className="spot-form-outer-container">
             <div>
-                <h1 id="spot-form-title">{inCreateSpot ? "Let's get you started!" : "Let's update your spot!"}</h1>
-                <form onSubmit={onSubmit} id="spot-form-container" className="form">
-                    {hasSubmitted && <ul className="errors" id="spot-form-errors">
+                <h1 className="spot-form-title">Let's review your spot!</h1>
+                <form onSubmit={onSubmit} className="spot-form-container form">
+                    {hasSubmitted && <ul className="errors spot-form-errors">
                         {errors.map((error, idx) => <li key={idx}><i className="fa-solid fa-circle-exclamation"></i>{" " + error}</li>)}
                     </ul>}
                     <input
@@ -143,14 +127,8 @@ export default function SpotForm() {
                         onChange={event => setDescription(event.target.value)}
                         value={description}
                         placeholder="Tell us about your place"
-                        id="spot-form-textarea"
+                        className="spot-form-textarea"
                     />
-                    {inCreateSpot && <input
-                        type="text"
-                        onChange={event => setPreviewImageUrl(event.target.value)}
-                        value={previewImageUrl}
-                        placeholder="Preview Image Link"
-                    />}
 
                     <input
                         type="number"
@@ -160,7 +138,7 @@ export default function SpotForm() {
                         placeholder="Price per night"
                         className="form-last"
                     />
-                    <button type="submit" id="submit">{inCreateSpot ? "Create" : "Update"} Spot!</button>
+                    <button type="submit" className="spot-form-submit">Update Spot!</button>
                 </form>
             </div>
         </div>

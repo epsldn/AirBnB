@@ -1,11 +1,13 @@
 // frontend/src/components/Navigation/ProfileButton.js
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { Link, useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import { loginDemoUser } from "../../store/session";
 
 function ProfileButton({ user, setLogin, setShowModal }) {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [showMenu, setShowMenu] = useState(false);
 
     const openMenu = () => {
@@ -29,11 +31,11 @@ function ProfileButton({ user, setLogin, setShowModal }) {
         e.preventDefault();
         dispatch(sessionActions.signout());
     };
-    
+
     return (
-        <div className="profile-button">
+        <div onClick={openMenu} className="profile-button">
             <div>
-                <button onClick={openMenu} className="button-outline">
+                <button className="button-outline fill-button">
                     <div className="profile-button-icon">
                         <i className="fas fa-bars" />
                     </div>
@@ -45,8 +47,13 @@ function ProfileButton({ user, setLogin, setShowModal }) {
             {showMenu && (user ?
                 (
                     <ul className="profile-dropdown">
-                        <p>{user.username}</p>
-                        <p>{user.email}</p>
+                        <div>
+                            <p>{user.username}</p>
+                            <p>{user.email}</p>
+                        </div>
+                        <li onClick={_ => history.push("/spots/create")}>
+                            AirBnCF your home
+                        </li>
                         <li onClick={logout}>
                             Log Out
                         </li>

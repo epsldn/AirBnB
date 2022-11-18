@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import { Route, Switch, useLocation } from "react-router-dom";
 import AllSpots from "./components/AllSpots/AllSpots";
 import Navigation from "./components/Navigation";
-import SpotForm from "./components/SpotForm/SpotForms";
+import CreateSpotForm from "./components/SpotForms/CreateSpotForm";
+import EditSpotForm from "./components/SpotForms/EditSpotForm";
 import SpotShowCase from "./components/SpotShowcase/SpotShowcase";
 import * as sessionReducer from "./store/session";
 
@@ -26,10 +27,10 @@ function App() {
       <main className={`app-content ${location.pathname.includes("/spots/") && !isNaN(location.pathname[location.pathname.length - 1]) ? "spot-showcase" : ""}`}>
         <Switch>
           <Route exact path="/spots/create">
-            <SpotForm />
+            <CreateSpotForm />
           </Route>
-          <Route exact path="/spots/edit/:spotId">
-            <SpotForm />
+          <Route exact path="/spots/:spotId/edit/">
+            <EditSpotForm />
           </Route>
           <Route exact path="/spots/:spotId">
             <SpotShowCase />
