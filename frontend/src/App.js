@@ -19,7 +19,7 @@ function App() {
 
   return isLoaded && (
     <>
-      <header>
+      <header id={isNaN(location.pathname[location.pathname.length - 1]) ? null : "stop-navigation"}>
         <div className={`navigation-container ${location.pathname.includes("/spots/") && !isNaN(location.pathname[location.pathname.length - 1]) ? "spot-showcase" : ""}`}>
           <Navigation isLoaded={isLoaded} />
         </div>
