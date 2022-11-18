@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useSpotEditedContext } from "../../context/isEditedContext";
 import { createReview, updateReview } from "../../store/reviews";
 import "./ReviewForms.css";
@@ -42,7 +42,6 @@ export default function EditReviewForm({ spot, review: oldReview, setShowModal }
                 dispatch(createReview(spot.id, submission));
             }
         } catch (error) {
-            console.log(error);
             const data = await error.json();
             data.errors ? setErrors(Object.values(data.errors)) : setErrors(data.message);
             return;
