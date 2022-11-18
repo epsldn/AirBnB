@@ -11,11 +11,13 @@ import * as sessionActions from './store/session';
 import * as spotActions from './store/spots';
 import * as spotImageActions from "./store/spotImages";
 import { ModalProvider } from './context/Modal';
+
+import { IsEditedProvider } from './context/isEditedContext';
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
   restoreCSRF();
-  
+
   window.sessionActions = sessionActions;
   window.spotActions = spotActions;
   window.spotImageAction = spotImageActions;
@@ -28,9 +30,11 @@ function Root() {
 
     <Provider store={store}>
       <ModalProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <IsEditedProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </IsEditedProvider>
       </ModalProvider>
     </Provider>
   );

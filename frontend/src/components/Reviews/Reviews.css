@@ -37,6 +37,7 @@
 .reviews-outer-container {
     display: flex;
     flex-wrap: row;
+    justify-content: space-between;
 }
 
 .review-container {
@@ -44,22 +45,22 @@
     flex-flow: column;
     padding: 0 8px;
     margin-right: 8%;
-    min-width: 400px
+    width: 50%;
 }
 
-.title-container{
+.title-container {
     display: flex;
     column-gap: 16px;
     align-items: center;
     margin-bottom: 16px
 }
 
-.user-review-name{
+.user-review-name {
     font-weight: 500;
     font-size: 1.2rem;
 }
 
-.user-review-date{
+.user-review-date {
     font-weight: 300;
     font-size: .9rem;
 }

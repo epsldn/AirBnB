@@ -36,7 +36,7 @@ export default function Reviews({ spot }) {
                         <div className="full-review-container">
                             <p>{review.review}</p>
                         </div>
-                        {review.User.id === user.id && <div>
+                        {review.User.id === user?.id && <div>
                             <button className="demo-button">Edit</button>
                             <button className="demo-button">Delete</button>
                         </div>}
