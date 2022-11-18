@@ -8,7 +8,7 @@ import "./SpotForm.css";
 function validateData(name, price, address, city, state, country, description, previewImageUrl) {
     const errors = [];
     price = +price;
-    if (name.length < 1) errors.push("Please enter your name!");
+    if (name.length < 1) errors.push("Please enter your spot's name!");
     if (isNaN(price) || price < 0) errors.push("Price must be a positive number!");
     if (+price > 999999) errors.push("Please keep the amount below $1 million");
     if (address.length < 1) errors.push("Please enter your street address!");

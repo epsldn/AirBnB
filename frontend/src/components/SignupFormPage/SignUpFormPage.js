@@ -37,7 +37,7 @@ export default function SignupFormPage({ setShowModal }) {
         if (firstName.length < 1) errors.push("Please enter your first name");
         if (lastName.length < 1) errors.push("Please enter your last name");
         if (email.length < 3) errors.push("Email must be longer than 3 characters");
-        else if (emailRegex.test === false) errors.push("Please enter a valid email");
+        if (emailRegex.test === false) errors.push("Please enter a valid email");
         if (email.length > 256) errors.push("Email must be less than 256 charcters long");
         if (username.length < 4 || username.length > 30) errors.push("Username must be between 4 and 30 character long");
         if (password.length < 8) errors.push("Password must be longer than 8 characters");
@@ -52,7 +52,8 @@ export default function SignupFormPage({ setShowModal }) {
         event.preventDefault();
         setHasSubmitted(true);
         const returnedErrors = validateData();
-        if (returnedErrors.length > 1) return;
+        console.log(returnedErrors)
+        if (returnedErrors.length > 0) return;
 
         const user = {
             firstName,
@@ -72,7 +73,6 @@ export default function SignupFormPage({ setShowModal }) {
             });
 
         resetData();
-        history.push("/");
     };
 
     return (

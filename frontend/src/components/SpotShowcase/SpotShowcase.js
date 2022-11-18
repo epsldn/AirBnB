@@ -6,16 +6,20 @@ import { amenityPicker, featurePicker, features } from "../../dynamic-icon-featu
 import "./SpotShowcase.css";
 import Booking from "../Bookings/Booking";
 import Reviews from "../Reviews/Reviews";
+import { useSpotEditedContext } from "../../context/isEditedContext";
 
 const SpotShowCase = () => {
     const { spotId } = useParams();
     const dispatch = useDispatch();
     const spot = useSelector(state => state.spots.spotById);
     const user = useSelector(state => state.session.user);
+    const { isEdited, setIsEdited } = useSpotEditedContext();
 
     useEffect(() => {
         dispatch(getSpotById(spotId));
-    }, [dispatch]);
+        setIsEdited(false);
+    }, [dispatch, isEdited]);
+
 
     if (!spot.id) return null;
     const arrLength = spot.SpotImages.length;
@@ -120,13 +124,13 @@ const SpotShowCase = () => {
                     <div id="aircover-container">
                         <p id="aircover"><span id="aircover-air">air</span>cover</p>
                         <p id="aircover-description">Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>
-                        <p className="learn-more">Learn more</p>
+                        {/* <p className="learn-more">Learn more</p> */}
                     </div>
                     <div id="spot-long-description-container">
                         <p id="spot-long-description">{spot.description}</p>
-                        <div id="show-more-container">
+                        {/* <div id="show-more-container">
                             <p id="show-more">Show More</p><i className="fa-solid fa-greater-than"></i>
-                        </div>
+                        </div> */}
                     </div>
                     <div id="amenity-list-container">
                         <div id="amenity-list-title">

@@ -1,11 +1,12 @@
 .spot-container {
     padding-top: 2%;
+    font-size: .9rem;
 }
 
 #spot-name {
     font-size: 1.5rem;
     font-weight: 530;
-    padding-bottom: .5%;
+    padding-bottom: 1%;
 }
 
 #spot-information-summary {

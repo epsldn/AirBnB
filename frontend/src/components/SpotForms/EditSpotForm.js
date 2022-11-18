@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
+import { useSpotEditedContext } from "../../context/isEditedContext";
 import { addImageToSpot } from "../../store/spotImages";
 import { createSpot, updateSpot } from "../../store/spots";
 import "./SpotForm.css";
@@ -8,7 +9,7 @@ import "./SpotForm.css";
 function validateData(name, price, address, city, state, country, description) {
     const errors = [];
     price = +price;
-    if (name.length < 1) errors.push("Please enter your name!");
+    if (name.length < 1) errors.push("Please enter your spot's name!");
     if (isNaN(price) || price < 0) errors.push("Price must be a positive number!");
     if (+price > 999999) errors.push("Please keep the amount below $1 million");
     if (address.length < 1) errors.push("Please enter your street address!");
@@ -34,8 +35,10 @@ export default function SpotForm({ setShowModal, spot }) {
     const [price, setPrice] = useState(spot.price);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [errors, setErrors] = useState([]);
+    const {setIsEdited } = useSpotEditedContext();
 
     if (!user) return history.push("/");
+
 
     const onSubmit = async (event) => {
         event.preventDefault();
@@ -78,14 +81,15 @@ export default function SpotForm({ setShowModal, spot }) {
         setHasSubmitted(false);
         setErrors([]);
 
-        history.push("/");
+        setIsEdited(true);
+        setShowModal(false);
     };
 
     return (
         <div className="spot-form-outer-container-edit">
             <div id="edit-spot-form-header">
                 <div>
-                    <p id="edit-form-close"><span  onClick={_ => setShowModal(false)} id="edit-x">x</span></p>
+                    <p id="edit-form-close"><span onClick={_ => setShowModal(false)} id="edit-x">x</span></p>
                 </div>
                 <div>
                     <h1 id="edit-form-title">Let's update your spot!</h1>
