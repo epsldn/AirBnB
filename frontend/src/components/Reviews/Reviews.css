@@ -10,6 +10,7 @@
     display: flex;
     column-gap: .2rem;
     font-weight: 600;
+    margin-bottom: 32px;
 }
 
 #spot-reviews-rating {
@@ -26,26 +27,26 @@
     padding: 0 1px 0 2px;
 }
 
-.demo-button {
-    border-radius: 10px;
-    margin-top: 5px;
-    margin-right: 5px;
-    padding: 5px 10px;
-    border: 1px solid lightgray;
-}
-
 .reviews-outer-container {
     display: flex;
-    flex-wrap: row;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
 .review-container {
     display: flex;
+    flex-basis: 50%;
     flex-flow: column;
-    padding: 0 8px;
-    margin-right: 8%;
-    width: 50%;
+    padding-left: 8px;
+    max-width: 50%;
+    margin-bottom: 40px;
+    padding-right: 40px;
+}
+
+.user-review-buttons-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .title-container {
@@ -55,6 +56,7 @@
     margin-bottom: 16px
 }
 
+
 .user-review-name {
     font-weight: 500;
     font-size: 1.2rem;
@@ -63,4 +65,20 @@
 .user-review-date {
     font-weight: 300;
     font-size: .9rem;
+}
+
+.full-review-container {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+@media screen and (max-width: 550px) {
+    .review-container {
+        min-width: 350px
+    }
+}
+
+#delete-review:hover {
+    background-color: red;
+    color: white;
 }

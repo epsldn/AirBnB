@@ -1,0 +1,49 @@
+.review-button {
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: 1px solid lightgray;
+    font-weight: 600;
+    font-size: .9rem;
+}
+
+#edit-review:hover {
+    background-color: #e6e6e68e;
+}
+
+#add-review-button {
+    border: 1px solid black;
+    padding: 13px 23px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+#add-review-button:hover {
+    background-color: #e6e6e68e;
+}
+
+#add-review-container {
+    font-size: 1rem;
+}
+
+#review-form-main-container {
+    min-width: 350px;
+    max-width: 500px;
+    width: 30vw;
+    height: auto;
+}
+
+#review-form-main-container > * {
+    width: 100%;
+}
+
+#spot-form-container #review-first-input:focus{
+    border-radius: 8px 8px 0px 0px;
+    border: 2px solid black
+}
+
+#spot-form-container #review-last-input:focus{
+    border-radius:  0px 0px 8px 8px;
+    border: 2px solid black
+}
