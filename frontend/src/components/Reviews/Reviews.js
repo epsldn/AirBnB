@@ -40,7 +40,7 @@ export default function Reviews({ spot }) {
                                 </div>
                                 <div className="user-review-buttons-container">
                                     <div className="user-review-information">
-                                        <p className="user-review-name">{review.User.firstName}</p>
+                                        <p className="user-review-name">{review.User.firstName[0].toUpperCase() + review.User.firstName.slice(1).toLowerCase()}</p>
                                         <p className="user-review-date">{new Date(review.createdAt).toLocaleString("default", { month: "long" })}</p>
                                     </div>
                                     {review.User.id === user?.id && <div>
