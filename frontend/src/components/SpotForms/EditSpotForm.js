@@ -20,12 +20,9 @@ function validateData(name, price, address, city, state, country, description) {
     return errors;
 }
 
-export default function SpotForm() {
+export default function SpotForm({ setShowModal, spot }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const location = useLocation();
-
-    const { spot } = location.state;
     const user = useSelector(state => state.session.user);
 
     const [name, setName] = useState(spot.name);
@@ -85,9 +82,16 @@ export default function SpotForm() {
     };
 
     return (
-        <div className="spot-form-outer-container">
-            <div>
-                <h1 className="spot-form-title">Let's review your spot!</h1>
+        <div className="spot-form-outer-container-edit">
+            <div id="edit-spot-form-header">
+                <div>
+                    <p id="edit-form-close"><span  onClick={_ => setShowModal(false)} id="edit-x">x</span></p>
+                </div>
+                <div>
+                    <h1 id="edit-form-title">Let's update your spot!</h1>
+                </div>
+            </div>
+            <div id="spot-form-container">
                 <form onSubmit={onSubmit} className="spot-form-container form">
                     {hasSubmitted && <ul className="errors spot-form-errors">
                         {errors.map((error, idx) => <li key={idx}><i className="fa-solid fa-circle-exclamation"></i>{" " + error}</li>)}

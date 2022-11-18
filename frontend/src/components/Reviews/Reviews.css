@@ -3,6 +3,7 @@
     padding: 48px 0;
     font-size: 1.2rem;
     border-bottom: var(--bottom-border);
+    box-sizing: border-box;
 }
 
 #spot-reviews-information {
@@ -23,4 +24,42 @@
 
 #spot-reviews-numreviews-separator {
     padding: 0 1px 0 2px;
+}
+
+.demo-button {
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: 1px solid lightgray;
+}
+
+.reviews-outer-container {
+    display: flex;
+    flex-wrap: row;
+}
+
+.review-container {
+    display: flex;
+    flex-flow: column;
+    padding: 0 8px;
+    margin-right: 8%;
+    min-width: 400px
+}
+
+.title-container{
+    display: flex;
+    column-gap: 16px;
+    align-items: center;
+    margin-bottom: 16px
+}
+
+.user-review-name{
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.user-review-date{
+    font-weight: 300;
+    font-size: .9rem;
 }
