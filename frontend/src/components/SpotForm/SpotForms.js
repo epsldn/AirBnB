@@ -79,7 +79,7 @@ export default function SpotForm() {
             const spot = inCreateSpot ? await dispatch(createSpot(submission)) : await dispatch(updateSpot(submission));
 
             if (inCreateSpot && spot) {
-                const test = dispatch(addImageToSpot(spot.id, previewImage));
+                dispatch(addImageToSpot(spot.id, previewImage));
             }
 
         } catch (error) {
