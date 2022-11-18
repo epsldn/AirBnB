@@ -7,6 +7,60 @@
     --inner-width: 50%;
 }
 
+#edit-spot-form-header {
+    box-sizing: border-box;
+    display: flex;
+    min-height: 60px;
+    height: 80px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    flex-direction: row;
+    border-bottom: 1px solid lightgray;
+    align-items: center;
+    padding: 16px 0;
+}
+
+#edit-form-close {
+    justify-self: flex-start;
+    padding: 0px 20px;
+    font-weight: 600;
+}
+
+#edit-form-title {
+    font-size: 1.5rem;
+    width: fit-content;
+    font-weight: 500;
+}
+
+#edit-x {
+    cursor: pointer;
+}
+
+.edit-spot-form-header>h1 {
+    font-size: 1.5rem;
+}
+
+
+.spot-form-outer-container-edit {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh;
+    max-height: 580px;
+    --inner-width: 50%;
+}
+
+.spot-form-outer-container-edit>div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 350px;
+    max-width: 550px;
+    width: 40vw;
+}
+
 .spot-form-outer-container>div {
     display: flex;
     align-items: center;
@@ -76,4 +130,9 @@
     margin-top: 30px;
     margin-bottom: 15px;
     font-weight: 600;
+}
+
+#spot-form-container {
+    overflow-y: scroll;
+    padding: 16px 0;
 }
