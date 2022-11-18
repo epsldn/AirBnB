@@ -2,32 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { getSpotById, getSpotsFromDb } from "../../store/spots";
+import { amenityPicker, featurePicker, features } from "../../dynamic-icon-feature";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./SpotShowcase.css";
-
-const features = [
-    { icon: (<i className="fa-solid fa-location-dot"></i>), title: "Great location", description: "100% of recent guests gave the location a 5-star rating." },
-    { icon: (<i className="fa-solid fa-key"></i>), title: "Great check-in experience", description: "100% of recent guests gave the check-in process a 5-star rating." },
-    { icon: (<i className="fa-regular fa-calendar-xmark"></i>), title: "Free cancellation for 48 hours.", description: "" },
-    { icon: (<i className="fa-solid fa-house-laptop"></i>), title: "Great for remote work", description: "Fast wifi at 94 Mbps, plus a dedicated workspace in a private room." },
-    { icon: (<i className="fa-solid fa-door-open"></i>), title: "Self check-in", description: "Check yourself in with the keypad." },
-    { icon: (<i className="fa-solid fa-computer"></i>), title: "Dedicated workspace", description: "A common area with wifi that’s well-suited for working." },
-    { icon: (<i className="fa-solid fa-square-parking"></i>), title: "Park for free", description: "This is one of the few places in the area with free parking." },
-    { icon: (<i className="fa-regular fa-star"></i>), title: "Experienced host", description: "Host has 10,145 reviews for other places." },
-    { icon: (<i className="fa-solid fa-person-swimming"></i>), title: "Dive right in", description: "This is one of the few places in the area with a pool." },
-    { icon: (<i className="fa-solid fa-wifi"></i>), title: "Fast wifi", description: "At 115 Mbps, you can take video calls and stream videos for your whole group." },
-];
-
-
-const featurePicker = (availableFeatures, pickedFeatures = []) => {
-    if (pickedFeatures.length === 2) return pickedFeatures;
-    availableFeatures = availableFeatures.slice(0);
-    const randomIndex = Math.floor(Math.random() * availableFeatures.length);
-    pickedFeatures.push(availableFeatures[randomIndex]);
-    [availableFeatures[0], availableFeatures[randomIndex]] = [availableFeatures[randomIndex], availableFeatures[0]];
-
-    return featurePicker(availableFeatures.slice(1), pickedFeatures);
-};
 
 const SpotShowCase = () => {
     const { spotId } = useParams();
@@ -48,7 +25,9 @@ const SpotShowCase = () => {
     spot.SpotImages.fill({}, arrLength);
 
     const [feature1, feature2] = featurePicker(features);
+    const amenityArray = amenityPicker();
     const bedNumber = Math.floor(Math.random() * 4 + 2);
+
     return (
         <div className="spot-container">
             <div>
@@ -92,7 +71,7 @@ const SpotShowCase = () => {
                     <div id="hosted-by-container">
                         <div>
                             <p id="hosted-by">{`Entire place hosted by ${spot.Owner.firstName[0].toUpperCase() + spot.Owner.firstName.slice(1)}`}</p>
-                            <p id="spot-rooms">{bedNumber * 2} Guests · {Math.floor(bedNumber * 1.5)} bedrooms · {bedNumber} beds · {Math.floor(bedNumber *.75)} baths</p>
+                            <p id="spot-rooms">{bedNumber * 2} Guests · {Math.floor(bedNumber * 1.5)} bedrooms · {bedNumber} beds · {Math.floor(bedNumber * .75)} baths</p>
                         </div>
                         <div id="hosted-by-pfp">
                             <i className="fas fa-user-circle" />
@@ -125,7 +104,7 @@ const SpotShowCase = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="three-selling-points-div">
+                        <div className="three-selling-points-div" id="three-selling-points-last">
                             <div className="three-selling-points-icon">
                                 {feature2.icon}
                             </div>
@@ -150,10 +129,27 @@ const SpotShowCase = () => {
                             <p id="show-more">Show More</p><i className="fa-solid fa-greater-than"></i>
                         </div>
                     </div>
-                    <div id="button-holder-spot-description">
-                        {spot.ownerId === user?.id && <DeleteSpot spotId={spot.id} />}
-                        {spot.ownerId === user?.id && <Link to={{ pathname: `/spots/${spot.id}/edit`, state: { spot } }} id="spot-edit-button"> Edit </Link>}
+                    <div id="amenity-list-container">
+                        <div id="amenity-list-title">
+                            <p>What this place offers</p>
+                        </div>
+                        <div id="amenity-list">
+                            {amenityArray.map((amenity, idx) => (
+                                <div className={`amenity-container`} key={amenity.title}>
+                                    <div className="amenity-icon">
+                                        {amenity.icon}
+                                    </div>
+                                    <div className="amenity-title">
+                                        {amenity.title}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
+                    {spot.ownerId === user?.id && <div id="button-holder-spot-description">
+                        {<DeleteSpot spotId={spot.id} />}
+                        {<Link to={{ pathname: `/spots/${spot.id}/edit`, state: { spot } }} id="spot-edit-button"> Edit </Link>}
+                    </div>}
                 </div>
                 <div>
                     <p>Price PlaceHolder</p>

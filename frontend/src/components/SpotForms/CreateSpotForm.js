@@ -94,7 +94,7 @@ export default function SpotForm() {
     return (
         <div className="spot-form-outer-container">
             <div>
-                <h1 className="spot-form-title">Let's get you started!</h1>
+                <h1 className="spot-form-title">Let's get started!</h1>
                 <form onSubmit={onSubmit} className="spot-form-container form">
                     {hasSubmitted && <ul className="errors spot-form-errors">
                         {errors.map((error, idx) => <li key={idx}><i className="fa-solid fa-circle-exclamation"></i>{" " + error}</li>)}
