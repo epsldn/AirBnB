@@ -10,6 +10,7 @@ function validateData(name, price, address, city, state, country, description) {
     price = +price;
     if (name.length < 1) errors.push("Please enter your name!");
     if (isNaN(price) || price < 0) errors.push("Price must be a positive number!");
+    if (+price > 999999) errors.push("Please keep the amount below $1 million");
     if (address.length < 1) errors.push("Please enter your street address!");
     if (state.length < 1) errors.push("Please enter your state!");
     if (city.length < 1) errors.push("Please enter your city!");
@@ -71,16 +72,18 @@ export default function SpotForm() {
             preview: true
         };
 
+        console.log("IN CREATE SPOT", inCreateSpot);
         if (inCreateSpot === false) submission.id = spot.id;
 
         try {
-            const response = inCreateSpot ? await dispatch(createSpot(submission)) : await dispatch(updateSpot(submission));
+            const spot = inCreateSpot ? await dispatch(createSpot(submission)) : await dispatch(updateSpot(submission));
 
-            if (response) {
-                const image = await dispatch(addImageToSpot(spot.id, previewImage));
+            if (inCreateSpot && spot) {
+                const test = dispatch(addImageToSpot(spot.id, previewImage));
             }
+
         } catch (error) {
-            console.log(error)
+            console.log(error);
             const data = await error.json();
             setErrors(Object.values(data.errors));
             return;

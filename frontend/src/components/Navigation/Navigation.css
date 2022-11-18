@@ -93,27 +93,28 @@ i.fa-broom {
     box-shadow: 0px 0px 10px rgb(211, 211, 211);
     padding-top: 10px;
     overflow: hidden;
+    font-size: .8rem;
 }
 
 .profile-dropdown li {
-    padding: 8px 10px;
+    padding: 10px;
     cursor: pointer;
 }
 
 .profile-dropdown p {
-    padding: 4px 10px;
+    cursor: default;
+    font-weight: 500;
+    font-size: .9rem;
+    padding: 6px 10px;
 }
 
-.profile-dropdown p:nth-child(2) {
+.profile-dropdown>div {
     border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
 }
 
 .profile-button li:hover {
     background-color: #f1f1f1;
-}
-
-.profile-dropdown li:nth-child(2) {
-    border-bottom: 1px solid lightgray;
 }
 
 #right-navigation-container {
