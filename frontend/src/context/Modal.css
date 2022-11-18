@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  z-index: 10;
 }
 
 #modal-background {

@@ -20,12 +20,9 @@ function validateData(name, price, address, city, state, country, description) {
     return errors;
 }
 
-export default function SpotForm() {
+export default function SpotForm({ setShowModal, spot}) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const location = useLocation();
-
-    const { spot } = location.state;
     const user = useSelector(state => state.session.user);
 
     const [name, setName] = useState(spot.name);

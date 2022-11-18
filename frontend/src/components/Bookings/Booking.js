@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
+import EditSpotModal from "../SpotForms/EditSpotModal";
 import "./Booking.css";
 
 export default function Booking({ spot }) {
@@ -14,7 +15,8 @@ export default function Booking({ spot }) {
                 <p>${usDollar.format(Number(spot.price))} a night</p>
                 {spot.ownerId === user?.id && <div id="button-holder-spot-description">
                     {<DeleteSpot spotId={spot.id} />}
-                    {<Link to={{ pathname: `/spots/${spot.id}/edit`, state: { spot } }} id="spot-edit-button"> Edit </Link>}
+                    {/* {<Link to={{ pathname: `/spots/${spot.id}/edit`, state: { spot } }} id="spot-edit-button"> Edit </Link>} */}
+                    {<EditSpotModal spot={spot} />}
                 </div>}
             </div>
         </div>

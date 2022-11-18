@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useParams } from "react-router-dom";
-import { getSpotById, getSpotsFromDb } from "../../store/spots";
+import { useParams } from "react-router-dom";
+import { getSpotById } from "../../store/spots";
 import { amenityPicker, featurePicker, features } from "../../dynamic-icon-feature";
-import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./SpotShowcase.css";
 import Booking from "../Bookings/Booking";
 import Reviews from "../Reviews/Reviews";
