@@ -246,11 +246,6 @@
     align-self: center;
 }
 
-#button-holder-spot-description {
-    padding: 32px 0;
-    margin-right: var(--margin-right);
-}
-
 #spot-edit-button {
     font-weight: 700;
     background: white;
