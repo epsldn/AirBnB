@@ -5,15 +5,28 @@ import { getSpotById, getSpotsFromDb } from "../../store/spots";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./SpotShowcase.css";
 
-const features = [];
+const features = [
+    { icon: (<i className="fa-solid fa-location-dot"></i>), title: "Great location", description: "100% of recent guests gave the location a 5-star rating." },
+    { icon: (<i className="fa-solid fa-key"></i>), title: "Great check-in experience", description: "100% of recent guests gave the check-in process a 5-star rating." },
+    { icon: (<i className="fa-regular fa-calendar-xmark"></i>), title: "Free cancellation for 48 hours.", description: "" },
+    { icon: (<i className="fa-solid fa-house-laptop"></i>), title: "Great for remote work", description: "Fast wifi at 94 Mbps, plus a dedicated workspace in a private room." },
+    { icon: (<i className="fa-solid fa-door-open"></i>), title: "Self check-in", description: "Check yourself in with the keypad." },
+    { icon: (<i className="fa-solid fa-computer"></i>), title: "Dedicated workspace", description: "A common area with wifi that’s well-suited for working." },
+    { icon: (<i className="fa-solid fa-square-parking"></i>), title: "Park for free", description: "This is one of the few places in the area with free parking." },
+    { icon: (<i className="fa-regular fa-star"></i>), title: "Experienced host", description: "Host has 10,145 reviews for other places." },
+    { icon: (<i className="fa-solid fa-person-swimming"></i>), title: "Dive right in", description: "This is one of the few places in the area with a pool." },
+    { icon: (<i className="fa-solid fa-wifi"></i>), title: "Fast wifi", description: "At 115 Mbps, you can take video calls and stream videos for your whole group." },
+];
+
+
 const featurePicker = (availableFeatures, pickedFeatures = []) => {
     if (pickedFeatures.length === 2) return pickedFeatures;
-
-    const randomIndex = Math.random() * availableFeatures.length;
+    availableFeatures = availableFeatures.slice(0);
+    const randomIndex = Math.floor(Math.random() * availableFeatures.length);
     pickedFeatures.push(availableFeatures[randomIndex]);
     [availableFeatures[0], availableFeatures[randomIndex]] = [availableFeatures[randomIndex], availableFeatures[0]];
 
-    featurePicker(availableFeatures.slice(1), pickedFeatures);
+    return featurePicker(availableFeatures.slice(1), pickedFeatures);
 };
 
 const SpotShowCase = () => {
@@ -34,6 +47,8 @@ const SpotShowCase = () => {
     spot.SpotImages.length = 5;
     spot.SpotImages.fill({}, arrLength);
 
+    const [feature1, feature2] = featurePicker(features);
+    const bedNumber = Math.floor(Math.random() * 4 + 2);
     return (
         <div className="spot-container">
             <div>
@@ -77,34 +92,50 @@ const SpotShowCase = () => {
                     <div id="hosted-by-container">
                         <div>
                             <p id="hosted-by">{`Entire place hosted by ${spot.Owner.firstName[0].toUpperCase() + spot.Owner.firstName.slice(1)}`}</p>
+                            <p id="spot-rooms">{bedNumber * 2} Guests · {Math.floor(bedNumber * 1.5)} bedrooms · {bedNumber} beds · {Math.floor(bedNumber *.75)} baths</p>
                         </div>
                         <div id="hosted-by-pfp">
                             <i className="fas fa-user-circle" />
                         </div>
                     </div>
                     <div id="three-selling-points">
-                        <div>
-                            <div>
-
+                        <div className="three-selling-points-div">
+                            <div className="three-selling-points-icon">
+                                <i className="fa-solid fa-medal"></i>
                             </div>
-                            <div>
-
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-
-                            </div>
-                            <div>
-
+                            <div className="three-selling-points-summary">
+                                <div className="three-selling-points-title">
+                                    <p>{spot.Owner.firstName[0].toUpperCase() + spot.Owner.firstName.slice(1)} is a Superhost</p>
+                                </div>
+                                <div className="three-selling-points-description">
+                                    <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <div>
-
+                        <div className="three-selling-points-div">
+                            <div className="three-selling-points-icon">
+                                {feature1.icon}
                             </div>
-                            <div>
-
+                            <div className="three-selling-points-summary">
+                                <div className="three-selling-points-title">
+                                    {feature1.title}
+                                </div>
+                                <div className="three-selling-points-description">
+                                    {feature1.description}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="three-selling-points-div">
+                            <div className="three-selling-points-icon">
+                                {feature2.icon}
+                            </div>
+                            <div className="three-selling-points-summary">
+                                <div className="three-selling-points-title">
+                                    {feature2.title}
+                                </div>
+                                <div className="three-selling-points-description">
+                                    {feature2.description}
+                                </div>
                             </div>
                         </div>
                     </div>
