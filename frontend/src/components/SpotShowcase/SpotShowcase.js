@@ -5,6 +5,8 @@ import { getSpotById, getSpotsFromDb } from "../../store/spots";
 import { amenityPicker, featurePicker, features } from "../../dynamic-icon-feature";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./SpotShowcase.css";
+import Booking from "../Bookings/Booking";
+import Reviews from "../Reviews/Reviews";
 
 const SpotShowCase = () => {
     const { spotId } = useParams();
@@ -15,8 +17,6 @@ const SpotShowCase = () => {
     useEffect(() => {
         dispatch(getSpotById(spotId));
     }, [dispatch]);
-
-    const usDollar = Intl.NumberFormat("en-US");
 
     if (!spot.id) return null;
     const arrLength = spot.SpotImages.length;
@@ -146,23 +146,10 @@ const SpotShowCase = () => {
                             ))}
                         </div>
                     </div>
-                    {spot.ownerId === user?.id && <div id="button-holder-spot-description">
-                        {<DeleteSpot spotId={spot.id} />}
-                        {<Link to={{ pathname: `/spots/${spot.id}/edit`, state: { spot } }} id="spot-edit-button"> Edit </Link>}
-                    </div>}
                 </div>
-                <div>
-                    <p>Price PlaceHolder</p>
-                    <p>${usDollar.format(Number(spot.price))} a night</p>
-                </div>
+                <Booking spot={spot} />
             </div>
-            <div id="spot-reviews-container">
-                <div id="spot-reviews-information">
-                    <div id="spot-reviews-rating"> <i className="fa-solid fa-star"></i><p>{spot.avgStarRating ??= "New"}</p></div>
-                    <p id="spot-reviews-numreviews-separator">·</p>
-                    <p id="spot-reviews-num-reviews">{`${spot.numReviews} `}<span>reviews</span></p>
-                </div>
-            </div>
+            <Reviews spot={spot} user={user} />
         </div >
     );
 };

@@ -103,6 +103,7 @@
     border-radius: 10px;
     overflow: hidden;
     grid-template-rows: minmax(180px, 220px) minmax(180px, 220px);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 #spot-preview-image {
@@ -157,13 +158,12 @@
 }
 
 #spot-description-container {
-    max-width: 60%;
+    max-width: 60.00%;
 }
 
 #hosted-by-container {
     display: flex;
     justify-content: space-between;
-    height: 56px;
     padding-bottom: 10px;
     margin-right: var(--margin-right);
     border-bottom: var(--bottom-border)
@@ -171,7 +171,13 @@
 
 @media screen and (max-width: 1000px) {
     #spot-description-container {
+        min-width: 390px;
         max-width: 1000px;
+    }
+
+    #spot-reviews-container {
+        min-width: 390px;
+        max-width: 100%;
     }
 }
 
@@ -183,6 +189,7 @@
 
 #spot-rooms {
     font-weight: 300;
+    padding-top: .25rem;
 }
 
 #hosted-by-pfp {
@@ -244,33 +251,6 @@
 #button-holder-spot-description {
     padding: 32px 0;
     margin-right: var(--margin-right);
-}
-
-#spot-reviews-container {
-    --bottom-border: 1px solid #dddddd;
-    padding: 48px 0;
-    font-size: 1.2rem;
-    border-bottom: var(--bottom-border);
-}
-
-#spot-reviews-information {
-    display: flex;
-    column-gap: .2rem;
-    font-weight: 600;
-}
-
-#spot-reviews-rating {
-    display: flex;
-}
-
-#spot-reviews-rating>i {
-    padding-right: 10%;
-    align-self: center;
-    font-size: .8rem;
-}
-
-#spot-reviews-numreviews-separator {
-    padding: 0 1px 0 2px;
 }
 
 #spot-edit-button {

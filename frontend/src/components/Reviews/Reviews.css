@@ -1,0 +1,26 @@
+#spot-reviews-container {
+    --bottom-border: 1px solid #dddddd;
+    padding: 48px 0;
+    font-size: 1.2rem;
+    border-bottom: var(--bottom-border);
+}
+
+#spot-reviews-information {
+    display: flex;
+    column-gap: .2rem;
+    font-weight: 600;
+}
+
+#spot-reviews-rating {
+    display: flex;
+}
+
+#spot-reviews-rating>i {
+    padding-right: 10%;
+    align-self: center;
+    font-size: .8rem;
+}
+
+#spot-reviews-numreviews-separator {
+    padding: 0 1px 0 2px;
+}

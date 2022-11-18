@@ -1,0 +1,18 @@
+#booking-holder {
+    width: 40%;
+    position: relative;
+    display: flex;
+    justify-content: end;
+}
+
+#booking-content {
+    width: 85%;
+    position: sticky;
+    padding: 24px;
+    top: 48px;
+    border: 1px solid lightgray;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    height: fit-content;
+    box-shadow: rgb(0, 0, 0, 0.12) 0px 6px 16px 0px;
+}
