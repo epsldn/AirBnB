@@ -20,7 +20,7 @@
 
 #spot-review-information {
     display: flex;
-    font-weight: 600;
+    font-weight: 500;
     width: fit-content;
     justify-content: space-around;
 }
@@ -53,6 +53,15 @@
     text-decoration-thickness: 1.2px;
 }
 
+#super-host {
+    display: flex;
+}
+
+#super-host-content-container {
+    display: inherit;
+
+}
+
 #spot-address {
     display: flex;
 }
@@ -63,9 +72,26 @@
     padding-right: .5rem;
 }
 
-#spot-address :nth-child(2) {
+#super-host-content-container {
+    display: flex;
+}
+
+#super-host-content-container>i {
+    height: min-content;
+    align-self: center;
+    padding-right: .5rem;
+}
+
+.information-break:last-of-type {
+    padding-left: .5rem;
+    padding-right: 0;
+}
+
+
+#spot-address {
     text-decoration: underline;
     text-decoration-thickness: 1.2px;
+    font-weight: 500;
 }
 
 .spot-images-container {
@@ -114,7 +140,8 @@
             "img2 img3 img4 img5";
         grid-template-rows: minmax(180px, 10vh) minmax(180px, 27vh);
     }
-    img{
+
+    img {
         object-position: bottom;
     }
 }

@@ -4,6 +4,7 @@
     max-width: 2500px;
     margin: 0 auto;
     min-width: 390px;
+    padding-bottom: 60px;
 }
 
 header {
@@ -65,4 +66,5 @@ footer {
 .spot-showcase {
     box-sizing: content-box;
     max-width: 1120px;
+    padding-bottom: 0px;
 }

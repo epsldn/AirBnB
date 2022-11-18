@@ -5,6 +5,17 @@ import { getSpotById, getSpotsFromDb } from "../../store/spots";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
 import "./SpotShowcase.css";
 
+const features = [];
+const featurePicker = (availableFeatures, pickedFeatures = []) => {
+    if (pickedFeatures.length === 2) return pickedFeatures;
+
+    const randomIndex = Math.random() * availableFeatures.length;
+    pickedFeatures.push(availableFeatures[randomIndex]);
+    [availableFeatures[0], availableFeatures[randomIndex]] = [availableFeatures[randomIndex], availableFeatures[0]];
+
+    featurePicker(availableFeatures.slice(1), pickedFeatures);
+};
+
 const SpotShowCase = () => {
     const { spotId } = useParams();
     const dispatch = useDispatch();
@@ -39,8 +50,15 @@ const SpotShowCase = () => {
                             </div>
                             <p id="numReviews">{`${spot.numReviews} `}<span>reviews</span></p>
                         </div>
-                        <div id="spot-address">
+                        <div id="super-host">
                             <p className="information-break">.</p>
+                            <div id="super-host-content-container">
+                                <i className="fa-solid fa-medal"></i>
+                                <p>Superhost</p>
+                            </div>
+                            <p className="information-break">.</p>
+                        </div>
+                        <div id="spot-address">
                             <p>{`${spot.city}, ${spot.state}, ${spot.country}`}</p>
                         </div>
                     </div>
@@ -103,7 +121,7 @@ const SpotShowCase = () => {
                     </div>
                     <div id="button-holder-spot-description">
                         {spot.ownerId === user?.id && <DeleteSpot spotId={spot.id} />}
-                        {spot.ownerId === user?.id && <Link to={{ pathname: `/spots/edit/${spot.id}`, state: { spot } }} id="spot-edit-button"> Edit </Link>}
+                        {spot.ownerId === user?.id && <Link to={{ pathname: `/spots/${spot.id}/edit`, state: { spot } }} id="spot-edit-button"> Edit </Link>}
                     </div>
                 </div>
                 <div>
