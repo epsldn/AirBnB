@@ -21,19 +21,19 @@ export default function Reviews({ spot }) {
                 <p id="spot-reviews-numreviews-separator">·</p>
                 <p id="spot-reviews-num-reviews">{`${spot.numReviews} `}<span>reviews</span></p>
             </div>
-            <div>
+            <div className="reviews-outer-container">
                 {reviews.map(review => (
-                    <div key={review.id}>
-                        <div>
-                            <div>
+                    <div key={review.id} className="review-container">
+                        <div className="title-container">
+                            <div className="user-review-pfp">
                                 <i className="fas fa-user-circle" />
                             </div>
-                            <div>
-                                <p>{review.User.firstName}</p>
-                                <p>{new Date(review.createdAt).toLocaleString("default", { month: "long" })}</p>
+                            <div className="user-review-information">
+                                <p className="user-review-name">{review.User.firstName}</p>
+                                <p className="user-review-date">{new Date(review.createdAt).toLocaleString("default", { month: "long" })}</p>
                             </div>
                         </div>
-                        <div>
+                        <div className="full-review-container">
                             <p>{review.review}</p>
                         </div>
                         {review.User.id === user.id && <div>
