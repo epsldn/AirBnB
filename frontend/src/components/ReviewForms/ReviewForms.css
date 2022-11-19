@@ -45,6 +45,13 @@
 
 #review-first-input{
     margin-top: .2rem;
+    width: 100%;
+    font-size: 1.2rem;
+    background-color: white;
+    border-radius: 8px 8px 0px 0px;
+    border: 1px solid lightgray;
+    border-bottom: none;
+    padding: .75rem 1rem;
 }
 #review-last-input {
     min-height: 130px;
