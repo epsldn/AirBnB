@@ -23,9 +23,9 @@ const validateSpotImages = [
     check("url").exists({ checkFalsy: true }).withMessage("You must link an image")
         .isURL().withMessage("Please link a valid url")
         .custom(val => {
-            const allowedValues = new Set(["jpg", "png", "tiff", "raw", "psd"]);
+            const allowedValues = new Set(["jpg", "png", "tiff", "raw", "psd", "jpeg"]);
             return allowedValues.has(val.slice(-3));
-        }).withMessage("Image must be be one of the following: jpg, png, tiff, raw, psd"),
+        }).withMessage("Image must be be one of the following: jpg, jpeg, png, tiff, raw, psd"),
     handleValidationErrors
 ];
 
