@@ -4,8 +4,7 @@
     row-gap: 2rem;
     display: grid;
     grid-auto-flow: dense;
-    grid-template-columns: repeat(auto-fill, minmax(275px, auto));
-    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, minmax(250px, auto));
     padding-top: 2%;
 }
 
@@ -24,6 +23,7 @@
 .spots-outer-frame {
     display: flex;
     height: 350px;
+    flex-direction: column;
 }
 
 .spots-rating {

@@ -101,7 +101,7 @@
         "preview preview img2 img3"
         "preview preview img4 img5";
     gap: .5rem;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     grid-template-rows: minmax(180px) minmax(180px);
     grid-template-columns: 1fr 1fr 1fr 1fr;
