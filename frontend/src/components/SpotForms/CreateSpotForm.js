@@ -142,7 +142,7 @@ export default function SpotForm() {
                         className="spot-form-textarea"
                     />
                     <input
-                        type="text"
+                        type="url"
                         onChange={event => setPreviewImageUrl(event.target.value)}
                         value={previewImageUrl}
                         placeholder="Preview Image Link"
