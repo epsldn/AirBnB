@@ -56,7 +56,7 @@ export default function Reviews({ spot }) {
                     );
                 })}
             </div>
-            {(spot.Owner.id !== user?.id) && hasNotReviewed && <div id="add-review-container">
+            {user && (spot.Owner.id !== user.id) && hasNotReviewed && <div id="add-review-container">
                 <EditReviewModal spot={spot} />
             </div>}
         </div>
