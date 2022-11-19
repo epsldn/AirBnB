@@ -5,6 +5,13 @@
     justify-content: end;
 }
 
+@media screen and (max-width: 1000px) {
+    #booking-holder {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 #booking-content {
     width: 85%;
     position: sticky;
@@ -15,10 +22,59 @@
     margin-bottom: 32px;
     height: fit-content;
     box-shadow: rgb(0, 0, 0, 0.12) 0px 6px 16px 0px;
+    min-width: 320px;
+    max-width: 400px;
+}
+
+#booking-price-reviews {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: fit-content;
+    line-height: 22px;
+}
+
+#booking-price {
+    font-size: .9rem;
+    height: fit-content;
+}
+
+#booking-price span {
+    font-size: 1.1rem;
+    font-weight: 650;
+}
+
+#spot-reviews-num-reviews {
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+#booking-star {
+    align-self: center;
+    font-size: .65rem;
+    margin-right: .2rem
+}
+
+#booking-reviews {
+    height: 100%;
+    display: flex;
+}
+
+#booking-star-rating {
+    font-size: .75rem;
 }
 
 #button-holder-spot-description {
     display: flex;
-    justify-content: space-around;
     padding-top: 32px;
+}
+
+#spot-edit-button {
+    font-weight: 700;
+    background: white;
+    text-align: center;
+    border: #ff365b 1px solid;
+    border-radius: 8px;
+    padding: 12px 20px;
 }
