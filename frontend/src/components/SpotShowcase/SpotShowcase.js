@@ -137,7 +137,7 @@ const SpotShowCase = () => {
                             <p>What this place offers</p>
                         </div>
                         <div id="amenity-list">
-                            {amenityArray.map((amenity, idx) => (
+                            {amenityArray.map((amenity) => (
                                 <div className={`amenity-container`} key={amenity.title}>
                                     <div className="amenity-icon">
                                         {amenity.icon}
