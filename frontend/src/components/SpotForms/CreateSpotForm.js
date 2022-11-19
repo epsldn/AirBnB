@@ -16,7 +16,14 @@ function validateData(name, price, address, city, state, country, description) {
     if (city.length < 1) errors.push("Please enter your city!");
     if (country.length < 1) errors.push("Please enter your country!");
     if (description.length < 1) errors.push("Please enter your description!");
+    if (imageValidator === false) errors.push("Image must be be one of the following: jpg, jpeg, png, tiff, raw, psd");
     return errors;
+}
+
+function imageValidator(val) {
+    const fileType = val[val.length - 1];
+    const allowedValues = new Set(["jpg", "png", "tiff", "raw", "psd", "jpeg"]);
+    return allowedValues.has(fileType);
 }
 
 export default function SpotForm() {
