@@ -5,7 +5,7 @@ import { addImageToSpot } from "../../store/spotImages";
 import { createSpot } from "../../store/spots";
 import "./SpotForm.css";
 
-function validateData(name, price, address, city, state, country, description, previewImageUrl) {
+function validateData(name, price, address, city, state, country, description) {
     const errors = [];
     price = +price;
     if (name.length < 1) errors.push("Please enter your spot's name!");
@@ -16,7 +16,6 @@ function validateData(name, price, address, city, state, country, description, p
     if (city.length < 1) errors.push("Please enter your city!");
     if (country.length < 1) errors.push("Please enter your country!");
     if (description.length < 1) errors.push("Please enter your description!");
-    // if (previewImageUrl.length < 1) errors.push("Please provide a valid image url");
     return errors;
 }
 
