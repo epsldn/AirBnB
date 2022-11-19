@@ -5,7 +5,7 @@ import { addImageToSpot } from "../../store/spotImages";
 import { createSpot } from "../../store/spots";
 import "./SpotForm.css";
 
-function validateData(name, price, address, city, state, country, description) {
+function validateData(name, price, address, city, state, country, description, previewImageUrl) {
     const errors = [];
     price = +price;
     if (name.length < 1) errors.push("Please enter your spot's name!");
@@ -16,12 +16,16 @@ function validateData(name, price, address, city, state, country, description) {
     if (city.length < 1) errors.push("Please enter your city!");
     if (country.length < 1) errors.push("Please enter your country!");
     if (description.length < 1) errors.push("Please enter your description!");
-    if (imageValidator === false) errors.push("Image must be be one of the following: jpg, jpeg, png, tiff, raw, psd");
+    if (!previewImageUrl) errors.push("Please provide a preview image for your guests.");
+    else if (imageValidator(previewImageUrl) === false) errors.push("Image must be be one of the following: jpg, jpeg, png, tiff, raw, psd");
+
     return errors;
 }
 
 function imageValidator(val) {
+    val = val.split(".");
     const fileType = val[val.length - 1];
+    console.log(fileType);
     const allowedValues = new Set(["jpg", "png", "tiff", "raw", "psd", "jpeg"]);
     return allowedValues.has(fileType);
 }
