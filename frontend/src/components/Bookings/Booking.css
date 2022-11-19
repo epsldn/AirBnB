@@ -62,7 +62,7 @@
 }
 
 #booking-star-rating {
-    font-size: .75rem;
+    font-size: .85rem;
 }
 
 #button-holder-spot-description {
@@ -77,4 +77,13 @@
     border: #ff365b 1px solid;
     border-radius: 8px;
     padding: 12px 20px;
+}
+
+#booking-star-rating {
+    font-weight: 600;
+}
+
+#booking-star-rating>span {
+    text-decoration: underline;
+    color: rgb(113, 113, 113)
 }

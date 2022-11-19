@@ -31,15 +31,15 @@ export default function EditReviewForm({ spot, review: oldReview, setShowModal }
 
         const submission = {
             review,
-            stars
+            stars: stars.length / 2
         };
 
         try {
             if (oldReview) {
                 submission.id = oldReview.id;
-                dispatch(updateReview(submission));
+                await dispatch(updateReview(submission));
             } else {
-                dispatch(createReview(spot.id, submission));
+                await dispatch(createReview(spot.id, submission));
             }
         } catch (error) {
             const data = await error.json();
@@ -66,15 +66,20 @@ export default function EditReviewForm({ spot, review: oldReview, setShowModal }
                     {hasSubmitted && <ul className="errors spot-form-errors">
                         {errors.map((error, idx) => <li key={idx}><i className="fa-solid fa-circle-exclamation"></i>{" " + error}</li>)}
                     </ul>}
-                    <input
-                        type="number"
-                        onChange={event => setStars(event.target.value.replace(".", ""))}
+                    <select
+                        onChange={event => setStars(event.target.value)}
                         value={stars}
-                        step="1"
                         placeholder="Please rate from 1 to 5"
                         className="form-first"
                         id="review-first-input"
-                    />
+                    >
+                        <option value={""} disabled>How would you rate this experience?</option>
+                        <option>⭐️</option>
+                        <option>⭐️⭐️</option>
+                        <option>⭐️⭐️⭐️</option>
+                        <option>⭐️⭐️⭐️⭐️</option>
+                        <option>⭐️⭐️⭐️⭐️⭐️</option>
+                    </select>
                     <textarea
                         onChange={event => setReview(event.target.value)}
                         value={review}
