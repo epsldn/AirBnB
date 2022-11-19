@@ -34,16 +34,23 @@
     height: auto;
 }
 
-#review-form-main-container > * {
+#review-form-main-container>* {
     width: 100%;
 }
 
-#spot-form-container #review-first-input:focus{
+#spot-form-container #review-first-input:focus {
     border-radius: 8px 8px 0px 0px;
     border: 2px solid black
 }
 
-#spot-form-container #review-last-input:focus{
-    border-radius:  0px 0px 8px 8px;
-    border: 2px solid black
+#review-first-input{
+    margin-top: .2rem;
+}
+#review-last-input {
+    min-height: 130px;
+}
+
+#spot-form-container #review-last-input:focus {
+    border-radius: 0px 0px 8px 8px;
+    border: 2px solid black;
 }
