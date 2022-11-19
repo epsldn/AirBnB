@@ -3,7 +3,7 @@
     padding: 0 5%;
     max-width: 2500px;
     margin: 0 auto;
-    min-width: 390px;
+    min-width: 350px;
     padding-bottom: 60px;
 }
 
@@ -25,7 +25,7 @@ header#stop-navigation{
     margin: 0 auto;
     padding: 0 5%;
     max-width: 2500px;
-    min-width: 390px;
+    min-width: 350px;
 }
 
 footer {
@@ -43,7 +43,7 @@ footer {
     padding: 0 5%;
     display: flex;
     justify-content: space-between;
-    min-width: 390px;
+    min-width: 350px;
 }
 
 #root {
