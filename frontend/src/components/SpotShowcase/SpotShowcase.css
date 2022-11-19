@@ -322,6 +322,12 @@
     padding-bottom: 16px;
 }
 
+.amenity-icon{
+    width: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
 .amenity-title {
     font-weight: 400;
 }
