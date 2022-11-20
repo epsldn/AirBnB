@@ -12,7 +12,7 @@ export default function DeleteSpot({ spotId }) {
 
     return (
         <button className="delete" onClick={onClick}>
-            Delete
+            Delete Spot
         </button>
     );
 }

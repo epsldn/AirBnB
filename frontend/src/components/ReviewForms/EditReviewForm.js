@@ -31,7 +31,7 @@ export default function EditReviewForm({ spot, review: oldReview, setShowModal }
 
         const submission = {
             review,
-            stars: stars.length / 2
+            stars
         };
 
         try {
@@ -74,11 +74,11 @@ export default function EditReviewForm({ spot, review: oldReview, setShowModal }
                         id="review-first-input"
                     >
                         <option value={""} disabled>How would you rate this experience?</option>
-                        <option>⭐️</option>
-                        <option>⭐️⭐️</option>
-                        <option>⭐️⭐️⭐️</option>
-                        <option>⭐️⭐️⭐️⭐️</option>
-                        <option>⭐️⭐️⭐️⭐️⭐️</option>
+                        <option value={1}>⭐️</option>
+                        <option value={2}>⭐️⭐️</option>
+                        <option value={3}>⭐️⭐️⭐️</option>
+                        <option value={4}>⭐️⭐️⭐️⭐️</option>
+                        <option value={5}>⭐️⭐️⭐️⭐️⭐️</option>
                     </select>
                     <textarea
                         onChange={event => setReview(event.target.value)}
