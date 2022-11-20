@@ -27,9 +27,10 @@
 }
 
 @media screen and (max-width: 1000px) {
-    #booking-holder{
+    #booking-holder {
         width: 100%;
     }
+
     #booking-content {
         width: 100%;
         position: sticky;
@@ -44,6 +45,7 @@
         max-width: 400px;
     }
 }
+
 #booking-price-reviews {
     display: flex;
     justify-content: space-between;
@@ -85,6 +87,7 @@
 
 #button-holder-spot-description {
     display: flex;
+    flex-direction: column;
     padding-top: 32px;
 }
 
@@ -92,7 +95,13 @@
     font-weight: 700;
     background: white;
     text-align: center;
-    border: #ff365b 1px solid;
+    border: lightgray 1px solid;
     border-radius: 8px;
     padding: 12px 20px;
+    width: 100%;
+    margin-bottom: .5rem;
+}
+
+#spot-edit-button:hover {
+    background-color: #e6e6e68e;
 }
