@@ -20,7 +20,7 @@ function Navigation({ isLoaded }) {
                     <div>
                         <i className="fa-solid fa-broom"></i>
                         <div className="navTitle">
-                            <p>AirBnCF</p>
+                            <p>airbncf</p>
                         </div>
                     </div>
                 </NavLink>

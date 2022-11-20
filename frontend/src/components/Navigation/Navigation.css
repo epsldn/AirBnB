@@ -27,6 +27,10 @@ i.fa-broom {
     font-size: 1.3rem;
 }
 
+.navTitle>* {
+    font-family: 'Poppins';
+}
+
 .logo {
     display: flex;
     width: fit-content;
