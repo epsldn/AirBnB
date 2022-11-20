@@ -52,7 +52,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
                             <p>{user.email}</p>
                         </div>
                         <li onClick={_ => history.push("/spots/create")}>
-                            AirBnCF your home
+                            Airbncf your home
                         </li>
                         <li onClick={logout}>
                             Log Out

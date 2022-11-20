@@ -73,7 +73,7 @@ export default function EditReviewForm({ spot, review: oldReview, setShowModal }
                         className="form-first"
                         id="review-first-input"
                     >
-                        <option value={""} disabled>How would you rate this experience?</option>
+                        <option value={""} disabled>Rate this experience!</option>
                         <option value={1}>⭐️</option>
                         <option value={2}>⭐️⭐️</option>
                         <option value={3}>⭐️⭐️⭐️</option>
