@@ -25,7 +25,7 @@ function Navigation({ isLoaded }) {
                     </div>
                 </NavLink>
                 <div id="right-navigation-container">
-                    {sessionUser && <button id="right-navigation-airbncf" onClick={_ => history.push("/spots/create")}>AirBnCF your home</button>}
+                    {sessionUser && <button id="right-navigation-airbncf" onClick={_ => history.push("/spots/create")}>Airbncf your home</button>}
                     <li>{isLoaded && <ProfileButton user={sessionUser} setLogin={setLogin} setShowModal={setShowModal} />}</li>
                 </div>
                 {showModal &&

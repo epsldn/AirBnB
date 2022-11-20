@@ -25,9 +25,9 @@ export default function Reviews({ spot }) {
     return (
         <div id="spot-reviews-container">
             <div id="spot-reviews-information">
-                {spot.numReviews > 0 && <><div id="spot-reviews-rating"> <i className="fa-solid fa-star"></i><p>{spot.avgStarRating}</p></div>
-                    <p id="spot-reviews-numreviews-separator">·</p></>}
-                <p id="spot-reviews-num-reviews">{spot.numReviews > 0 ? (<>{`${spot.numReviews} `}<span>reviews</span></>) : "No Reviews (yet)"}</p>
+                {spot.numReviews > 0 ? <><div id="spot-reviews-rating"> <i className="fa-solid fa-star"></i><p id="spot-reviews-num-reviews">{`${spot.avgStarRating} · ${spot.numReviews} reviews`}</p></div>
+                </> : <p id="spot-reviews-num-reviews">No Reviews (yet)</p>}
+                {/* <p id="spot-reviews-num-reviews">{spot.numReviews > 0 ? (<>{`· ${spot.numReviews} reviews`}</>) : "No Reviews (yet)"}</p> */}
             </div>
             <div className="reviews-outer-container">
                 {reviews.map(review => {

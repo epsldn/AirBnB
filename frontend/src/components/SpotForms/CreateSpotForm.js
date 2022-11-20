@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useSpotEditedContext } from "../../context/isEditedContext";
 import { addImageToSpot } from "../../store/spotImages";
 import { createSpot } from "../../store/spots";
 import "./SpotForm.css";
@@ -34,6 +35,7 @@ export default function SpotForm() {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector(state => state.session.user);
+    const { setIsEdited } = useSpotEditedContext();
 
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
@@ -76,9 +78,10 @@ export default function SpotForm() {
             preview: true
         };
 
+        let spot;
 
         try {
-            const spot = await dispatch(createSpot(submission));
+            spot = await dispatch(createSpot(submission));
             await dispatch(addImageToSpot(spot.id, previewImage));
         } catch (error) {
             const data = await error.json();
@@ -97,7 +100,8 @@ export default function SpotForm() {
         setHasSubmitted(false);
         setErrors([]);
 
-        history.push("/");
+        setIsEdited(true);
+        history.push(`/spots/${spot.id}`);
     };
 
     return (

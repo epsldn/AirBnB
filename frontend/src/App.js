@@ -37,12 +37,12 @@ function App() {
           </Route>
         </Switch>
       </main>
-      {isNaN(location.pathname[location.pathname.length - 1]) && <footer>
+      {/* {isNaN(location.pathname[location.pathname.length - 1]) && <footer>
         <div className={`footer-container ${location.pathname.includes("/spots/") && !isNaN(location.pathname[location.pathname.length - 1]) ? "spot-showcase" : ""}`}>
           <h1>Placeholder</h1>
           <h1>Placeholder</h1>
         </div>
-      </footer>}
+      </footer>} */}
     </>
   );
 }

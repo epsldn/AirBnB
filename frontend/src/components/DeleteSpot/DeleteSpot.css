@@ -1,8 +1,13 @@
-.delete{
+.delete {
     font-weight: 700;
     background: red;
     text-align: center;
     color: white;
     border-radius: 8px;
     padding: 12px 20px;
+    width: 100%;
+}
+
+.delete:hover{
+    background: rgb(174, 59, 59);
 }
