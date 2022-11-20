@@ -26,6 +26,24 @@
     max-width: 400px;
 }
 
+@media screen and (max-width: 1000px) {
+    #booking-holder{
+        width: 100%;
+    }
+    #booking-content {
+        width: 100%;
+        position: sticky;
+        padding: 24px;
+        top: 40px;
+        border: 1px solid lightgray;
+        border-radius: 12px;
+        margin-bottom: 32px;
+        height: fit-content;
+        box-shadow: rgb(0, 0, 0, 0.12) 0px 6px 16px 0px;
+        min-width: 320px;
+        max-width: 400px;
+    }
+}
 #booking-price-reviews {
     display: flex;
     justify-content: space-between;
@@ -62,7 +80,7 @@
 }
 
 #booking-star-rating {
-    font-size: .85rem;
+    font-size: .75rem;
 }
 
 #button-holder-spot-description {
@@ -77,13 +95,4 @@
     border: #ff365b 1px solid;
     border-radius: 8px;
     padding: 12px 20px;
-}
-
-#booking-star-rating {
-    font-weight: 600;
-}
-
-#booking-star-rating>span {
-    text-decoration: underline;
-    color: rgb(113, 113, 113)
 }

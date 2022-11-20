@@ -210,6 +210,10 @@
     width: 100%;
 }
 
+#aircover>* {
+    font-family: 'Poppins';
+}
+
 #aircover-air {
     color: #ff365b;
 }
@@ -310,16 +314,18 @@
     #spot-description-and-booking {
         --margin-right: 0;
     }
-    #spot-description-container{
+
+    #spot-description-container {
         min-width: 350px;
     }
+
     #amenity-list {
         grid-template-columns: repeat(auto-fit, minmax(165px, auto));
         grid-auto-rows: minmax(50px, auto);
         gap: 1rem;
     }
 
-    #amenity-list > * {
+    #amenity-list>* {
         padding: 0;
     }
 }
