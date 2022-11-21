@@ -144,4 +144,9 @@
 #spot-form-container {
     overflow-y: scroll;
     padding: 16px 0;
+    scrollbar-width: none;
+}
+
+#spot-form-container::-webkit-scrollbar {
+    display: none;
 }
