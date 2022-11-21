@@ -4,7 +4,7 @@
     max-width: 2500px;
     margin: 0 auto;
     min-width: 350px;
-    padding-bottom: 30px;
+    padding-bottom: 3rem;
 }
 
 header {
@@ -44,6 +44,9 @@ footer {
     display: flex;
     justify-content: space-between;
     min-width: 350px;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 100%;
 }
 
 #root {
@@ -69,11 +72,21 @@ footer {
 }
 
 #submit:hover {
-    background: radial-gradient(circle, rgba(255,56,92,1) 15%, rgba(215,4,102,1) 100%);
+    background: radial-gradient(circle, rgba(255, 56, 92, 1) 15%, rgba(215, 4, 102, 1) 100%);
 }
 
 .spot-showcase {
     box-sizing: border-box;
     max-width: 1320px;
     padding-bottom: 0px;
+}
+
+.about-me-section{
+    display:flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+#github{
+    font-size: 1.5rem;
 }
