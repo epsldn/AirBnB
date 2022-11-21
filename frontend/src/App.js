@@ -37,12 +37,15 @@ function App() {
           </Route>
         </Switch>
       </main>
-      {/* {isNaN(location.pathname[location.pathname.length - 1]) && <footer>
+      {isNaN(location.pathname[location.pathname.length - 1]) && <footer>
         <div className={`footer-container ${location.pathname.includes("/spots/") && !isNaN(location.pathname[location.pathname.length - 1]) ? "spot-showcase" : ""}`}>
-          <h1>Placeholder</h1>
-          <h1>Placeholder</h1>
+          <div className="about-me-section">
+            <p>An AirBnB clone by Efrain Saldana</p>
+            &nbsp;
+            <a href="https://github.com/epsldn/AirBnB" id="github" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-github"></i></a>
+          </div>
         </div>
-      </footer>} */}
+      </footer>}
     </>
   );
 }
