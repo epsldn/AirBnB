@@ -24,7 +24,7 @@ export default function LoginForm({ setShowModal }) {
         <div className="login-main">
             <div className="form-header-login">
                 <div className="login-form-x">
-                    <button onClick={() => setShowModal(false)}>x</button>
+                    <button onClick={() => setShowModal(false)} id="edit-x">x</button>
                 </div>
                 <p>Log In or Sign Up</p>
             </div>
