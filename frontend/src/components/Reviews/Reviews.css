@@ -90,8 +90,14 @@
 
 
 @media screen and (max-width: 550px) {
+    .reviews-outer-container {
+        flex-direction: column;
+    }
+
     .review-container {
-        min-width: 350px
+        padding-right: 0;
+        max-width: none;
+        min-width: 350px;
     }
 }
 
