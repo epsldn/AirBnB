@@ -97,11 +97,10 @@ export const updateSpot = (spot) => async dispatch => {
 };
 
 
-export default function (state = { Spots: {}, page: 1, size: 20, spotById: {} }, action) {
+export default function (state = { Spots: {}, page: 1, size: 20}, action) {
     switch (action.type) {
         case GET_SPOTS: {
-            const newState = Object.assign({ ...state }, action.spots);
-            return newState;
+            return action.spots;
         }
         case GET_ONE_SPOT: {
             const newState = { ...state };

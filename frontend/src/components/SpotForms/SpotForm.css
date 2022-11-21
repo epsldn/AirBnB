@@ -132,6 +132,10 @@
     font-weight: 600;
 }
 
+.spot-form-submit:hover {
+    background: radial-gradient(circle, rgba(255, 56, 92, 1) 15%, rgba(215, 4, 102, 1) 100%);
+}
+
 #spot-form-container {
     overflow-y: scroll;
     padding: 16px 0;
