@@ -32,7 +32,6 @@ export default function SignupFormPage({ setShowModal }) {
         const errors = [];
         // const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
-        console.log(firstName.length);
         if (!firstName) errors.push("Please enter your first name");
         if (firstName.length > 256) errors.push("First name cannot be longer than 256 characters");
         if (!lastName) errors.push("Please enter your last name");
@@ -81,7 +80,7 @@ export default function SignupFormPage({ setShowModal }) {
         <div className="signup-main">
             <div className="form-header-login">
                 <div className="login-form-x">
-                    <button onClick={() => setShowModal(false)}>x</button>
+                    <button onClick={() => setShowModal(false)} id="edit-x">x</button>
                 </div>
                 <p>Log In or Sign Up</p>
             </div>

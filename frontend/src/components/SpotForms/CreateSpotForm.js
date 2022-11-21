@@ -31,7 +31,6 @@ function validateData(name, price, address, city, state, country, description, p
 function imageValidator(val) {
     val = val.split(".");
     const fileType = val[val.length - 1];
-    console.log(fileType);
     const allowedValues = new Set(["jpg", "png", "tiff", "raw", "psd", "jpeg"]);
     return allowedValues.has(fileType);
 }

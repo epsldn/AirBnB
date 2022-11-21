@@ -87,7 +87,7 @@ export default function EditReviewForm({ spot, review: oldReview, setShowModal }
                         className="spot-form-textarea form-last"
                         id="review-last-input"
                     />
-                    <button type="submit" className="spot-form-submit">{oldReview ? "Update" : "Create"} Review!</button>
+                    <button type="submit" className="spot-form-submit">{oldReview ? "Leave" : "Create"} Review!</button>
                 </form>
             </div>
         </div>

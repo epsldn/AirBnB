@@ -63,7 +63,8 @@
 }
 
 .login-form-x {
-    display: grid
+    justify-self: start;
+    align-self: center;
 }
 
 .form-header-login button {
