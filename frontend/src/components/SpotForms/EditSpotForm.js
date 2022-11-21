@@ -10,12 +10,17 @@ function validateData(name, price, address, city, state, country, description) {
     const errors = [];
     price = +price;
     if (name.length < 1) errors.push("Please enter your spot's name!");
+    if (name.length > 50) errors.push("Please keep name under 50 characters");
     if (isNaN(price) || price < 0) errors.push("Price must be a positive number!");
     if (+price > 999999) errors.push("Please keep the amount below $1 million");
     if (address.length < 1) errors.push("Please enter your street address!");
+    if (address.length > 80) errors.push("Please keep address under 80 characters");
     if (state.length < 1) errors.push("Please enter your state!");
+    if (state.length > 80) errors.push("Please keep state name under 80 characters");
     if (city.length < 1) errors.push("Please enter your city!");
+    if (city.length > 80) errors.push("Please keep city name under 80 characters");
     if (country.length < 1) errors.push("Please enter your country!");
+    if (country.length > 80) errors.push("Please keep country name under 80 characters");
     if (description.length < 1) errors.push("Please enter your description!");
 
     return errors;

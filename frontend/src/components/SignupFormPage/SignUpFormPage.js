@@ -30,15 +30,19 @@ export default function SignupFormPage({ setShowModal }) {
 
     function validateData() {
         const errors = [];
-        const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+        // const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
-        if (firstName.length < 1) errors.push("Please enter your first name");
-        if (lastName.length < 1) errors.push("Please enter your last name");
+        console.log(firstName.length);
+        if (!firstName) errors.push("Please enter your first name");
+        if (firstName.length > 256) errors.push("First name cannot be longer than 256 characters");
+        if (!lastName) errors.push("Please enter your last name");
+        if (lastName.length > 256) errors.push("Last name cannot be longer than 256 characters");
         if (email.length < 3) errors.push("Email must be longer than 3 characters");
-        if (emailRegex.test === false) errors.push("Please enter a valid email");
         if (email.length > 256) errors.push("Email must be less than 256 charcters long");
         if (username.length < 4 || username.length > 30) errors.push("Username must be between 4 and 30 character long");
+        if (username.includes("@")) errors.push("Username cannot include \"@\"");
         if (password.length < 8) errors.push("Password must be longer than 8 characters");
+        if (password.length > 60) errors.push("Password cannot be longer than 60 characters long");
         if (retypedPassowrd !== password) errors.push("Passwords must match!");
 
         setErrors(errors);
@@ -69,6 +73,7 @@ export default function SignupFormPage({ setShowModal }) {
                 setErrors(errors);
             });
 
+        if (errors.length > 0) return;
         resetData();
     };
 
@@ -80,7 +85,7 @@ export default function SignupFormPage({ setShowModal }) {
                 </div>
                 <p>Log In or Sign Up</p>
             </div>
-            <form onSubmit={handleSubmit} onChange={validateData} className="form">
+            <form onSubmit={handleSubmit} className="form">
                 <div className="form-welcome-login">
                     <h2>Welcome to AirBnCF</h2>
                 </div>
@@ -132,7 +137,7 @@ export default function SignupFormPage({ setShowModal }) {
                     className="form-last"
                     required
                 />
-                <button id="submit" type="submit" disabled={hasSubmitted && errors.length > 1}> Sign Up </button>
+                <button id="submit" type="submit"> Sign Up </button>
             </form>
         </div>
     );

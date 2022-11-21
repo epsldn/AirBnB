@@ -110,7 +110,6 @@ export default function (state = { Spots: {}, page: 1, size: 20}, action) {
         case DELETE_SPOT: {
             const newState = { ...state };
             delete newState.Spots[action.spotId];
-            newState.spotById = {};
             return newState;
         }
         default: {
