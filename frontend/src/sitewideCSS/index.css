@@ -68,6 +68,10 @@ footer {
     font-weight: 600;
 }
 
+#submit:hover {
+    background: radial-gradient(circle, rgba(255,56,92,1) 15%, rgba(215,4,102,1) 100%);
+}
+
 .spot-showcase {
     box-sizing: border-box;
     max-width: 1320px;

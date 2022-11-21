@@ -42,6 +42,14 @@
     max-width: 50%;
     margin-bottom: 40px;
     padding-right: 40px;
+    word-break: break-word;
+    max-height: calc(1.2rem * 1.2 * 10);
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.review-container::-webkit-scrollbar {
+    display: none;
 }
 
 .user-review-buttons-container {
@@ -71,7 +79,15 @@
 .full-review-container {
     font-size: 1rem;
     font-weight: 300;
+    max-height: calc(.9rem * 1.2 * 10);
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
+
+.full-review-container::-webkit-scrollbar {
+    display: none;
+}
+
 
 @media screen and (max-width: 550px) {
     .review-container {

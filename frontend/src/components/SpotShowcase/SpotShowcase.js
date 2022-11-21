@@ -21,7 +21,8 @@ const SpotShowCase = () => {
     }, [dispatch, isEdited]);
 
 
-    if (!spot.id) return null;
+    if (!spot) return null;
+
     const arrLength = spot.SpotImages.length;
 
     spot.SpotImages.length = 5;

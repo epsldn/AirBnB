@@ -49,10 +49,10 @@
     width: 10px;
 }
 
-#numReviews>span {
+/* #numReviews>span {
     text-decoration: underline;
     text-decoration-thickness: 1.2px;
-}
+} */
 
 #super-host {
     display: flex;
@@ -90,8 +90,8 @@
 
 
 #spot-address {
-    text-decoration: underline;
-    text-decoration-thickness: 1.2px;
+    /* text-decoration: underline;
+    text-decoration-thickness: 1.2px; */
     font-weight: 500;
 }
 
@@ -223,7 +223,7 @@
 }
 
 .learn-more {
-    text-decoration: underline;
+    /* text-decoration: underline; */
     font-weight: 500;
 }
 
@@ -231,6 +231,7 @@
     padding: 32px 0;
     margin-right: var(--margin-right);
     border-bottom: var(--bottom-border);
+    word-wrap: break-word;
 }
 
 #show-more-container {
