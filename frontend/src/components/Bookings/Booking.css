@@ -150,6 +150,12 @@
     border-top: 1px solid var(--airbncf-border-dark-gray);
 }
 
+#booking-guest-amount>p {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .booking-calendar-container>#submit {
     margin: 0;
     border-radius: 8px;
