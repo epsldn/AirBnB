@@ -132,6 +132,7 @@
     top: 10px;
     font-size: 10px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 #booking-check-in {
@@ -156,25 +157,19 @@
 
 #booking-check-in:hover::after,
 #booking-check-out:hover::after {
-    content: "";
-    height: 1px;
-    background-color: black;
-    width: calc(100% + 2px);
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
     position: absolute;
-    left: -1px;
-    bottom: -1px;
+    content: "";
+    border: 2px solid black;
     z-index: 10;
+    top: -1px;
+    left: -1px;
+    border-radius: 8px 0 0 0;
 }
 
-#booking-check-out:hover::before {
-    content: "";
-    width: 1px;
-    height: calc(100% + 2px);
-    position: absolute;
-    left: -1px;
-    top: -1px;
-    background-color: black;
-    z-index: 10;
+#booking-check-out:hover::after {
+    border-radius: 0 8px 0 0;
 }
 
 #booking-guest-amount {
@@ -184,8 +179,17 @@
     border-radius: 0 0 8px 8px;
 }
 
-#booking-guest-amount:hover {
-    border-color: black;
+#booking-guest-amount:hover::after,
+#booking-guest-amount:focus-within::after {
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
+    position: absolute;
+    content: "";
+    border: 2px solid black;
+    z-index: 10;
+    top: -1px;
+    left: -1px;
+    border-radius: 0 0 8px 8px;
 }
 
 #booking-guest-amount>p {
@@ -197,4 +201,24 @@
 .booking-calendar-container>#submit {
     margin: 0;
     border-radius: 8px;
+}
+
+
+/* -------------------------------- Booking guest dropdown -------------------------------- */
+
+#booking-guest-selection {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    width: calc(100% + 2px);
+    left: -1px;
+    bottom: -20px;
+    border-radius: 8px;
+    z-index: 12;
+}
+
+.booking-guest-selection-option {
+    display: flex;
 }

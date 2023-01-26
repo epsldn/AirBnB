@@ -11,9 +11,7 @@ export default function Booking({ spot }) {
     const [checkIn, setCheckIn] = useState(new Date());
     const [checkOut, setCheckout] = useState(new Date(new Date().setDate(new Date().getDate() + 1)));
     const [guests, setGuests] = useState(1);
-    const [showGuestSelection, setGuestSelection] = useState(false);
-
-    console.log(checkIn, checkOut);
+    const [showGuestSelection, setShowGuestSelection] = useState(false);
 
     return (
         <div id="booking-holder">
@@ -52,14 +50,20 @@ export default function Booking({ spot }) {
                                 {checkOut.toLocaleDateString()}
                             </p>
                         </button>
-                        <button id="booking-guest-amount">
+                        <button id="booking-guest-amount"
+                            tabIndex={setShowGuestSelection ? 1 : -1}
+                            onBlur={() => setShowGuestSelection(false)}
+                            onClick={() => setShowGuestSelection(true)}
+                        >
                             <label>
                                 GUESTS
                             </label>
                             <p>{guests > 1 ? `${guests} guests` : "1 guest"} <i className="fa-solid fa-angle-down"></i></p>
                             {showGuestSelection &&
                                 <div id="booking-guest-selection">
-                                    
+                                    <div className="booking-guest-selection-option">
+
+                                    </div>
                                 </div>
                             }
                         </button>
@@ -78,6 +82,6 @@ export default function Booking({ spot }) {
                         </div>
                     </div>}
             </div>
-        </div>
+        </div >
     );
 }
