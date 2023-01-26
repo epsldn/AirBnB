@@ -11,6 +11,7 @@ export default function Booking({ spot }) {
     const [checkIn, setCheckIn] = useState(new Date());
     const [checkOut, setCheckout] = useState(new Date(new Date().setDate(new Date().getDate() + 1)));
     const [guests, setGuests] = useState(1);
+    const [showGuestSelection, setGuestSelection] = useState(false);
 
     console.log(checkIn, checkOut);
 
@@ -56,6 +57,11 @@ export default function Booking({ spot }) {
                                 GUESTS
                             </label>
                             <p>{guests > 1 ? `${guests} guests` : "1 guest"} <i className="fa-solid fa-angle-down"></i></p>
+                            {showGuestSelection &&
+                                <div id="booking-guest-selection">
+                                    
+                                </div>
+                            }
                         </button>
                     </div>
                     <button id="submit">
