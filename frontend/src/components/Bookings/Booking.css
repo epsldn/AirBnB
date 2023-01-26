@@ -61,8 +61,8 @@
 }
 
 #booking-price span {
-    font-size: 1.1rem;
-    font-weight: 650;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
 #spot-reviews-num-reviews {
@@ -105,4 +105,52 @@
 
 #spot-edit-button:hover {
     background-color: #e6e6e68e;
+}
+
+.booking-calendar-container {
+    margin-top: 24px;
+}
+
+.booking-calendar-buttons {
+    display: grid;
+    grid-template-areas:
+        "check-in check-out"
+        "guests guests";
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    border: 1px solid var(--airbncf-border-dark-gray);
+    border-radius: 8px;
+    margin-bottom: 16px
+}
+
+.booking-calendar-buttons>button {
+    position: relative;
+    padding: 26px 12px 12px 12px;
+}
+
+.booking-calendar-buttons>button>label {
+    position: absolute;
+    top: 10px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+#booking-check-in {
+    grid-area: check-in;
+    border-right: 1px solid var(--airbncf-border-dark-gray);
+}
+
+#booking-check-out {
+    grid-area: check-out;
+}
+
+#booking-guest-amount {
+    grid-area: guests;
+    border-top: 1px solid var(--airbncf-border-dark-gray);
+}
+
+.booking-calendar-container>#submit {
+    margin: 0;
+    border-radius: 8px;
 }
