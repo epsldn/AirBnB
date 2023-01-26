@@ -61,8 +61,8 @@
 }
 
 #booking-price span {
-    font-size: 1.1rem;
-    font-weight: 650;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
 #spot-reviews-num-reviews {
@@ -105,4 +105,96 @@
 
 #spot-edit-button:hover {
     background-color: #e6e6e68e;
+}
+
+.booking-calendar-container {
+    margin-top: 24px;
+}
+
+.booking-calendar-buttons {
+    display: grid;
+    grid-template-areas:
+        "check-in check-out"
+        "guests guests";
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    margin-bottom: 16px
+}
+
+.booking-calendar-buttons>button {
+    position: relative;
+    padding: 26px 12px 12px 12px;
+}
+
+.booking-calendar-buttons>button>label {
+    position: absolute;
+    top: 10px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+#booking-check-in {
+    grid-area: check-in;
+    border: 1px solid var(--airbncf-border-dark-gray);
+    border-radius: 8px 0 0 0;
+    border-bottom: none;
+}
+
+#booking-check-out {
+    grid-area: check-out;
+    border: 1px solid var(--airbncf-border-dark-gray);
+    border-radius: 0 8px 0 0;
+    border-bottom: none;
+    border-left: none;
+}
+
+#booking-check-in:hover,
+#booking-check-out:hover {
+    border-color: black;
+}
+
+#booking-check-in:hover::after,
+#booking-check-out:hover::after {
+    content: "";
+    height: 1px;
+    background-color: black;
+    width: calc(100% + 2px);
+    position: absolute;
+    left: -1px;
+    bottom: -1px;
+    z-index: 10;
+}
+
+#booking-check-out:hover::before {
+    content: "";
+    width: 1px;
+    height: calc(100% + 2px);
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    background-color: black;
+    z-index: 10;
+}
+
+#booking-guest-amount {
+    grid-area: guests;
+    position: relative;
+    border: 1px solid var(--airbncf-border-dark-gray);
+    border-radius: 0 0 8px 8px;
+}
+
+#booking-guest-amount:hover {
+    border-color: black;
+}
+
+#booking-guest-amount>p {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.booking-calendar-container>#submit {
+    margin: 0;
+    border-radius: 8px;
 }

@@ -52,6 +52,8 @@ footer {
 #root {
     box-sizing: border-box;
     margin: 0 auto;
+    --airbncf-border-dark-gray: #b0b0b0;
+    --airbncf-button-background-gradient: linear-gradient(90deg, rgba(230, 30, 77, 1) 0%, rgba(227, 28, 95, 1) 50%, rgba(215, 4, 102, 1) 100%);
 }
 
 .errors {

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import DeleteSpot from "../DeleteSpot/DeleteSpot";
@@ -7,6 +8,12 @@ import "./Booking.css";
 export default function Booking({ spot }) {
     const usDollar = Intl.NumberFormat("en-US");
     const user = useSelector(state => state.session.user);
+    const [checkIn, setCheckIn] = useState(new Date());
+    const [checkOut, setCheckout] = useState(new Date(new Date().setDate(new Date().getDate() + 1)));
+    const [guests, setGuests] = useState(1);
+    const [showGuestSelection, setGuestSelection] = useState(false);
+
+    console.log(checkIn, checkOut);
 
     return (
         <div id="booking-holder">
@@ -25,6 +32,41 @@ export default function Booking({ spot }) {
                             </div>
                         </div>}
                     </div>
+                </div>
+                <div className="booking-calendar-container">
+                    <div className="booking-calendar-buttons">
+                        <button id="booking-check-in">
+                            <label>
+                                CHECK-IN
+                            </label>
+                            <p>
+                                {checkIn.toLocaleDateString()}
+                            </p>
+                        </button>
+
+                        <button id="booking-check-out">
+                            <label>
+                                CHECK-OUT
+                            </label>
+                            <p>
+                                {checkOut.toLocaleDateString()}
+                            </p>
+                        </button>
+                        <button id="booking-guest-amount">
+                            <label>
+                                GUESTS
+                            </label>
+                            <p>{guests > 1 ? `${guests} guests` : "1 guest"} <i className="fa-solid fa-angle-down"></i></p>
+                            {showGuestSelection &&
+                                <div id="booking-guest-selection">
+                                    
+                                </div>
+                            }
+                        </button>
+                    </div>
+                    <button id="submit">
+                        Reserve
+                    </button>
                 </div>
                 {spot.ownerId === user?.id &&
                     <div id="button-holder-spot-description">
