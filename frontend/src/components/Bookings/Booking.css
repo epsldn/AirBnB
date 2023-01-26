@@ -132,6 +132,7 @@
     top: 10px;
     font-size: 10px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 #booking-check-in {
@@ -156,25 +157,19 @@
 
 #booking-check-in:hover::after,
 #booking-check-out:hover::after {
-    content: "";
-    height: 1px;
-    background-color: black;
-    width: calc(100% + 2px);
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
     position: absolute;
-    left: -1px;
-    bottom: -1px;
+    content: "";
+    border: 2px solid black;
     z-index: 10;
+    top: -1px;
+    left: -1px;
+    border-radius: 8px 0 0 0;
 }
 
-#booking-check-out:hover::before {
-    content: "";
-    width: 1px;
-    height: calc(100% + 2px);
-    position: absolute;
-    left: -1px;
-    top: -1px;
-    background-color: black;
-    z-index: 10;
+#booking-check-out:hover::after {
+    border-radius: 0 8px 0 0;
 }
 
 #booking-guest-amount {
@@ -184,8 +179,17 @@
     border-radius: 0 0 8px 8px;
 }
 
-#booking-guest-amount:hover {
-    border-color: black;
+#booking-guest-amount:hover::after,
+#booking-guest-amount:focus-within::after {
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
+    position: absolute;
+    content: "";
+    border: 2px solid black;
+    z-index: 10;
+    top: -1px;
+    left: -1px;
+    border-radius: 0 0 8px 8px;
 }
 
 #booking-guest-amount>p {
@@ -197,4 +201,69 @@
 .booking-calendar-container>#submit {
     margin: 0;
     border-radius: 8px;
+}
+
+
+/* -------------------------------- Booking guest dropdown -------------------------------- */
+
+#booking-guest-selection {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    width: calc(100% + 2px);
+    left: -1px;
+    top: 100%;
+    border-radius: 4px;
+    z-index: 12;
+    gap: 24px;
+    padding: 16px;
+    cursor: default;
+}
+
+.booking-guest-selection-option,
+.booking-guest-selection-option-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.booking-guest-selection-option-label {
+    width: 65%;
+}
+
+.booking-guest-selection-option-label label {
+    font-weight: 600;
+    padding-bottom: 4px;
+}
+
+.booking-guest-selection-option-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+    height: fit-content;
+    align-self: flex-end;
+    height: 32px;
+}
+
+.booking-guest-selection-quantity {
+    align-self: center;
+}
+
+.booking-guest-selection-circle-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #717171;
+    border-radius: 100%;
+    font-weight: bolder;
+    color: #717171;
+}
+
+.booking-guest-selection-circle-button:hover {
+    color: black;
+    border-color: black;
 }
