@@ -294,3 +294,14 @@
 .booking-price-breakdown-label {
     text-decoration: underline;
 }
+
+#booking-price-total {
+    border-top: 2px solid #b0b0b0;
+    padding: 12px 0;
+    font-weight: 560;
+}
+
+
+#booking-price-total .booking-price-breakdown-label {
+    text-decoration: none;
+}

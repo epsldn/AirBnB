@@ -22,6 +22,11 @@ export default function Booking({ spot }) {
     const guests = adults + children + infants;
     const [showGuestSelection, setShowGuestSelection] = useState(false);
 
+    const nightCost = bookingDollarFormat.format(spot.price * daysBetween);
+    const cleaningFee = bookingDollarFormat.format(guests * (20 + spot.price * .005) * daysBetween);
+    const serviceFee = bookingDollarFormat.format(spot.price * .75);
+    const total = bookingDollarFormat.format((spot.price * .75) + (spot.price * daysBetween) + (guests * (20 + spot.price * .005) * daysBetween));
+
     function quantityUpdater(event, operationType, guestType, setGuestType) {
         event.preventDefault();
         event.stopPropagation();
@@ -31,7 +36,7 @@ export default function Booking({ spot }) {
         } else if (operationType === "minus") {
             setGuestType(guestType - 1);
         }
-    }
+    };
 
     useEffect(() => {
         if (!showGuestSelection) return;
@@ -190,7 +195,7 @@ export default function Booking({ spot }) {
                                 </p>
 
                                 <p className="booking-price-breakdown-cost">
-                                    ${bookingDollarFormat.format(spot.price * daysBetween)}
+                                    ${nightCost}
                                 </p>
                             </div>
 
@@ -200,7 +205,7 @@ export default function Booking({ spot }) {
                                 </p>
 
                                 <p className="booking-price-breakdown-cost">
-                                    ${bookingDollarFormat.format(guests * (20 + spot.price * .005) * daysBetween)}
+                                    ${cleaningFee}
                                 </p>
                             </div>
 
@@ -210,7 +215,17 @@ export default function Booking({ spot }) {
                                 </p>
 
                                 <p className="booking-price-breakdown-cost">
-                                    ${bookingDollarFormat.format(spot.price * .75)}
+                                    ${serviceFee}
+                                </p>
+                            </div>
+
+                            <div className="booking-price-breakdown-component" id="booking-price-total">
+                                <p className="booking-price-breakdown-label">
+                                    Total before taxes
+                                </p>
+
+                                <p className="booking-price-breakdown-cost">
+                                    ${total}
                                 </p>
                             </div>
                         </div>
