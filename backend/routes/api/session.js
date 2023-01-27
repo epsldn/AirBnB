@@ -1,7 +1,7 @@
 // Import required files / packages
 const express = require("express");
 const { setTokenCookie, restoreUser, requireAuth } = require("../../utils/auth");
-const { User } = require("../../db/models");
+const { User, UserFavoriteSpot } = require("../../db/models");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const router = express.Router();
@@ -18,11 +18,22 @@ const validateLogin = [
     handleValidationErrors
 ];
 
-router.get("/", (req, res, next) => {
-    const { user } = req;
+router.get("/", async (req, res, next) => {
+    let { user } = req;
     if (user) user.token = req.cookies.token;
     if (user) {
-        res.json(user.toSafeObject());
+        user = user.toSafeObject();
+        user.favorites = (await UserFavoriteSpot.findAll({
+            where: {
+                userId: user.user.id
+            },
+            raw: true
+        })).reduce((favObj, next) => {
+            favObj[next.spotId] = next.spotId;
+            return favObj;
+        }, {});
+        
+        res.json(user);
     } else return res.json({ user: null });
 });
 
