@@ -61,6 +61,10 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Booking, {
         foreignKey: "userId"
       });
+
+      User.belongsToMany(models.Spot, {
+        through: models.UserFavoriteSpot
+      });
     }
   }
   User.init({
@@ -71,7 +75,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           msg: "Username must be between 4 and 30 characters",
-         args: [4, 30]
+          args: [4, 30]
         },
         isNotEmail(value) {
           if (Validator.isEmail(value)) throw new Error("Cannot be an email");
