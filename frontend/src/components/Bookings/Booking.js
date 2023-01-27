@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -10,6 +12,8 @@ export default function Booking({ spot }) {
     const user = useSelector(state => state.session.user);
     const [checkIn, setCheckIn] = useState(new Date());
     const [checkOut, setCheckout] = useState(new Date(new Date().setDate(new Date().getDate() + 1)));
+
+    const guestButton = useRef(null);
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
     const [infants, setInfants] = useState(0);
@@ -26,6 +30,18 @@ export default function Booking({ spot }) {
             setGuestType(guestType - 1);
         }
     }
+
+    useEffect(() => {
+        if (!showGuestSelection) return;
+        function onClick(event) {
+            if (guestButton.current && guestButton.current.contains(event.target) === false) {
+                setShowGuestSelection(false);
+            }
+        }
+
+        document.addEventListener("click", onClick);
+        return () => document.removeEventListener("click", onClick);
+    }, [showGuestSelection]);
 
     return (
         <div id="booking-holder">
@@ -65,9 +81,8 @@ export default function Booking({ spot }) {
                             </p>
                         </button>
                         <button id="booking-guest-amount"
-                            tabIndex={setShowGuestSelection ? 1 : -1}
-                            onBlur={(event) => event.target.contains(event.currentTarget) ? null : setShowGuestSelection(false)}
                             onClick={() => setShowGuestSelection(true)}
+                            ref={guestButton}
                         >
                             <label>
                                 GUESTS
@@ -83,13 +98,18 @@ export default function Booking({ spot }) {
                                             <p>Age 13+</p>
                                         </div>
                                         <div className="booking-guest-selection-option-buttons">
-                                            <button className="booking-guest-selection-circle-button" onClick={(event) => quantityUpdater(event, "minus", adults, setAdults)}>
+                                            <button className="booking-guest-selection-circle-button"
+                                                onClick={(event) => quantityUpdater(event, "minus", adults, setAdults)}
+                                                disabled={adults === 0}
+                                            >
                                                 <i className="fa-solid fa-minus" />
                                             </button>
                                             <div className="booking-guest-selection-quantity">
                                                 {adults}
                                             </div>
-                                            <button className="booking-guest-selection-circle-button" onClick={(event) => quantityUpdater(event, "plus", adults, setAdults)}>
+                                            <button className="booking-guest-selection-circle-button"
+                                                onClick={(event) => quantityUpdater(event, "plus", adults, setAdults)}
+                                            >
                                                 <i className="fa-solid fa-plus" />
                                             </button>
                                         </div>
@@ -103,13 +123,18 @@ export default function Booking({ spot }) {
                                             <p>Ages 2-12</p>
                                         </div>
                                         <div className="booking-guest-selection-option-buttons">
-                                            <button className="booking-guest-selection-circle-button" onClick={(event) => quantityUpdater(event, "minus", children, setChildren)}>
+                                            <button className="booking-guest-selection-circle-button"
+                                                onClick={(event) => quantityUpdater(event, "minus", children, setChildren)}
+                                                disabled={children === 0}
+                                            >
                                                 <i className="fa-solid fa-minus" />
                                             </button>
                                             <div className="booking-guest-selection-quantity">
                                                 {children}
                                             </div>
-                                            <button className="booking-guest-selection-circle-button" onClick={(event) => quantityUpdater(event, "plus", children, setChildren)}>
+                                            <button className="booking-guest-selection-circle-button"
+                                                onClick={(event) => quantityUpdater(event, "plus", children, setChildren)}
+                                            >
                                                 <i className="fa-solid fa-plus" />
                                             </button>
                                         </div>
@@ -123,7 +148,10 @@ export default function Booking({ spot }) {
                                             <p>Under 2</p>
                                         </div>
                                         <div className="booking-guest-selection-option-buttons">
-                                            <button className="booking-guest-selection-circle-button" onClick={(event) => quantityUpdater(event, "minus", infants, setInfants)}>
+                                            <button className="booking-guest-selection-circle-button"
+                                                onClick={(event) => quantityUpdater(event, "minus", infants, setInfants)}
+                                                disabled={infants === 0}
+                                            >
                                                 <i className="fa-solid fa-minus" />
                                             </button>
                                             <div className="booking-guest-selection-quantity">

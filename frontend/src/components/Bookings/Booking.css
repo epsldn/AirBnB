@@ -267,3 +267,8 @@
     color: black;
     border-color: black;
 }
+
+.booking-guest-selection-circle-button:disabled{
+    border: 1px solid #717171;
+    color: #717171;
+}
