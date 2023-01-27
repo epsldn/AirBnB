@@ -268,7 +268,29 @@
     border-color: black;
 }
 
-.booking-guest-selection-circle-button:disabled{
+.booking-guest-selection-circle-button:disabled {
     border: 1px solid #717171;
     color: #717171;
+}
+
+#booking-wont-be-charged {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+#booking-price-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 16px;
+}
+
+.booking-price-breakdown-component {
+    display: flex;
+    justify-content: space-between;
+}
+
+.booking-price-breakdown-label {
+    text-decoration: underline;
 }
