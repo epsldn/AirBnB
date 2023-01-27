@@ -58,6 +58,13 @@ const SpotShowCase = () => {
                         <div id="spot-address">
                             <p>{`${spot.city}, ${spot.state}, ${spot.country}`}</p>
                         </div>
+                        <div id="spot-showcase-icons">
+                            <button>
+                                <i className="fa-regular fa-heart" />
+                                {/* <i className="fa-solid fa-heart" /> */}
+                                Save
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,6 @@
 #spot-name {
     font-size: 1.5rem;
     font-weight: 530;
-    padding-bottom: 1%;
 }
 
 #spot-information-summary {
@@ -17,6 +16,10 @@
     font-size: .85rem;
     padding-bottom: 2%;
     font-stretch: extra-condensed;
+}
+
+#spot-information-summary>* {
+    align-self: center;
 }
 
 #spot-review-information {
@@ -65,6 +68,24 @@
 
 #spot-address {
     display: flex;
+}
+
+#spot-showcase-icons {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#spot-showcase-icons>* {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+#spot-showcase-icons>*:hover {
+    background-color: #f7f7f7;
 }
 
 .information-break {
