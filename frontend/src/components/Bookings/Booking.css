@@ -273,6 +273,24 @@
     color: #717171;
 }
 
+#booking-guest-selection-close {
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+    width: fit-content;
+}
+
+#booking-guest-selection-close:hover {
+    cursor: pointer;
+    background-color: #f7f7f7;
+}
+
+
+/* -------------------------------- Booking booking past dropdown-------------------------------- */
+
+
 #booking-wont-be-charged {
     display: flex;
     justify-content: center;
@@ -282,22 +300,27 @@
 #booking-price-breakdown {
     display: flex;
     flex-direction: column;
-    gap: 16px;
     font-size: 16px;
 }
 
 .booking-price-breakdown-component {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 16px
 }
 
 .booking-price-breakdown-label {
     text-decoration: underline;
 }
 
+#booking-guest-selection-close-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
 #booking-price-total {
-    border-top: 2px solid #b0b0b0;
-    padding: 12px 0;
+    border-top: 2px solid #dddddd;
+    padding-top: 24px;
     font-weight: 560;
 }
 

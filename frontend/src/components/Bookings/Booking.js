@@ -178,6 +178,18 @@ export default function Booking({ spot }) {
                                                 </button>
                                             </div>
                                         </div>
+
+                                        <div id="booking-guest-selection-close-container">
+                                            <button id="booking-guest-selection-close"
+                                                onClick={(event) => {
+                                                    event.stopPropagation();
+                                                    setShowGuestSelection(false);
+                                                }
+                                                }
+                                            >
+                                                Close
+                                            </button>
+                                        </div>
                                     </div>
                                 }
                             </button>
