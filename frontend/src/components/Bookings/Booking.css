@@ -210,6 +210,9 @@
     width: calc(200%);
     border-radius: 16px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 13px;
 }
 
 #booking-calendar-popup-header-title {
@@ -220,6 +223,7 @@
 #booking-calendar-popup-header {
     display: flex;
     justify-content: space-around;
+    row-gap: 13px;
 }
 
 #booking-calendar-popup-header-left {
@@ -240,6 +244,41 @@
     max-width: 347px;
     height: 58px;
 }
+
+/* -------------------------------- Booking calendar popup footer------------------------------- */
+
+.booking-calendar-popup-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.booking-calendar-popup-footer-buttons-container {
+    display: flex;
+    gap: 12px;
+}
+
+.booking-calendar-popup-footer-buttons-container button {
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.booking-calendar-popup-footer-buttons-container button:first-child {
+    text-decoration: underline;
+}
+
+.booking-calendar-popup-footer-buttons-container button:first-child:hover {
+    background-color: #f7f7f7;
+}
+
+.booking-calendar-popup-footer-buttons-container button:last-child {
+    background-color: #222222;
+    color: white;
+}
+
+.booking-calendar-popup-footer-buttons-container button:last-child:hover {
+    background-color: black;
+}
+
 
 /* -------------------------------- Booking guest dropdown -------------------------------- */
 
@@ -365,6 +404,7 @@
 #booking-price-total .booking-price-breakdown-label {
     text-decoration: none;
 }
+
 
 @media screen and (max-width: 1000px) {
     #booking-holder {

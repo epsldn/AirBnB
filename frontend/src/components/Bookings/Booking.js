@@ -134,6 +134,18 @@ export default function Booking({ spot }) {
 
                                             </div>
                                         </div>
+
+                                        <div className="booking-calendar-popup-footer">
+                                            <div className="booking-calendar-popup-footer-buttons-container">
+                                                <button onClick={clearDates}>
+                                                    Clear dates
+                                                </button>
+
+                                                <button onClick={() => setShowCalendar(false)}>
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 }
                             </div>
