@@ -122,12 +122,16 @@
     margin-bottom: 16px
 }
 
-.booking-calendar-buttons button {
+.booking-calendar-buttons>button,
+#booking-calendar-dates>button,
+#booking-calendar-popup-header-right>button {
     position: relative;
     padding: 26px 12px 12px 12px;
 }
 
-.booking-calendar-buttons button>label {
+.booking-calendar-buttons>button>label,
+#booking-calendar-dates>button>label,
+#booking-calendar-popup-header-right>button>label {
     position: absolute;
     top: 10px;
     font-size: 10px;
@@ -208,6 +212,18 @@
     border-radius: 8px;
 }
 
+/* -------------------------------- Booking calendar popup -------------------------------- */
+
+#booking-calendar-popup-container {
+    position: absolute;
+    top: -26px;
+    right: -32px;
+    background-color: white;
+    z-index: 20;
+    width: 100%;
+    padding: 24px 32px 16px;
+    width: 661px;
+}
 
 /* -------------------------------- Booking guest dropdown -------------------------------- */
 
