@@ -114,7 +114,7 @@
 .booking-calendar-buttons {
     display: grid;
     grid-template-areas:
-        "check-in check-out"
+        "dates dates"
         "guests guests";
     width: 100%;
     grid-template-columns: 1fr 1fr;
@@ -122,12 +122,12 @@
     margin-bottom: 16px
 }
 
-.booking-calendar-buttons>button {
+.booking-calendar-buttons button {
     position: relative;
     padding: 26px 12px 12px 12px;
 }
 
-.booking-calendar-buttons>button>label {
+.booking-calendar-buttons button>label {
     position: absolute;
     top: 10px;
     font-size: 10px;
@@ -135,19 +135,24 @@
     cursor: pointer;
 }
 
+#booking-calendar-dates {
+    position: relative;
+    grid-area: dates;
+}
+
 #booking-check-in {
-    grid-area: check-in;
     border: 1px solid var(--airbncf-border-dark-gray);
     border-radius: 8px 0 0 0;
     border-bottom: none;
+    width: 50%;
 }
 
 #booking-check-out {
-    grid-area: check-out;
     border: 1px solid var(--airbncf-border-dark-gray);
     border-radius: 0 8px 0 0;
     border-bottom: none;
     border-left: none;
+    width: 50%;
 }
 
 #booking-check-in:hover,

@@ -11,8 +11,11 @@ export default function Booking({ spot }) {
     const usDollar = Intl.NumberFormat("en-US");
     const bookingDollarFormat = Intl.NumberFormat("en-US", { maximumFractionDigits: 2, minimumFractionDigits: 2 });
     const user = useSelector(state => state.session.user);
+
+    const calendarDiv = useRef(null);
     const [checkIn, setCheckIn] = useState(new Date());
     const [checkOut, setCheckout] = useState(new Date(new Date().setDate(new Date().getDate() + 1)));
+    const [showCalendar, setShowCalendar] = useState(false);
     const daysBetween = (checkOut - checkIn) / (1000 * 3600 * 24);
 
     const guestButton = useRef(null);
@@ -50,6 +53,18 @@ export default function Booking({ spot }) {
         return () => document.removeEventListener("click", onClick);
     }, [showGuestSelection]);
 
+    useEffect(() => {
+        if (!showCalendar) return;
+        function onClick(event) {
+            if (calendarDiv.current && calendarDiv.current.contains(event.target) === false) {
+                setShowCalendar(false);
+            }
+        }
+
+        document.addEventListener("click", onClick);
+        return () => document.removeEventListener("click", onClick);
+    }, [showCalendar]);
+
     return (
         <div id="booking-holder">
             <div id="booking-content">
@@ -79,23 +94,33 @@ export default function Booking({ spot }) {
                     </div> :
                     <div className="booking-calendar-container">
                         <div className="booking-calendar-buttons">
-                            <button id="booking-check-in">
-                                <label>
-                                    CHECK-IN
-                                </label>
-                                <p>
-                                    {checkIn.toLocaleDateString()}
-                                </p>
-                            </button>
+                            <div id="booking-calendar-dates">
+                                <button id="booking-check-in">
+                                    <label>
+                                        CHECK-IN
+                                    </label>
+                                    <p>
+                                        {checkIn.toLocaleDateString()}
+                                    </p>
+                                </button>
 
-                            <button id="booking-check-out">
-                                <label>
-                                    CHECK-OUT
-                                </label>
-                                <p>
-                                    {checkOut.toLocaleDateString()}
-                                </p>
-                            </button>
+                                <button id="booking-check-out">
+                                    <label>
+                                        CHECK-OUT
+                                    </label>
+                                    <p>
+                                        {checkOut.toLocaleDateString()}
+                                    </p>
+                                </button>
+
+                                {
+                                    showCalendar &&
+                                    <div>
+
+                                    </div>
+                                }
+                            </div>
+
                             <button id="booking-guest-amount"
                                 onClick={() => setShowGuestSelection(true)}
                                 ref={guestButton}
