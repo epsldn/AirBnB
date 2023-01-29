@@ -28,11 +28,8 @@ router.get("/", async (req, res, next) => {
                 userId: user.user.id
             },
             raw: true
-        })).reduce((favObj, next) => {
-            favObj[next.spotId] = next.spotId;
-            return favObj;
-        }, {});
-        
+        }))
+
         res.json(user);
     } else return res.json({ user: null });
 });
