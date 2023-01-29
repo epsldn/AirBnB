@@ -135,6 +135,14 @@ export default function Booking({ spot }) {
                                             </div>
                                         </div>
 
+                                        <div id="booking-calendar-popup-month-selection-container">
+
+                                        </div>
+
+                                        <div id="booking-calendar-popup-calendars-container">
+
+                                        </div>
+
                                         <div className="booking-calendar-popup-footer">
                                             <div className="booking-calendar-popup-footer-buttons-container">
                                                 <button onClick={clearDates}>

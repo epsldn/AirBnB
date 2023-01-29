@@ -245,6 +245,14 @@
     height: 58px;
 }
 
+#booking-calendar-popup-month-selection-container {
+    margin: 30px 0;
+}
+
+#booking-calendar-popup-calendars-container{
+    height: 270px;
+}
+
 /* -------------------------------- Booking calendar popup footer------------------------------- */
 
 .booking-calendar-popup-footer {
