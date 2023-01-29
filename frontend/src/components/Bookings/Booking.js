@@ -44,6 +44,11 @@ export default function Booking({ spot }) {
         }
     };
 
+    function clearDates() {
+        setCheckIn(undefined);
+        setCheckout(undefined);
+    }
+
     useEffect(() => {
         if (!showGuestSelection) return;
         function onClick(event) {
@@ -121,27 +126,12 @@ export default function Booking({ spot }) {
                                     <div id="booking-calendar-popup-container">
                                         <div id="booking-calendar-popup-header">
                                             <div id="booking-calendar-popup-header-left">
-
+                                                <h3 id="booking-calendar-popup-header-title">{checkIn && checkOut ? daysBetween === 1 ? "1 night" : daysBetween + " nights" : "Select Dates"}</h3>
+                                                <p>Add your travel dates to update pricing</p>
                                             </div>
 
                                             <div id="booking-calendar-popup-header-right">
-                                                <button id="booking-check-in">
-                                                    <label>
-                                                        CHECK-IN
-                                                    </label>
-                                                    <p>
-                                                        {checkIn ? <p> checkIn.toLocaleDateString() </p> : <p style={{ color: "lightgray" }}> Add a date </p>}
-                                                    </p>
-                                                </button>
 
-                                                <button id="booking-check-out">
-                                                    <label>
-                                                        CHECK-OUT
-                                                    </label>
-                                                    <p>
-                                                        {checkOut ? <p> checkOut.toLocaleDateString() </p> : <p style={{ color: "lightgray" }}> Add a date </p>}
-                                                    </p>
-                                                </button>
                                             </div>
                                         </div>
                                     </div>

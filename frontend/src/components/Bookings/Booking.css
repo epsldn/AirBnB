@@ -27,25 +27,7 @@
     background-color: white;
 }
 
-@media screen and (max-width: 1000px) {
-    #booking-holder {
-        width: 100%;
-    }
 
-    #booking-content {
-        width: 100%;
-        position: sticky;
-        padding: 24px;
-        top: 40px;
-        border: 1px solid lightgray;
-        border-radius: 12px;
-        margin-bottom: 32px;
-        height: fit-content;
-        box-shadow: rgb(0, 0, 0, 0.12) 0px 6px 16px 0px;
-        min-width: 320px;
-        max-width: 400px;
-    }
-}
 
 #booking-price-reviews {
     display: flex;
@@ -147,16 +129,19 @@
 #booking-check-in {
     border: 1px solid var(--airbncf-border-dark-gray);
     border-radius: 8px 0 0 0;
-    border-bottom: none;
+    /* border-bottom: none; */
     width: 50%;
+    position: relative;
+    z-index: 21;
 }
 
 #booking-check-out {
     border: 1px solid var(--airbncf-border-dark-gray);
     border-radius: 0 8px 0 0;
-    border-bottom: none;
+    /* border-bottom: none; */
     border-left: none;
     width: 50%;
+    z-index: 21;
 }
 
 #booking-check-in:hover,
@@ -186,6 +171,7 @@
     position: relative;
     border: 1px solid var(--airbncf-border-dark-gray);
     border-radius: 0 0 8px 8px;
+    border-top: none;
 }
 
 #booking-guest-amount:hover::after,
@@ -220,9 +206,39 @@
     right: -32px;
     background-color: white;
     z-index: 20;
-    width: 100%;
     padding: 24px 32px 16px;
-    width: 661px;
+    width: calc(200%);
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+}
+
+#booking-calendar-popup-header-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+#booking-calendar-popup-header {
+    display: flex;
+    justify-content: space-around;
+}
+
+#booking-calendar-popup-header-left {
+    width: 45%;
+}
+
+#booking-calendar-popup-header-left p {
+    font-size: 13px;
+}
+
+#booking-calendar-popup-header-left h3 {
+    font-weight: 500;
+}
+
+#booking-calendar-popup-header-right {
+    width: 65%;
+    min-width: 270px;
+    max-width: 347px;
+    height: 58px;
 }
 
 /* -------------------------------- Booking guest dropdown -------------------------------- */
@@ -348,4 +364,37 @@
 
 #booking-price-total .booking-price-breakdown-label {
     text-decoration: none;
+}
+
+@media screen and (max-width: 1000px) {
+    #booking-holder {
+        width: 100%;
+    }
+
+    #booking-content {
+        width: 100%;
+        position: sticky;
+        padding: 24px;
+        top: 40px;
+        border: 1px solid lightgray;
+        border-radius: 12px;
+        margin-bottom: 32px;
+        height: fit-content;
+        box-shadow: rgb(0, 0, 0, 0.12) 0px 6px 16px 0px;
+        min-width: 320px;
+        max-width: 400px;
+    }
+
+    #booking-calendar-popup-container {
+        top: -150%;
+        width: calc(100% + 64px);
+    }
+
+    #booking-calendar-popup-header {
+        flex-direction: column;
+    }
+
+    #booking-calendar-popup-header-left {
+        width: 100%;
+    }
 }
