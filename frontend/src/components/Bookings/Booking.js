@@ -11,9 +11,15 @@ export default function Booking({ spot }) {
     const usDollar = Intl.NumberFormat("en-US");
     const bookingDollarFormat = Intl.NumberFormat("en-US", { maximumFractionDigits: 2, minimumFractionDigits: 2 });
     const user = useSelector(state => state.session.user);
-    const [checkIn, setCheckIn] = useState(new Date());
-    const [checkOut, setCheckout] = useState(new Date(new Date().setDate(new Date().getDate() + 1)));
-    const daysBetween = (checkOut - checkIn) / (1000 * 3600 * 24);
+
+    const calendarDiv = useRef(null);
+    // const [checkIn, setCheckIn] = useState(new Date());
+    const [checkIn, setCheckIn] = useState();
+    // const [checkOut, setCheckout] = useState(new Date(new Date().setDate(new Date().getDate() + 1)));
+    const [checkOut, setCheckout] = useState();
+
+    const [showCalendar, setShowCalendar] = useState(false);
+    const daysBetween = (checkOut - checkIn) / (1000 * 3600 * 24) || 1;
 
     const guestButton = useRef(null);
     const [adults, setAdults] = useState(1);
@@ -38,6 +44,11 @@ export default function Booking({ spot }) {
         }
     };
 
+    function clearDates() {
+        setCheckIn(undefined);
+        setCheckout(undefined);
+    }
+
     useEffect(() => {
         if (!showGuestSelection) return;
         function onClick(event) {
@@ -49,6 +60,18 @@ export default function Booking({ spot }) {
         document.addEventListener("click", onClick);
         return () => document.removeEventListener("click", onClick);
     }, [showGuestSelection]);
+
+    useEffect(() => {
+        if (!showCalendar) return;
+        function onClick(event) {
+            if (calendarDiv.current && calendarDiv.current.contains(event.target) === false) {
+                setShowCalendar(false);
+            }
+        }
+
+        document.addEventListener("click", onClick);
+        return () => document.removeEventListener("click", onClick);
+    }, [showCalendar]);
 
     return (
         <div id="booking-holder">
@@ -79,23 +102,62 @@ export default function Booking({ spot }) {
                     </div> :
                     <div className="booking-calendar-container">
                         <div className="booking-calendar-buttons">
-                            <button id="booking-check-in">
-                                <label>
-                                    CHECK-IN
-                                </label>
-                                <p>
-                                    {checkIn.toLocaleDateString()}
-                                </p>
-                            </button>
+                            <div id="booking-calendar-dates" ref={calendarDiv}>
+                                <button id="booking-check-in" onClick={() => setShowCalendar(true)}>
+                                    <label>
+                                        CHECK-IN
+                                    </label>
+                                    <p>
+                                        {checkIn ? <p> checkIn.toLocaleDateString() </p> : <p style={{ color: "lightgray" }}> Add a date </p>}
+                                    </p>
+                                </button>
 
-                            <button id="booking-check-out">
-                                <label>
-                                    CHECK-OUT
-                                </label>
-                                <p>
-                                    {checkOut.toLocaleDateString()}
-                                </p>
-                            </button>
+                                <button id="booking-check-out" onClick={() => setShowCalendar(true)}>
+                                    <label>
+                                        CHECK-OUT
+                                    </label>
+                                    <p>
+                                        {checkOut ? <p> checkOut.toLocaleDateString() </p> : <p style={{ color: "lightgray" }}> Add a date </p>}
+                                    </p>
+                                </button>
+
+                                {
+                                    showCalendar &&
+                                    <div id="booking-calendar-popup-container">
+                                        <div id="booking-calendar-popup-header">
+                                            <div id="booking-calendar-popup-header-left">
+                                                <h3 id="booking-calendar-popup-header-title">{checkIn && checkOut ? daysBetween === 1 ? "1 night" : daysBetween + " nights" : "Select Dates"}</h3>
+                                                <p>Add your travel dates to update pricing</p>
+                                            </div>
+
+                                            <div id="booking-calendar-popup-header-right">
+
+                                            </div>
+                                        </div>
+
+                                        <div id="booking-calendar-popup-month-selection-container">
+
+                                        </div>
+
+                                        <div id="booking-calendar-popup-calendars-container">
+
+                                        </div>
+
+                                        <div className="booking-calendar-popup-footer">
+                                            <div className="booking-calendar-popup-footer-buttons-container">
+                                                <button onClick={clearDates}>
+                                                    Clear dates
+                                                </button>
+
+                                                <button onClick={() => setShowCalendar(false)}>
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
                             <button id="booking-guest-amount"
                                 onClick={() => setShowGuestSelection(true)}
                                 ref={guestButton}
@@ -246,4 +308,4 @@ export default function Booking({ spot }) {
             </div>
         </div >
     );
-}
+};

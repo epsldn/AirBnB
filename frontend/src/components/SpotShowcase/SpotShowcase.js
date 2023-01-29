@@ -60,6 +60,10 @@ const SpotShowCase = () => {
                         </div>
                         <div id="spot-showcase-icons">
                             <button>
+                                <i className="fa-solid fa-arrow-up-from-bracket" />
+                                Share
+                            </button>
+                            <button>
                                 <i className="fa-regular fa-heart" />
                                 {/* <i className="fa-solid fa-heart" /> */}
                                 Save

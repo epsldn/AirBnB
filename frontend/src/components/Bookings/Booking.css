@@ -27,25 +27,7 @@
     background-color: white;
 }
 
-@media screen and (max-width: 1000px) {
-    #booking-holder {
-        width: 100%;
-    }
 
-    #booking-content {
-        width: 100%;
-        position: sticky;
-        padding: 24px;
-        top: 40px;
-        border: 1px solid lightgray;
-        border-radius: 12px;
-        margin-bottom: 32px;
-        height: fit-content;
-        box-shadow: rgb(0, 0, 0, 0.12) 0px 6px 16px 0px;
-        min-width: 320px;
-        max-width: 400px;
-    }
-}
 
 #booking-price-reviews {
     display: flex;
@@ -114,7 +96,7 @@
 .booking-calendar-buttons {
     display: grid;
     grid-template-areas:
-        "check-in check-out"
+        "dates dates"
         "guests guests";
     width: 100%;
     grid-template-columns: 1fr 1fr;
@@ -122,12 +104,16 @@
     margin-bottom: 16px
 }
 
-.booking-calendar-buttons>button {
+.booking-calendar-buttons>button,
+#booking-calendar-dates>button,
+#booking-calendar-popup-header-right>button {
     position: relative;
     padding: 26px 12px 12px 12px;
 }
 
-.booking-calendar-buttons>button>label {
+.booking-calendar-buttons>button>label,
+#booking-calendar-dates>button>label,
+#booking-calendar-popup-header-right>button>label {
     position: absolute;
     top: 10px;
     font-size: 10px;
@@ -135,19 +121,27 @@
     cursor: pointer;
 }
 
+#booking-calendar-dates {
+    position: relative;
+    grid-area: dates;
+}
+
 #booking-check-in {
-    grid-area: check-in;
     border: 1px solid var(--airbncf-border-dark-gray);
     border-radius: 8px 0 0 0;
-    border-bottom: none;
+    /* border-bottom: none; */
+    width: 50%;
+    position: relative;
+    z-index: 21;
 }
 
 #booking-check-out {
-    grid-area: check-out;
     border: 1px solid var(--airbncf-border-dark-gray);
     border-radius: 0 8px 0 0;
-    border-bottom: none;
+    /* border-bottom: none; */
     border-left: none;
+    width: 50%;
+    z-index: 21;
 }
 
 #booking-check-in:hover,
@@ -177,6 +171,7 @@
     position: relative;
     border: 1px solid var(--airbncf-border-dark-gray);
     border-radius: 0 0 8px 8px;
+    border-top: none;
 }
 
 #booking-guest-amount:hover::after,
@@ -201,6 +196,95 @@
 .booking-calendar-container>#submit {
     margin: 0;
     border-radius: 8px;
+}
+
+/* -------------------------------- Booking calendar popup -------------------------------- */
+
+#booking-calendar-popup-container {
+    position: absolute;
+    top: -26px;
+    right: -32px;
+    background-color: white;
+    z-index: 20;
+    padding: 24px 32px 16px;
+    width: calc(200%);
+    border-radius: 16px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 13px;
+}
+
+#booking-calendar-popup-header-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+#booking-calendar-popup-header {
+    display: flex;
+    justify-content: space-around;
+    row-gap: 13px;
+}
+
+#booking-calendar-popup-header-left {
+    width: 45%;
+}
+
+#booking-calendar-popup-header-left p {
+    font-size: 13px;
+}
+
+#booking-calendar-popup-header-left h3 {
+    font-weight: 500;
+}
+
+#booking-calendar-popup-header-right {
+    width: 65%;
+    min-width: 270px;
+    max-width: 347px;
+    height: 58px;
+}
+
+#booking-calendar-popup-month-selection-container {
+    margin: 30px 0;
+}
+
+#booking-calendar-popup-calendars-container{
+    height: 270px;
+}
+
+/* -------------------------------- Booking calendar popup footer------------------------------- */
+
+.booking-calendar-popup-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.booking-calendar-popup-footer-buttons-container {
+    display: flex;
+    gap: 12px;
+}
+
+.booking-calendar-popup-footer-buttons-container button {
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.booking-calendar-popup-footer-buttons-container button:first-child {
+    text-decoration: underline;
+}
+
+.booking-calendar-popup-footer-buttons-container button:first-child:hover {
+    background-color: #f7f7f7;
+}
+
+.booking-calendar-popup-footer-buttons-container button:last-child {
+    background-color: #222222;
+    color: white;
+}
+
+.booking-calendar-popup-footer-buttons-container button:last-child:hover {
+    background-color: black;
 }
 
 
@@ -327,4 +411,38 @@
 
 #booking-price-total .booking-price-breakdown-label {
     text-decoration: none;
+}
+
+
+@media screen and (max-width: 1000px) {
+    #booking-holder {
+        width: 100%;
+    }
+
+    #booking-content {
+        width: 100%;
+        position: sticky;
+        padding: 24px;
+        top: 40px;
+        border: 1px solid lightgray;
+        border-radius: 12px;
+        margin-bottom: 32px;
+        height: fit-content;
+        box-shadow: rgb(0, 0, 0, 0.12) 0px 6px 16px 0px;
+        min-width: 320px;
+        max-width: 400px;
+    }
+
+    #booking-calendar-popup-container {
+        top: -150%;
+        width: calc(100% + 64px);
+    }
+
+    #booking-calendar-popup-header {
+        flex-direction: column;
+    }
+
+    #booking-calendar-popup-header-left {
+        width: 100%;
+    }
 }
