@@ -23,12 +23,15 @@ router.get("/", async (req, res, next) => {
     if (user) user.token = req.cookies.token;
     if (user) {
         user = user.toSafeObject();
-        user.favorites = (await UserFavoriteSpot.findAll({
-            where: {
-                userId: user.user.id
-            },
-            raw: true
-        }))
+        // user.favorites = (await UserFavoriteSpot.findAll({
+        //     where: {
+        //         userId: user.user.id
+        //     },
+        //     raw: true
+        // })).reduce((favObj, next) => {
+        //     favObj[next.spotId] = next.spotId;
+        //     return favObj;
+        // }, {});
 
         res.json(user);
     } else return res.json({ user: null });
