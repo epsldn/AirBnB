@@ -228,6 +228,18 @@ module.exports = {
         name: "The Woodlands Hideout",
         description: "The Woodlands Hideout is a small intentional retreat space, recently featured in Dwell. Designed and created with so much love, and with the hope that guests could  immerse in the beauty of the natural world, but still offer some cozy and more essential comforts. ",
         price: 173
+      },
+      {
+        ownerId: 2,
+        address: "144 Mocha Dr",
+        city: "Cannon Beach",
+        state: "Oregon",
+        country: "United States",
+        lat: 37.7645358,
+        lng: -122.4730327,
+        name: "Ravenhome: Your beach getaway in the trees.",
+        description: "Brand New - owner designed and built, newly furnished, fresh and gorgeous. Ravenhome is perfect for your coastal getaway in beautiful Cannon Beach, Oregon. Located just off the road  to Ecola State Park,  it's a short walk to the beach, creek side park, and to the downtown shops and dining.",
+        price: 290
       }
     ]);
   },

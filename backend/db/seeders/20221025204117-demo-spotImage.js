@@ -464,31 +464,31 @@ module.exports = {
         url: "https://a0.muscache.com/im/pictures/miso/Hosting-51871434/original/aa17c7f3-c735-49e7-903d-5eeeb20ab9a9.jpeg?im_w=720",
         preview: false
       },
-      // {
-      //   spotId: 19,
-      //   url: "https://a0.muscache.com/im/pictures/9539ec1a-1929-44b9-a0de-efbb61627b34.jpg?im_w=1200",
-      //   preview: true
-      // },
-      // {
-      //   spotId: 19,
-      //   url: "https://a0.muscache.com/im/pictures/dfe61e99-3452-4bf4-b34a-a8198260efc5.jpg?im_w=720",
-      //   preview: false
-      // },
-      // {
-      //   spotId: 19,
-      //   url: "https://a0.muscache.com/im/pictures/b48896c7-e2e2-4442-ad9f-49ad0ec8e175.jpg?im_w=720",
-      //   preview: false
-      // },
-      // {
-      //   spotId: 19,
-      //   url: "https://a0.muscache.com/im/pictures/81986104-5f64-4fb8-bdea-98af9dafeb3c.jpg?im_w=720",
-      //   preview: false
-      // },
-      // {
-      //   spotId: 19,
-      //   url: "https://a0.muscache.com/im/pictures/30c97867-a3b0-4f39-b54a-616a9b986574.jpg?im_w=720",
-      //   preview: false
-      // },
+      {
+        spotId: 19,
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-759539603024244061/original/e9f3736b-f891-4d60-8707-2cddaa627815.jpeg?im_w=1200",
+        preview: true
+      },
+      {
+        spotId: 19,
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-759539603024244061/original/65859244-8b25-43fc-aeae-34eae566e1f1.jpeg?im_w=720",
+        preview: false
+      },
+      {
+        spotId: 19,
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-759539603024244061/original/cff6c182-7ced-467f-891b-09e3ffcb9b72.jpeg?im_w=720",
+        preview: false
+      },
+      {
+        spotId: 19,
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-759539603024244061/original/506e0a24-53cd-41e0-af99-b6821a2714fe.jpeg?im_w=720",
+        preview: false
+      },
+      {
+        spotId: 19,
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-759539603024244061/original/3792196a-62c7-463c-ba5a-4d8791489f4c.jpeg?im_w=720",
+        preview: false
+      },
       // {
       //   spotId: 20,
       //   url: "https://a0.muscache.com/im/pictures/9539ec1a-1929-44b9-a0de-efbb61627b34.jpg?im_w=1200",
