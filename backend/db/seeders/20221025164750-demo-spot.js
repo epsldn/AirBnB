@@ -120,6 +120,18 @@ module.exports = {
         name: "Beautiful views! The JoCo Cabin on Big Piney Creek",
         description: "Come enjoy the JoCo Cabin with views of Piney Bay! There are multiple ways to enjoy the scenery including; enjoying a book on one of the multiple decks, in a hot tub, relaxing in a hammock or playing a game of ping pong while grilling out with your family and friends! Make sure to catch some of the best sunset views in Arkansas! With our outdoor lighting, you’ll be able to still enjoy the outside amenities into the night.",
         price: 283
+      },
+      {
+        ownerId: 3,
+        address: "192 Freedom Dr",
+        city: "Belton",
+        state: "Texas",
+        country: "United States",
+        lat: 37.7645358,
+        lng: -122.4730327,
+        name: "Lakefront House w/ Pool & Private Beach",
+        description: "There is no better lakefront home to create amazing memories with family & friends. The bluest water you've seen in Texas with 180 degree views of Lake Belton.  Walk down the trail to private sandy beach water access. Lay out in the sun by the pool or grill out your favorite meal. Enjoy indoor and outdoor dining plus a large family room. All designer remodeled bathrooms, living space and plenty of beds to bring everyone. Just bring a towel. Swim and lake access at your own risk, no lifeguard.",
+        price: 283
       }
     ]);
   },
