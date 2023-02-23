@@ -96,6 +96,18 @@ module.exports = {
         name: "Owl Spring Ranch Bunkhouse",
         description: "Classic hill country cabin with amazing views from its perch on a cliff on the Guadalupe River. Located on a large ranch hosting exotic and native wildlife.  Relax in the plunge pool and settle in for an unforgettable retreat.",
         price: 300
+      },
+      {
+        ownerId: 2,
+        address: "198 Freedom Dr",
+        city: "Lago Vista",
+        state: "Texas",
+        country: "United States",
+        lat: 37.7645358,
+        lng: -122.4730327,
+        name: "Unique Eco-Glamping in TX Hill country - Pod #1!",
+        description: "UDOSCAPE - a unique, heart-throbbing ADULTS-only eco-Glamping resort in Texas Hill Country. Site currently has 8 luxuriously furnished pods ranging from Deluxe to Deluxe-plus, all nestled up a hill with amazing hill country views. Amenities include grills, fire-pit, and hammock sites. Each Pod comes with a dedicated hot tub. All Pods are luxuriously furnished with plush beddings, en-suite restroom, kitchenette, dinning area, etc. Get ready to experience camping like never before!",
+        price: 302
       }
     ]);
   },
