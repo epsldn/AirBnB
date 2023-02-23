@@ -108,6 +108,18 @@ module.exports = {
         name: "Unique Eco-Glamping in TX Hill country - Pod #1!",
         description: "UDOSCAPE - a unique, heart-throbbing ADULTS-only eco-Glamping resort in Texas Hill Country. Site currently has 8 luxuriously furnished pods ranging from Deluxe to Deluxe-plus, all nestled up a hill with amazing hill country views. Amenities include grills, fire-pit, and hammock sites. Each Pod comes with a dedicated hot tub. All Pods are luxuriously furnished with plush beddings, en-suite restroom, kitchenette, dinning area, etc. Get ready to experience camping like never before!",
         price: 302
+      },
+      {
+        ownerId: 2,
+        address: "195 Freedom Dr",
+        city: "London",
+        state: "Arkansas",
+        country: "United States",
+        lat: 37.7645358,
+        lng: -122.4730327,
+        name: "Beautiful views! The JoCo Cabin on Big Piney Creek",
+        description: "Come enjoy the JoCo Cabin with views of Piney Bay! There are multiple ways to enjoy the scenery including; enjoying a book on one of the multiple decks, in a hot tub, relaxing in a hammock or playing a game of ping pong while grilling out with your family and friends! Make sure to catch some of the best sunset views in Arkansas! With our outdoor lighting, you’ll be able to still enjoy the outside amenities into the night.",
+        price: 283
       }
     ]);
   },
