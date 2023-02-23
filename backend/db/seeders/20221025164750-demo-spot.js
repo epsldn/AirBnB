@@ -156,6 +156,18 @@ module.exports = {
         name: "@PerroLargoRanch",
         description: "Find absolute solitude camping at our dry campsite between Pack Saddle & Panther mountain. You’ll have access to our 8’x20’ insulated container and all 20 acres that surround it! This property is surrounded by mountain views and adventurous terrain. At night, you will be able to observe the darkest skies, every star and even the milky way on clear nights from our rooftop patio. During the day it’s perfect for observing tons of wildlife including wild donkeys, javelina and jackrabbits.",
         price: 65
+      },
+      {
+        ownerId: 3,
+        address: "352 Liberty Dr",
+        city: "Broken Bow",
+        state: "Oklahoma",
+        country: "United States",
+        lat: 37.7645358,
+        lng: -122.4730327,
+        name: "Misty Mountain-3 Bdr|Great For Kids!|2 Game Rooms!",
+        description: "Unique and extraordinary like no other, the newly renovated Misty Mountain cabin has been carefully curated with no detail overlooked to charm every member of your group! This custom-fitted vacation cabin is tucked away on a peaceful cul-de-sac in the Eagle Mountain East Development, with more than enough parking for cars and trailers.",
+        price: 573
       }
     ]);
   },
