@@ -41,13 +41,28 @@ module.exports = {
       },
       {
         spotId: 2,
-        url: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Fitzgerald_House_%28Los_Angeles%29.jpg",
+        url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-681250879114299891/original/6482b370-cc7a-468b-8793-b642cec133ed.jpeg?im_w=720",
         preview: true
       },
       {
         spotId: 2,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-681250879114299891/original/3730cdfc-7fe0-4a28-918c-dea7f15b1eac.jpeg?im_w=1200",
         preview: false
+      },
+      {
+        spotId: 2,
+        url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-681250879114299891/original/3d6334a1-3c9b-4abf-ab85-72a9c672514f.jpeg?im_w=720",
+        preview: true
+      },
+      {
+        spotId: 2,
+        url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-681250879114299891/original/bc7a7130-8378-4293-86a7-4357d3079714.jpeg?im_w=720",
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-681250879114299891/original/88b80138-46f5-4b79-9c48-b7049913fe32.jpeg?im_w=720",
+        preview: true
       },
       {
         spotId: 3,

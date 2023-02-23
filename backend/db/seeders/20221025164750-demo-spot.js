@@ -27,15 +27,15 @@ module.exports = {
       },
       {
         ownerId: 2,
-        address: "Some address2",
-        city: "Some city2",
-        state: "some state2",
-        country: "some country2",
+        address: "186 Rainey St",
+        city: "Lake Hamilton",
+        state: "Arkansas",
+        country: "United States",
         lat: 2.54151345,
         lng: -34.31441,
-        name: "Some cool name2",
-        description: "Marketing stuff2",
-        price: 29045
+        name: "Unique lake-view shipping container with boat slip, large yard, 2 decks, firepit",
+        description: "Every inch of the space is curated to appreciate what is so wonderful about Hot Springs all while being five miles from Oaklawn Racing Casino and six and a half miles from downtown. Enjoy your coffee on the lower deck and margaritas on the upper deck while watching the sun rise and set. Or gather around the firepit under the starry night sky for a memorable storytelling time. A large lawn, which is shared with the other home, leads you to the boat slip with enough space for one boat. The fourth bed is a queen-sized swing on the porch inviting you to wake up or lounge during sunset with water views! \n This brand- new home offers unique architecture from four shipping containers, something you won't find easily anywhere else. Admire beautiful Lake Hamilton views through floor-to-ceiling windows or from the luxury bathtub with a window overlooking the lake. There are two inviting living spaces, which means you all can hang out together or simply divide if you would rather watch an action movie while letting the youngsters enjoy one of the latest movies or series. The kitchen is simply gorgeous, with modern, stainless steel appliances and emerald green tile backsplash. Smart TVs allow you and your friends to stay up to date with your favorite series and the washer/dryer will make laundry a breeze. ",
+        price: 296
       },
       {
         ownerId: 2,
