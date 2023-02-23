@@ -66,27 +66,27 @@ module.exports = {
       },
       {
         spotId: 3,
-        url: "https://images.pexels.com/photos/3637662/pexels-photo-3637662.jpeg",
+        url: "https://a0.muscache.com/im/pictures/34bf21d9-49f3-40b8-bfa8-3db222c7e4f3.jpg?im_w=1200",
         preview: true
       },
       {
         spotId: 3,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/f4c8dc82-6055-4926-842d-66c5a0738d60.jpg?im_w=720",
         preview: false
       },
       {
         spotId: 3,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/c88f1e98-2f52-432f-930e-b9134f384167.jpg?im_w=720",
         preview: false
       },
       {
         spotId: 3,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/8ca077cd-d9da-4d09-ae8e-d1dfce7f9a24.jpg?im_w=720",
         preview: false
       },
       {
         spotId: 3,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/502caf2b-6fad-459c-ab06-ad999ce31f25.jpg?im_w=720",
         preview: false
       },
       {

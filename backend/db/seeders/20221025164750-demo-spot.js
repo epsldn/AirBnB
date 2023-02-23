@@ -39,15 +39,15 @@ module.exports = {
       },
       {
         ownerId: 2,
-        address: "Some address3",
-        city: "Some city3",
-        state: "some state3",
-        country: "some country3",
+        address: "19 Tapo Lane",
+        city: "Granbury",
+        state: "Texas",
+        country: "United States",
         lat: 3.54151345,
         lng: -45.31441,
-        name: "Some cool name3",
-        description: "Marketing stuff3",
-        price: 112
+        name: "Trails edge lake house, boat dock, & best views!!!",
+        description: "Make memories to last a lifetime on lake Granbury, as well as having the best view in town. BRING YOUR BOAT!!!! Two story dock that is covered, has 2 boat slips, and plenty room for lake activities. Have a perfect view of the most beautiful sunrises and sunsets!! Centrally located between the Historic Granbury Square, Fossil Rim Wildlife Center and Dinosaur Valley State Park!",
+        price: 360
       },
       {
         ownerId: 1,
