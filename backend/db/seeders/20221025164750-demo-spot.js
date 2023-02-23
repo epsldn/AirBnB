@@ -51,15 +51,15 @@ module.exports = {
       },
       {
         ownerId: 1,
-        address: "4Some address",
-        city: "4Some city",
-        state: "4some state",
-        country: "4some country",
+        address: "191 Green Mountain",
+        city: "Marfa",
+        state: "Texas",
+        country: "United States",
         lat: 1.54151345,
         lng: -23.31441,
-        name: "Some cool name",
-        description: "Marketing stuff",
-        price: 70000000
+        name: "Modern Solar Home South of Marfa",
+        description: "Hip solar home ONE HOUR AND 20 MINUTES SOUTH OF MARFA. Just 20 minutes from Chinati Hot Springs. Fully furnished. True artists retreat with world class views. 2 bedrooms 3 baths. Cooks kitchen. Need only bring groceries. Great hiking in luxury setting. Stunning drive down pinto canyon road.",
+        price: 550
       },
       {
         ownerId: 2,

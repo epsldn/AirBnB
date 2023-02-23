@@ -91,42 +91,27 @@ module.exports = {
       },
       {
         spotId: 4,
-        url: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg",
+        url: "https://a0.muscache.com/im/pictures/2064e668-8985-4a82-a9f9-d2d0aecfc8b1.jpg?im_w=1200",
         preview: true
       },
       {
         spotId: 4,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-1894813/original/a155c0d8-b957-497f-8d36-ac60b1c47776.jpeg?im_w=720",
         preview: false
       },
       {
         spotId: 4,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-1894813/original/a971d48f-9d4e-4336-9f53-957f7905e11d.jpeg?im_w=720",
         preview: false
       },
       {
         spotId: 4,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-1894813/original/ab078af9-9968-4384-be9d-be0292966949.jpeg?im_w=720",
         preview: false
       },
       {
         spotId: 4,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
-        preview: false
-      },
-      {
-        spotId: 4,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
-        preview: false
-      },
-      {
-        spotId: 4,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
-        preview: false
-      },
-      {
-        spotId: 4,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-1894813/original/7dd94a86-200d-47bd-9110-db758d081ae4.jpeg?im_w=720",
         preview: false
       },
       {
