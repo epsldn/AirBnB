@@ -116,27 +116,27 @@ module.exports = {
       },
       {
         spotId: 5,
-        url: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Fitzgerald_House_%28Los_Angeles%29.jpg",
+        url: "https://a0.muscache.com/im/pictures/5e05a3c8-91fc-430d-a024-57e7c5937c90.jpg?im_w=1200",
         preview: true
       },
       {
         spotId: 5,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/a86c229d-3fe9-4b29-9d30-6986ddb41106.jpg?im_w=720",
         preview: false
       },
       {
         spotId: 5,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/a67a622d-de14-438a-942a-dd4e2ca9b957.jpg?im_w=720",
         preview: false
       },
       {
         spotId: 5,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/7c9164ab-06c3-432e-ae5b-9dc5acc6d323.jpg?im_w=720",
         preview: false
       },
       {
         spotId: 5,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/ae056e79-92ba-447e-820d-64b2f9548f39.jpg?im_w=720",
         preview: false
       },
       {

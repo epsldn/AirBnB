@@ -63,15 +63,15 @@ module.exports = {
       },
       {
         ownerId: 2,
-        address: "5Some address2",
-        city: "5Some city2",
-        state: "5some state2",
-        country: "5some country2",
+        address: "6704 Pioneer Crossing",
+        city: "Hidalgo",
+        state: "Nuevo León",
+        country: "Mexico",
         lat: 2.54151345,
         lng: -34.31441,
-        name: "Some cool name2",
-        description: "Marketing stuff2",
-        price: 29045
+        name: "El Cubil in Potrero Chico Cilíndrica Room #1",
+        description: "El Cubil is a beautiful and modern hostel just a 5-minute walk from the gates of El Potrero Chico Park, the internationally renowned rock climbing area in the state of Nuevo León.",
+        price: 95
       },
       {
         ownerId: 2,
