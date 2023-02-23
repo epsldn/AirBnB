@@ -144,6 +144,18 @@ module.exports = {
         name: "Experience this BRAND NEW cabin",
         description: "Hell of a View is an absolutely stunning, newly constructed luxury cabin that is located just a few miles north of the restaurants, wineries, breweries, a casino and family entertainment of Hochatown. It sits majestically on top of the Forest Brook Loop Development just off of 259 and includes a 200-degree panoramic view of the rolling Ouachita National Forest.",
         price: 661
+      },
+      {
+        ownerId: 3,
+        address: "344 Liberty Dr",
+        city: "Brewster County",
+        state: "Texas",
+        country: "United States",
+        lat: 37.7645358,
+        lng: -122.4730327,
+        name: "@PerroLargoRanch",
+        description: "Find absolute solitude camping at our dry campsite between Pack Saddle & Panther mountain. You’ll have access to our 8’x20’ insulated container and all 20 acres that surround it! This property is surrounded by mountain views and adventurous terrain. At night, you will be able to observe the darkest skies, every star and even the milky way on clear nights from our rooftop patio. During the day it’s perfect for observing tons of wildlife including wild donkeys, javelina and jackrabbits.",
+        price: 65
       }
     ]);
   },
