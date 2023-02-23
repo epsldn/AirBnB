@@ -192,6 +192,18 @@ module.exports = {
         name: "CarriageHouse on The Stream, Sundance UT",
         description: "Business bringing you to our area?  Need a couples getaway?   Want a personal timeout?  This is the place.  Fresh mountain air, a stream, comfortable bedding, and essentials are all here!  Come spend a little time with us.  A short drive up Provo Canyon brings you to the little slice of heaven in Big Pine Canyon at Sundance.  The world-class restaurants at the Resort or Owl Bar provide gathering places for your business or pleasure dining & entertainment - and your drive is 3 minutes.   :)",
         price: 249
+      },
+      {
+        ownerId: 3,
+        address: "686 Liberty Dr",
+        city: "Cedar City",
+        state: "Utah",
+        country: "United States",
+        lat: 37.7645358,
+        lng: -122.4730327,
+        name: "Hobbit Cottage",
+        description: "Tucked away in our peaceful garden, this modern Hobbit Cottage will delight you! Although it's not the Shire of Middle Earth from LOTR, it's our little piece of paradise. We are located near Bryce Canyon, Brian Head and Zion National Park, Kannarraville Falls. Custom built by Chris and I for those who love adventure, hiking, snow boarding. Make sure to catch the world-famous Shakespeare festival. Cedar City is known as \"Festival City\" for a good reason!",
+        price: 89
       }
     ]);
   },
