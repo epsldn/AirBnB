@@ -179,7 +179,19 @@ module.exports = {
         lng: -122.4730327,
         name: "The Kiva Suite - Private Cave Tent #4",
         description: "One mile up Kanab's most pristine canyon lies a place of both beauty and serenity. Welcome to Cave Lakes Canyon Ranch, where secluded nature meets luxury accommodations.  This unique Luxury Tent, is located in its own private cave with a fire pit a secluded area all to yourself. This Premium tent inspires peaceful relaxation with luxury bedding, coffee station, and an authentic pellet  burning stove in the winter.  Come immerse yourself in nature.",
-        price: 573
+        price: 358
+      },
+      {
+        ownerId: 2,
+        address: "486 Liberty Dr",
+        city: "Sundance",
+        state: "Utah",
+        country: "United States",
+        lat: 37.7645358,
+        lng: -122.4730327,
+        name: "CarriageHouse on The Stream, Sundance UT",
+        description: "Business bringing you to our area?  Need a couples getaway?   Want a personal timeout?  This is the place.  Fresh mountain air, a stream, comfortable bedding, and essentials are all here!  Come spend a little time with us.  A short drive up Provo Canyon brings you to the little slice of heaven in Big Pine Canyon at Sundance.  The world-class restaurants at the Resort or Owl Bar provide gathering places for your business or pleasure dining & entertainment - and your drive is 3 minutes.   :)",
+        price: 249
       }
     ]);
   },
