@@ -64,7 +64,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0.00
     },
     name: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(150),
       allowNull: false
     },
     description: {
