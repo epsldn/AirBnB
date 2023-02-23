@@ -61,7 +61,6 @@
 
 #spot-address {
     font-weight: 575;
-    padding-bottom: 3px;
     word-break: break-word;
     max-height: calc(.9rem * 1.2 * 2);
     overflow-y: scroll;
