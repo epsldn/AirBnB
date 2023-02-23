@@ -15,15 +15,15 @@ module.exports = {
     return await queryInterface.bulkInsert("Spots", [
       {
         ownerId: 1,
-        address: "Some address",
-        city: "Some city",
-        state: "some state",
-        country: "some country",
+        address: "45th Street",
+        city: "Austin",
+        state: "Texas",
+        country: "United States",
         lat: 1.54151345,
         lng: -23.31441,
-        name: "Some cool name",
-        description: "Marketing stuff",
-        price: 70000000
+        name: "Cityscape Estate",
+        description: "Stretching along the hillside, this scenic villa takes advantage of every inch of Austin’s breathtaking skyline view. Indoor and outdoor lounge areas merge delightfully to create ample social space for entertaining. Spend your morning by the pool, and shoot a round of golf in the afternoon. Then, head downtown for a night of live music and World-class barbeque.",
+        price: 3940
       },
       {
         ownerId: 2,
