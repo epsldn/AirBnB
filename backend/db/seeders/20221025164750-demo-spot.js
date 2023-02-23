@@ -240,6 +240,18 @@ module.exports = {
         name: "Ravenhome: Your beach getaway in the trees.",
         description: "Brand New - owner designed and built, newly furnished, fresh and gorgeous. Ravenhome is perfect for your coastal getaway in beautiful Cannon Beach, Oregon. Located just off the road  to Ecola State Park,  it's a short walk to the beach, creek side park, and to the downtown shops and dining.",
         price: 290
+      },
+      {
+        ownerId: 3,
+        address: "244 Mocha Dr",
+        city: "Terlingua",
+        state: "Texas",
+        country: "United States",
+        lat: 37.7645358,
+        lng: -122.4730327,
+        name: "El Coyote Terlingua - Off Grid Container Home",
+        description: "Secluded eco-friendly home on Terlingua Ranch - 360 views of surrounding mountains, spectacular sunsets and breathtaking night skies. Our 1BR/1BATH includes a full private bathroom, stocked kitchen and even air conditioning! Enjoy a great view of the sun rise from the living room couch with your morning coffee. Spend the days enjoying all the adventure the Big Bend has to offer. Awe at the night skies and count the meteors as you snuggle into your cozy bed in the evenings.",
+        price: 206
       }
     ]);
   },
