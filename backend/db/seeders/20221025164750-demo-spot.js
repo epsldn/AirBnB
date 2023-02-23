@@ -216,6 +216,18 @@ module.exports = {
         name: "Monte Cristo Yurt",
         description: "Enjoy this spacious 24' yurt located between Monte Cristo and Hardware Ranch. It is tucked in a grove of trees and set up on the hillside, providing you with amazing views all the way around and stunning sunsets. We enjoy lots of wildlife in the area, especially a majestic herd of 5 bull moose who live on this hillside. This is the perfect place to get away and enjoy solitude and the great outdoors!",
         price: 90
+      },
+      {
+        ownerId: 1,
+        address: "124 Mocha Dr",
+        city: "Sandy",
+        state: "Oregon",
+        country: "United States",
+        lat: 37.7645358,
+        lng: -122.4730327,
+        name: "The Woodlands Hideout",
+        description: "The Woodlands Hideout is a small intentional retreat space, recently featured in Dwell. Designed and created with so much love, and with the hope that guests could  immerse in the beauty of the natural world, but still offer some cozy and more essential comforts. ",
+        price: 173
       }
     ]);
   },
