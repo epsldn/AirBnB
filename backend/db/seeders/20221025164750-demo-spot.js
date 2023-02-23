@@ -204,6 +204,18 @@ module.exports = {
         name: "Hobbit Cottage",
         description: "Tucked away in our peaceful garden, this modern Hobbit Cottage will delight you! Although it's not the Shire of Middle Earth from LOTR, it's our little piece of paradise. We are located near Bryce Canyon, Brian Head and Zion National Park, Kannarraville Falls. Custom built by Chris and I for those who love adventure, hiking, snow boarding. Make sure to catch the world-famous Shakespeare festival. Cedar City is known as \"Festival City\" for a good reason!",
         price: 89
+      },
+      {
+        ownerId: 3,
+        address: "194 Mocha Dr",
+        city: "Hyrum",
+        state: "Utah",
+        country: "United States",
+        lat: 37.7645358,
+        lng: -122.4730327,
+        name: "Monte Cristo Yurt",
+        description: "Enjoy this spacious 24' yurt located between Monte Cristo and Hardware Ranch. It is tucked in a grove of trees and set up on the hillside, providing you with amazing views all the way around and stunning sunsets. We enjoy lots of wildlife in the area, especially a majestic herd of 5 bull moose who live on this hillside. This is the perfect place to get away and enjoy solitude and the great outdoors!",
+        price: 90
       }
     ]);
   },
