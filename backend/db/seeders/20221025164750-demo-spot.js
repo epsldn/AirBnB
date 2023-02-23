@@ -168,6 +168,18 @@ module.exports = {
         name: "Misty Mountain-3 Bdr|Great For Kids!|2 Game Rooms!",
         description: "Unique and extraordinary like no other, the newly renovated Misty Mountain cabin has been carefully curated with no detail overlooked to charm every member of your group! This custom-fitted vacation cabin is tucked away on a peaceful cul-de-sac in the Eagle Mountain East Development, with more than enough parking for cars and trailers.",
         price: 573
+      },
+      {
+        ownerId: 1,
+        address: "386 Liberty Dr",
+        city: "Kanab",
+        state: "Utah",
+        country: "United States",
+        lat: 37.7645358,
+        lng: -122.4730327,
+        name: "The Kiva Suite - Private Cave Tent #4",
+        description: "One mile up Kanab's most pristine canyon lies a place of both beauty and serenity. Welcome to Cave Lakes Canyon Ranch, where secluded nature meets luxury accommodations.  This unique Luxury Tent, is located in its own private cave with a fire pit a secluded area all to yourself. This Premium tent inspires peaceful relaxation with luxury bedding, coffee station, and an authentic pellet  burning stove in the winter.  Come immerse yourself in nature.",
+        price: 573
       }
     ]);
   },
