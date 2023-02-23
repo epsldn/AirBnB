@@ -76,6 +76,7 @@ const SpotShowCase = () => {
                 <div className="spot-images-container">
                     <img src={spot.SpotImages[0].url ?? "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png"} className="spot-image" id="spot-preview-image" />
                     {spot.SpotImages.slice(1, 5).map((image, idx) => {
+                        console.log(image);
                         return <img key={idx} id={`spot-image-${+idx + 2}`} src={`${image.url ?? "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png"}`} className="spot-image" />;
                     })}
                 </div>
