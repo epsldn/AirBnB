@@ -126,8 +126,8 @@ export default function Booking({ spot }) {
                                     <div id="booking-calendar-popup-container">
                                         <div id="booking-calendar-popup-header">
                                             <div id="booking-calendar-popup-header-left">
-                                                <h3 id="booking-calendar-popup-header-title">{checkIn && checkOut ? daysBetween === 1 ? "1 night" : daysBetween + " nights" : "Select Dates"}</h3>
-                                                <p>Add your travel dates to update pricing</p>
+                                                <h3 id="booking-calendar-popup-header-title">{checkIn && checkOut ? daysBetween === 1 ? "1 night" : daysBetween + " nights" : "This feature is under construction 🚧"}</h3>
+                                                <p>Check back soon to see it in action</p>
                                             </div>
 
                                             <div id="booking-calendar-popup-header-right">
