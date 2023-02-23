@@ -131,7 +131,19 @@ module.exports = {
         lng: -122.4730327,
         name: "Lakefront House w/ Pool & Private Beach",
         description: "There is no better lakefront home to create amazing memories with family & friends. The bluest water you've seen in Texas with 180 degree views of Lake Belton.  Walk down the trail to private sandy beach water access. Lay out in the sun by the pool or grill out your favorite meal. Enjoy indoor and outdoor dining plus a large family room. All designer remodeled bathrooms, living space and plenty of beds to bring everyone. Just bring a towel. Swim and lake access at your own risk, no lifeguard.",
-        price: 283
+        price: 510
+      },
+      {
+        ownerId: 3,
+        address: "192 Liberty Dr",
+        city: "Broken Bow",
+        state: "Oklahoma",
+        country: "United States",
+        lat: 37.7645358,
+        lng: -122.4730327,
+        name: "Experience this BRAND NEW cabin",
+        description: "Hell of a View is an absolutely stunning, newly constructed luxury cabin that is located just a few miles north of the restaurants, wineries, breweries, a casino and family entertainment of Hochatown. It sits majestically on top of the Forest Brook Loop Development just off of 259 and includes a 200-degree panoramic view of the rolling Ouachita National Forest.",
+        price: 661
       }
     ]);
   },
