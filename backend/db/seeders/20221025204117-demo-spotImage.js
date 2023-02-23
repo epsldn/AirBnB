@@ -141,47 +141,52 @@ module.exports = {
       },
       {
         spotId: 6,
-        url: "https://images.pexels.com/photos/3637662/pexels-photo-3637662.jpeg",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-618297070744530980/original/bb23b7d0-3471-446d-99db-b5e19c772dff.jpeg?im_w=1200",
         preview: true
       },
       {
         spotId: 6,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-618297070744530980/original/a77deca1-0ab3-4f2c-8332-56ef9d16c60a.jpeg?im_w=720",
         preview: false
       },
       {
         spotId: 6,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-618297070744530980/original/eef28bc7-cd36-4dca-a626-ea5bcccb31d5.jpeg?im_w=720",
         preview: false
       },
       {
         spotId: 6,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-618297070744530980/original/66e4ede6-9c1d-403c-9b5f-b6223295a0e9.jpeg?im_w=720",
         preview: false
       },
       {
         spotId: 6,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-618297070744530980/original/8155a795-4757-46e2-b9e3-7eb9333735c8.jpeg?im_w=720",
         preview: false
       },
       {
         spotId: 7,
-        url: "https://live.staticflickr.com/1288/4670429913_6cc643f1d4_b.jpg",
+        url: "https://a0.muscache.com/im/pictures/9539ec1a-1929-44b9-a0de-efbb61627b34.jpg?im_w=1200",
         preview: true
       },
       {
         spotId: 7,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/dfe61e99-3452-4bf4-b34a-a8198260efc5.jpg?im_w=720",
         preview: false
       },
       {
         spotId: 7,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/b48896c7-e2e2-4442-ad9f-49ad0ec8e175.jpg?im_w=720",
         preview: false
       },
       {
         spotId: 7,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/81986104-5f64-4fb8-bdea-98af9dafeb3c.jpg?im_w=720",
+        preview: false
+      },
+      {
+        spotId: 7,
+        url: "https://a0.muscache.com/im/pictures/30c97867-a3b0-4f39-b54a-616a9b986574.jpg?im_w=720",
         preview: false
       },
     ]);

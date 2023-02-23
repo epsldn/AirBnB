@@ -75,27 +75,27 @@ module.exports = {
       },
       {
         ownerId: 2,
-        address: "6Some address3",
-        city: "6Some city3",
-        state: "6some state3",
-        country: "6some country3",
+        address: "103 Westlake Dr",
+        city: "Branson",
+        state: "Missouri",
+        country: "United States",
         lat: 3.54151345,
         lng: -45.31441,
-        name: "Some cool name3",
-        description: "Marketing stuff3",
-        price: 112
+        name: "NEW Tree+House at Indian Point | Amazing Lake View",
+        description: "Welcome to the Tree + House at Indian Point! This is a custom built luxury modern treehouse for four. It's tucked neatly in the forest with walls of windows and breath taking views of Table Rock Lake.  Close proximity to Table Rock Lake and Silver Dollar City.",
+        price: 279
       },
       {
         ownerId: 1,
         address: "123 Disney Lane",
-        city: "San Francisco",
-        state: "California",
-        country: "United States of America",
+        city: "Boerne",
+        state: "Texas",
+        country: "United States",
         lat: 37.7645358,
         lng: -122.4730327,
-        name: "App Academy",
-        description: "Place where web developers are created",
-        price: 123
+        name: "Owl Spring Ranch Bunkhouse",
+        description: "Classic hill country cabin with amazing views from its perch on a cliff on the Guadalupe River. Located on a large ranch hosting exotic and native wildlife.  Relax in the plunge pool and settle in for an unforgettable retreat.",
+        price: 300
       }
     ]);
   },
