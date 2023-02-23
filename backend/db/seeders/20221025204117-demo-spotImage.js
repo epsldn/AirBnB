@@ -16,17 +16,27 @@ module.exports = {
     await queryInterface.bulkInsert("SpotImages", [
       {
         spotId: 1,
-        url: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg",
+        url: "https://a0.muscache.com/im/pictures/monet/Luxury-567283342060323268/original/ade5dd1a-cece-4497-a0c5-3e9f91f1a359?im_w=1200",
         preview: true
       },
       {
         spotId: 1,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/monet/Luxury-567283342060323268/original/fe1570d3-5fcc-42d1-85fe-b94cc36cc134?im_w=1200",
         preview: false
       },
       {
         spotId: 1,
-        url: "https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png",
+        url: "https://a0.muscache.com/im/pictures/monet/Luxury-567283342060323268/original/14e69b62-acc6-4b94-9149-951bef26d54d?im_w=720",
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: "https://a0.muscache.com/im/pictures/monet/Luxury-567283342060323268/original/b7ee4980-7edc-4943-91a4-77a1529fbf3a?im_w=1200",
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: "https://a0.muscache.com/im/pictures/monet/Luxury-567283342060323268/original/9c4eff42-8807-4aa9-ba26-1fb3c0e334a8?im_w=1200",
         preview: false
       },
       {
